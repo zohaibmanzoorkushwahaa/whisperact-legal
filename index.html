@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Whisper Act — Voice to tasks, reminders, and calendar events. Speak freely. Whisper Act handles the rest." />
+  <meta name="description" content="Whisper Act — Speak freely. Tasks, reminders, and calendar events extracted automatically. Free to start, Pro for power users." />
   <title>Whisper Act — Whisper it. We'll handle the rest.</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --purple: #7C3AED;
+      --violet: #9B59B6;
       --indigo: #4F46E5;
       --dark:   #0f0f12;
       --text:   #1a1a1a;
       --muted:  #6b7280;
+      --bg-alt: #f9fafb;
+      --border: #f3f4f6;
     }
 
     body {
@@ -22,13 +25,19 @@
       color: var(--text);
     }
 
-    /* NAV */
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      border-bottom: 1px solid #f3f4f6;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
     }
 
     .nav-brand {
@@ -48,11 +57,12 @@
       font-size: 14px;
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    /* HERO */
+    /* ── HERO ────────────────────────────────────────── */
     .hero {
       background: linear-gradient(135deg, #1a0533 0%, #0a0a0f 100%);
       color: white;
@@ -82,9 +92,15 @@
     .hero p {
       font-size: clamp(16px, 2.5vw, 20px);
       color: rgba(255,255,255,0.62);
-      max-width: 520px;
-      margin: 0 auto 40px;
+      max-width: 540px;
+      margin: 0 auto 16px;
       line-height: 1.6;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 36px;
     }
 
     .cta-group {
@@ -126,13 +142,7 @@
 
     .btn-secondary:hover { background: rgba(255,255,255,0.16); }
 
-    /* FEATURES */
-    .features {
-      padding: 80px 24px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
+    /* ── SECTION SHARED ──────────────────────────────── */
     .section-label {
       text-align: center;
       font-size: 12px;
@@ -148,20 +158,36 @@
       font-size: clamp(24px, 4vw, 36px);
       font-weight: 800;
       letter-spacing: -0.5px;
-      margin-bottom: 56px;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      text-align: center;
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 52px;
+      line-height: 1.6;
+    }
+
+    /* ── FEATURES ────────────────────────────────────── */
+    .features {
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
     }
 
     .feature-card {
-      background: #f9fafb;
+      background: var(--bg-alt);
       border-radius: 16px;
       padding: 28px 24px;
-      border: 1px solid #f3f4f6;
+      border: 1px solid var(--border);
     }
 
     .feature-icon {
@@ -185,38 +211,192 @@
     .feature-card p {
       font-size: 14px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* PRIVACY STRIP */
+    .feature-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: rgba(124,58,237,0.08);
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-bottom: 10px;
+    }
+
+    /* ── PRICING ─────────────────────────────────────── */
+    .pricing {
+      padding: 80px 24px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .pricing-cards { grid-template-columns: 1fr; }
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 18px; }
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+    }
+
+    .pricing-card.pro {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 1px var(--purple), 0 8px 32px rgba(124,58,237,0.12);
+    }
+
+    .plan-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card.pro .plan-label { color: var(--purple); }
+
+    .plan-price {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .plan-billing {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .plan-features li {
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .plan-features li .check {
+      color: var(--purple);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .plan-features li .dim {
+      color: var(--muted);
+    }
+
+    .plan-features li.muted-row {
+      color: var(--muted);
+    }
+
+    .pricing-card .plan-cta {
+      display: block;
+      text-align: center;
+      margin-top: 28px;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .pricing-card .plan-cta.free-cta {
+      background: var(--bg-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .pricing-card .plan-cta.pro-cta {
+      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      color: white;
+    }
+
+    .pricing-card .plan-cta:hover { opacity: 0.85; }
+
+    .pro-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+
+    /* ── PRIVACY STRIP ───────────────────────────────── */
     .privacy-strip {
       background: #f3f0ff;
       border-top: 1px solid #e9d5ff;
       border-bottom: 1px solid #e9d5ff;
-      padding: 48px 24px;
+      padding: 56px 24px;
       text-align: center;
     }
 
     .privacy-strip h2 {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 800;
       color: var(--purple);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .privacy-strip p {
       font-size: 15px;
       color: #5b21b6;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 20px;
+      line-height: 1.7;
     }
 
-    /* FOOTER */
+    .privacy-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .privacy-pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: #5b21b6;
+      background: rgba(91,33,182,0.08);
+      border: 1px solid rgba(91,33,182,0.15);
+      border-radius: 100px;
+      padding: 5px 14px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
     footer {
-      padding: 40px 24px;
+      padding: 36px 24px;
       text-align: center;
-      border-top: 1px solid #f3f4f6;
+      border-top: 1px solid var(--border);
     }
 
     footer p {
@@ -230,12 +410,14 @@
       gap: 20px;
       justify-content: center;
       list-style: none;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       font-size: 13px;
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
     .footer-links a:hover { color: var(--purple); }
@@ -247,6 +429,7 @@
   <nav>
     <span class="nav-brand">Whisper Act</span>
     <ul class="nav-links">
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/support">Support</a></li>
     </ul>
@@ -256,9 +439,11 @@
   <section class="hero">
     <div class="app-icon">🎙</div>
     <h1>Whisper it.<br>We'll handle the rest.</h1>
-    <p>Speak freely — Whisper Act captures your words, extracts tasks, reminders, and events, and routes them straight to Apple Reminders and Calendar.</p>
+    <p>Speak freely — Whisper Act transcribes your voice, extracts tasks, reminders, and calendar events, and routes everything straight to Apple Reminders and Calendar.</p>
+    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26</p>
     <div class="cta-group">
       <a href="#" class="btn-primary">⬇ Download on the App Store</a>
+      <a href="#pricing" class="btn-secondary">See plans</a>
     </div>
   </section>
 
@@ -266,42 +451,57 @@
   <section class="features">
     <p class="section-label">Features</p>
     <h2 class="section-title">Everything handled for you</h2>
+    <p class="section-sub">From the moment you tap the microphone to the moment a task lands in your Reminders app — Whisper Act handles every step.</p>
+
     <div class="feature-grid">
 
       <div class="feature-card">
         <div class="feature-icon">🎙</div>
         <h3>One tap to capture</h3>
-        <p>Speak naturally. No typing, no formatting, no friction. Whisper Act listens and understands.</p>
+        <p>Speak naturally. No typing, no formatting, no friction. Whisper Act listens, transcribes, and understands — up to 2 minutes free, 20 minutes with Pro.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🤖</div>
-        <h3>AI task extraction</h3>
-        <p>Advanced AI reads your voice memo and pulls out tasks, reminders, and calendar events automatically.</p>
+        <h3>Three-tier AI extraction</h3>
+        <p>Advanced cloud AI, on-device Apple Intelligence, and a local Smart Parser — in priority order. You always get results, even fully offline.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🔔</div>
-        <h3>Reminders & Calendar sync</h3>
-        <p>Spoken dates flow directly into Apple Reminders and Calendar. Real entries, editable in Apple's own apps.</p>
+        <h3>Reminders &amp; Calendar sync</h3>
+        <p>Spoken dates flow directly into Apple Reminders and Apple Calendar as real entries — fully editable in Apple's own apps, not locked in a silo.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <h3>Share &amp; export</h3>
+        <p>Share any memo as plain text or Markdown — free for everyone. Pro users unlock PDF export and bulk multi-memo export in one tap.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗂</div>
+        <h3>Personal &amp; Work categories</h3>
+        <p>Assign memos to Personal or Work and filter your home list instantly. A lightweight organisation layer that requires zero setup.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📵</div>
-        <h3>Works offline</h3>
-        <p>No internet? No problem. Whisper Act captures and extracts tasks entirely on-device when you're offline.</p>
+        <h3>Fully offline capable</h3>
+        <p>No internet? Whisper Act still captures, transcribes, and extracts tasks entirely on-device. Re-analyze with cloud AI the moment you're back online.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Re-Analyze with Cloud AI</h3>
+        <div class="feature-badge">Pro</div>
+        <p>Recorded offline and got basic results? One tap re-processes your original transcript with the highest-accuracy cloud AI — no re-recording required.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">☁️</div>
         <h3>iCloud sync</h3>
-        <p>Your memos follow you across iPhone and iPad automatically through your private iCloud account.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔁</div>
-        <h3>Re-Analyze anytime</h3>
-        <p>Captured offline? Re-process any memo with advanced cloud AI the moment you're back online.</p>
+        <p>Your memos follow you across iPhone and iPad automatically through your private iCloud account. No Whisper Act account, no Whisper Act server.</p>
       </div>
 
     </div>
@@ -310,7 +510,14 @@
   <!-- PRIVACY STRIP -->
   <section class="privacy-strip">
     <h2>Private by design</h2>
-    <p>No accounts. No tracking. No ads. On supported devices, everything stays entirely on your phone. Your voice never leaves your device.</p>
+    <p>On iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. No Whisper Act account. No analytics. No ads. Your memos live in your private iCloud database, not ours.</p>
+    <div class="privacy-pills">
+      <span class="privacy-pill">No account required</span>
+      <span class="privacy-pill">No tracking</span>
+      <span class="privacy-pill">No ads</span>
+      <span class="privacy-pill">On-device transcription</span>
+      <span class="privacy-pill">Private iCloud storage</span>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -318,7 +525,9 @@
     <p>© 2026 Whisper Act. All rights reserved.</p>
     <ul class="footer-links">
       <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Use</a></li>
       <li><a href="/support">Support</a></li>
+      <li><a href="mailto:support@whisperact.com">Contact</a></li>
     </ul>
   </footer>
 
