@@ -8,8 +8,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;
+      --purple: #7C3AED;   /* passive brand — labels, highlights, nav */
       --indigo: #4F46E5;
+      --coral:  #D85A30;   /* action accent — matches wa/accent in app */
       --text:   #1a1a1a;
       --muted:  #6b7280;
     }
@@ -129,6 +130,8 @@
       font-weight: 300;
       color: var(--purple);
       transition: transform 0.2s;
+      flex-shrink: 0;
+      margin-left: 12px;
     }
 
     details[open] summary::after {
@@ -144,6 +147,11 @@
       font-size: 15px;
       color: #374151;
       line-height: 1.7;
+    }
+
+    .faq-answer a {
+      color: var(--purple);
+      text-decoration: none;
     }
 
     /* Contact card */
@@ -190,6 +198,7 @@
       font-size: 13px;
       color: rgba(255,255,255,0.5);
       margin-top: 14px;
+      margin-bottom: 0;
     }
 
     footer {
@@ -205,6 +214,12 @@
       text-decoration: none;
       margin: 0 8px;
     }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .contact-card { padding: 36px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -212,8 +227,10 @@
   <nav>
     <a href="/" class="nav-brand">Whisper Act</a>
     <ul class="nav-links">
+      <li><a href="/#pricing">Pricing</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
     </ul>
   </nav>
 
@@ -233,56 +250,79 @@
       <details>
         <summary>How do I start recording?</summary>
         <div class="faq-answer">
-          Tap the microphone button on the main screen. Whisper Act will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap again to stop.
+          Tap the floating microphone button at the bottom of the screen. Whisper Act will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically.
+        </div>
+      </details>
+
+      <details>
+        <summary>What languages does Whisper Act support?</summary>
+        <div class="faq-answer">
+          Whisper Act supports English, Urdu (اردو), and Arabic (العربية). Tap the language selector in the top-right corner of the recording screen to switch languages before you record. Tasks, reminders, and event titles are always extracted in English regardless of the language you record in, so they work correctly in Apple Reminders and Calendar.
         </div>
       </details>
 
       <details>
         <summary>Why aren't my tasks showing up in Apple Reminders or Calendar?</summary>
         <div class="faq-answer">
-          Reminders and Calendar sync requires a Whisper Act Pro subscription. You also need to grant Reminders and Calendar permissions when prompted. Check Settings → Privacy & Security on your iPhone to confirm both are allowed.
+          Free users can sync up to 7 items per month to Apple Reminders and Calendar — this resets at the start of each calendar month. If you have reached your monthly limit, items will still be saved locally in Whisper Act and can be synced later. Pro subscribers get unlimited syncs every month.<br /><br />
+          You also need to have granted Reminders and Calendar permissions when prompted. To check, go to your iPhone's <strong>Settings → Privacy &amp; Security → Reminders</strong> (or Calendar) and confirm Whisper Act is listed and set to "Full Access".
+        </div>
+      </details>
+
+      <details>
+        <summary>How many free Apple syncs do I get?</summary>
+        <div class="faq-answer">
+          The free plan includes <strong>7 Apple syncs per month</strong>. Each time a reminder or calendar event is created, updated, or synced to Apple Reminders or Apple Calendar, it counts as one sync. The counter resets at the start of each calendar month. Pro subscribers have unlimited syncs. You can check your current usage at any time in the <strong>Usage</strong> tab inside the App.
         </div>
       </details>
 
       <details>
         <summary>What is Re-Analyze and when does it appear?</summary>
         <div class="faq-answer">
-          If you recorded a memo while offline, it was processed by our built-in offline AI. When you come back online, a "Re-Analyze with Cloud AI" button appears on the memo — tapping it re-processes your memo with advanced cloud AI for higher accuracy. This is a Pro feature.
+          If you recorded a memo while offline, it was processed by the built-in offline AI. Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view. Re-Analyze is a Pro feature. Free users with non-English offline memos that failed to extract any tasks receive one complimentary Re-Analyze per qualifying memo.
         </div>
       </details>
 
       <details>
         <summary>Does Whisper Act work without an internet connection?</summary>
         <div class="faq-answer">
-          Yes. Recording and task extraction both work offline. On iOS 26 devices, transcription is fully on-device regardless of connectivity. On other devices, offline recording is capped at 60 seconds. Cloud AI extraction is replaced by built-in offline AI when there is no connection.
+          Yes, with some limitations. Recording and transcription both work offline for English (on-device transcription on iOS 26 devices; 60-second cap on other devices offline). AI task extraction falls back to the built-in on-device engine when offline. Non-English recording (Urdu, Arabic) requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.
         </div>
       </details>
 
       <details>
         <summary>Is my voice data private?</summary>
         <div class="faq-answer">
-          Yes. Audio is never uploaded by Whisper Act. On supported iOS 26 devices, transcription is entirely on-device. On other devices, transcription may use Apple's speech servers — the same pipeline as Siri. Only the resulting text is sent to our cloud AI for task extraction, and it is not linked to your identity in any way.
+          Yes. Audio recorded in English is never uploaded by Whisper Act. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us.<br /><br />
+          For non-English recordings (Urdu, Arabic), the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.
         </div>
       </details>
 
       <details>
         <summary>How do I cancel my subscription?</summary>
         <div class="faq-answer">
-          Open the Settings app on your iPhone → tap your name → Subscriptions → Whisper Act → Cancel Subscription. You can also manage subscriptions directly from within the app under Settings → Manage Subscription.
+          Open your iPhone's <strong>Settings app → tap your name → Subscriptions → Whisper Act → Cancel Subscription</strong>. You can also reach this directly from within the App under <strong>Settings → Manage Subscription</strong>. Your Pro access continues until the end of the current billing period after cancellation.
         </div>
       </details>
 
       <details>
         <summary>I lost my purchase after reinstalling. How do I restore?</summary>
         <div class="faq-answer">
-          Open Whisper Act → tap the paywall → tap "Restore" at the bottom. Your subscription will be restored automatically as long as you are signed into the same Apple ID used for the original purchase.
+          Open Whisper Act and navigate to the upgrade screen, then tap <strong>"Restore Purchases"</strong> at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID that was used for the original purchase. If the issue persists, please contact us.
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I access my older memos?</summary>
+        <div class="faq-answer">
+          Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss.
         </div>
       </details>
 
       <details>
         <summary>How do I delete all my data?</summary>
         <div class="faq-answer">
-          Go to Settings inside Whisper Act and tap "Delete All Data". This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.
+          Go to <strong>Settings</strong> inside Whisper Act and tap <strong>"Delete All Data"</strong>. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.
         </div>
       </details>
 
@@ -301,6 +341,7 @@
       <p style="margin-top:10px;">
         <a href="/">Home</a>
         <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
       </p>
     </footer>
 

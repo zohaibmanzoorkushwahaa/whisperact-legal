@@ -9,9 +9,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* Brand purple — passive: nav, section labels, badges, privacy strip */
       --purple: #7C3AED;
       --violet: #9B59B6;
       --indigo: #4F46E5;
+      /* Coral — action: CTAs, primary buttons, pricing CTA, checkmarks (matches wa/accent in app) */
+      --coral:  #D85A30;
+      --coral-hover: #B84520;
       --dark:   #0f0f12;
       --text:   #1a1a1a;
       --muted:  #6b7280;
@@ -73,7 +77,7 @@
     .app-icon {
       width: 96px;
       height: 96px;
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      background: linear-gradient(135deg, var(--indigo), var(--purple), #C026D3);
       border-radius: 22px;
       display: flex;
       align-items: center;
@@ -114,7 +118,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--purple);
+      background: var(--coral);
       color: white;
       font-size: 15px;
       font-weight: 600;
@@ -193,7 +197,7 @@
     .feature-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      background: linear-gradient(135deg, var(--indigo), var(--purple), #C026D3);
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -260,8 +264,8 @@
     }
 
     .pricing-card.pro {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 1px var(--purple), 0 8px 32px rgba(124,58,237,0.12);
+      border-color: var(--coral);
+      box-shadow: 0 0 0 1px var(--coral), 0 8px 32px rgba(216,90,48,0.14);
     }
 
     .plan-label {
@@ -273,7 +277,7 @@
       margin-bottom: 8px;
     }
 
-    .pricing-card.pro .plan-label { color: var(--purple); }
+    .pricing-card.pro .plan-label { color: var(--coral); }
 
     .plan-price {
       font-size: 36px;
@@ -305,7 +309,7 @@
     }
 
     .plan-features li .check {
-      color: var(--purple);
+      color: var(--coral);
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 1px;
@@ -338,7 +342,7 @@
     }
 
     .pricing-card .plan-cta.pro-cta {
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      background: var(--coral);
       color: white;
     }
 
@@ -432,6 +436,7 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
     </ul>
   </nav>
 
@@ -440,9 +445,9 @@
     <div class="app-icon">🎙</div>
     <h1>Whisper it.<br>We'll handle the rest.</h1>
     <p>Speak freely — Whisper Act transcribes your voice, extracts tasks, reminders, and calendar events, and routes everything straight to Apple Reminders and Calendar.</p>
-    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26</p>
+    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26 · English, Urdu &amp; Arabic</p>
     <div class="cta-group">
-      <a href="#" class="btn-primary">⬇ Download on the App Store</a>
+      <a href="https://apps.apple.com/app/id6776684339" class="btn-primary" target="_blank" rel="noopener">⬇ Download on the App Store</a>
       <a href="#pricing" class="btn-secondary">See plans</a>
     </div>
   </section>
@@ -504,18 +509,70 @@
         <p>Your memos follow you across iPhone and iPad automatically through your private iCloud account. No Whisper Act account, no Whisper Act server.</p>
       </div>
 
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>English, Urdu &amp; Arabic</h3>
+        <p>Record in English, Urdu (اردو), or Arabic (العربية). Switch language right from the recording screen — tasks and reminders always come out in English.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Simple, honest pricing</h2>
+      <p class="section-sub">Start free. Upgrade when you need more power.</p>
+      <div class="pricing-cards">
+
+        <div class="pricing-card">
+          <p class="plan-label">Free</p>
+          <p class="plan-price">$0</p>
+          <p class="plan-billing">forever</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Up to 2 minutes per recording</li>
+            <li><span class="check">✓</span> AI task, reminder &amp; event extraction</li>
+            <li><span class="check">✓</span> 7 Apple syncs / month (Reminders + Calendar)</li>
+            <li><span class="check">✓</span> 7 most recent memos accessible</li>
+            <li><span class="check">✓</span> Plain text &amp; Markdown sharing</li>
+            <li><span class="check">✓</span> English, Urdu &amp; Arabic</li>
+            <li><span class="check">✓</span> Works fully offline</li>
+          </ul>
+          <a href="https://apps.apple.com/app/id6776684339" class="plan-cta free-cta" target="_blank" rel="noopener">Download Free</a>
+        </div>
+
+        <div class="pricing-card pro">
+          <p class="plan-label">Pro</p>
+          <p class="plan-price">$2.99</p>
+          <p class="plan-billing">/ month &nbsp;·&nbsp; or $19.99 / year</p>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Up to <strong>20 minutes</strong> per recording</li>
+            <li><span class="check">✓</span> <strong>Unlimited</strong> Apple syncs</li>
+            <li><span class="check">✓</span> <strong>Full</strong> memo history — unlimited</li>
+            <li><span class="check">✓</span> iCloud sync across all your devices</li>
+            <li><span class="check">✓</span> Re-Analyze with Cloud AI</li>
+            <li><span class="check">✓</span> Choose your Reminders list &amp; Calendar</li>
+            <li><span class="check">✓</span> PDF export + bulk export</li>
+            <li><span class="check">✓</span> Delete memos</li>
+          </ul>
+          <a href="https://apps.apple.com/app/id6776684339" class="plan-cta pro-cta" target="_blank" rel="noopener">Get Pro</a>
+        </div>
+
+      </div>
+      <p class="pro-note">Prices shown in USD and are indicative only. Actual pricing is confirmed at checkout in the App Store and may vary by region. Prices are subject to change without notice. Subscriptions are managed through your Apple ID and may be cancelled at any time via Apple ID Settings.</p>
     </div>
   </section>
 
   <!-- PRIVACY STRIP -->
   <section class="privacy-strip">
     <h2>Private by design</h2>
-    <p>On iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. No Whisper Act account. No analytics. No ads. Your memos live in your private iCloud database, not ours.</p>
+    <p>For English on supported iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. For non-English languages, audio is sent to Groq's Whisper API and is not retained after processing. No Whisper Act account. No analytics. No ads.</p>
     <div class="privacy-pills">
       <span class="privacy-pill">No account required</span>
       <span class="privacy-pill">No tracking</span>
       <span class="privacy-pill">No ads</span>
-      <span class="privacy-pill">On-device transcription</span>
+      <span class="privacy-pill">On-device transcription (English)</span>
       <span class="privacy-pill">Private iCloud storage</span>
     </div>
   </section>
@@ -527,6 +584,7 @@
       <li><a href="/privacy">Privacy Policy</a></li>
       <li><a href="/terms">Terms of Use</a></li>
       <li><a href="/support">Support</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="mailto:support@whisperact.com">Contact</a></li>
     </ul>
   </footer>

@@ -8,7 +8,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;
+      --purple: #7C3AED;   /* passive brand — labels, highlights, nav */
+      --indigo: #4F46E5;
+      --coral:  #D85A30;   /* action accent — matches wa/accent in app */
       --text:   #1a1a1a;
       --muted:  #6b7280;
     }
@@ -98,6 +100,16 @@
       margin-bottom: 14px;
     }
 
+    ul {
+      color: #374151;
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -169,8 +181,10 @@
   <nav>
     <a href="/" class="nav-brand">Whisper Act</a>
     <ul class="nav-links">
+      <li><a href="/#pricing">Pricing</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
     </ul>
   </nav>
 
@@ -178,78 +192,115 @@
 
     <span class="badge">Privacy Policy</span>
     <h1>Your privacy, protected.</h1>
-    <p class="meta">Last updated: May 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <p class="meta">Last updated: June 2026 &nbsp;·&nbsp; Effective date: June 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
 
     <div class="highlight-box">
-      <p>No accounts. No tracking. No ads. Whisper Act has no servers of its own — your data lives on your device and in your private iCloud account.</p>
+      <p>No accounts. No tracking. No ads. Whisper Act has no servers of its own. Your memos live on your device and in your private iCloud account — not ours.</p>
     </div>
 
-    <h2>What Whisper Act does not do</h2>
-    <p>Whisper Act does not create user accounts, does not operate any servers, and does not collect analytics, advertising identifiers, or tracking data of any kind. The app contains no analytics SDK, no advertising SDK, and no third-party tracking.</p>
+    <h2>1. Overview</h2>
+    <p>This Privacy Policy describes how Whisper Act ("we", "us", or "the App") handles information when you use the Whisper Act iOS application. By using the App, you agree to the practices described in this policy.</p>
+    <p>Whisper Act is designed with a minimal data footprint. The App does not create user accounts, does not operate proprietary servers for your data, and does not collect analytics, advertising identifiers, or behavioral tracking data of any kind.</p>
 
-    <h2>Voice recordings</h2>
-    <p>Audio is recorded entirely on your device and used only to produce a text transcript. The audio file is deleted immediately after transcription completes and is never uploaded to any server by Whisper Act.</p>
+    <h2>2. Information We Do Not Collect</h2>
+    <p>We do not collect, store, or transmit:</p>
+    <ul>
+      <li>Your name, email address, or any contact information</li>
+      <li>Device identifiers, advertising IDs (IDFA), or IP addresses</li>
+      <li>Analytics, usage statistics, or crash reports via any SDK</li>
+      <li>Location data</li>
+      <li>Contacts, photos, or any data outside the App's scope</li>
+    </ul>
+    <p>The App contains no analytics SDK, no advertising SDK, and no third-party tracking framework.</p>
 
-    <h2>Transcription</h2>
-    <p>On supported devices running iOS 26, transcription runs entirely on-device using Apple's on-device speech engine. Your voice never leaves your phone in this path.</p>
-    <p>On other devices, transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation, governed by Apple's own privacy policy. Whisper Act does not receive or store the audio in this path.</p>
+    <h2>3. Voice Recordings</h2>
+    <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. Whisper Act does not upload, retain, or transmit your raw audio to any server operated by Whisper Act.</p>
+    <p>For non-English recordings (Urdu, Arabic), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--purple);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
 
-    <h2>Task extraction</h2>
-    <p>When you are online, the transcript text — not the audio — is sent to a cloud AI service to identify tasks, reminders, and calendar events. The request contains only the transcript text and the current time. It is not linked to your name, Apple ID, device, or any identifier. The service does not store your transcripts.</p>
-    <p>When you are offline, extraction runs entirely on-device using built-in AI. No data leaves your phone.</p>
+    <h2>4. Transcription</h2>
+    <p>Transcription is handled differently depending on your language selection and device:</p>
+    <ul>
+      <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
+      <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. Whisper Act does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
+      <li><strong>Non-English languages (Urdu, Arabic):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
+    </ul>
 
-    <h2>Memos, tasks, and calendar data</h2>
-    <p>All memos and tasks are stored in SwiftData on your device and synced to your private iCloud database. Whisper Act has no access to your iCloud data — it is stored in your personal Apple account, not ours. Reminders and calendar events are written directly to your device via Apple's EventKit framework and remain fully under your control inside Apple's apps.</p>
+    <h2>5. Task and Event Extraction (AI)</h2>
+    <p>When you are online, the text transcript — not the audio — is sent to Groq's language model API (api.groq.com) to identify tasks, reminders, and calendar events. The request contains only the transcript text and the current date and time. It is not linked to your name, Apple ID, device identifier, or any personally identifiable information. Groq does not retain transcript data after processing.</p>
+    <p>When you are offline, or as a fallback, AI extraction runs entirely on-device using Apple Intelligence or a built-in keyword analysis engine. No data leaves your device in this path.</p>
 
-    <h2>Purchases</h2>
-    <p>Subscriptions are handled entirely by Apple through the App Store. Whisper Act does not receive or store any payment information.</p>
+    <h2>6. Memos, Tasks, and Calendar Data</h2>
+    <p>All memos and tasks are stored locally on your device using SwiftData. If you subscribe to Whisper Act Pro, your data is synced to your private iCloud database via Apple's CloudKit framework. This data is stored in your personal Apple account and is not accessible to us. Whisper Act has no access to your iCloud content.</p>
+    <p>Reminders and calendar events are written directly to your device via Apple's EventKit framework and remain fully under your control within Apple's Reminders and Calendar applications.</p>
+
+    <h2>7. Subscriptions and Purchases</h2>
+    <p>All subscription purchases are processed entirely by Apple through the App Store. Whisper Act does not receive, store, or have access to any payment card information, billing details, or purchase history beyond what Apple exposes to the App (your current subscription status).</p>
 
     <hr />
 
-    <h2>Third-party services</h2>
+    <h2>8. Third-Party Services Summary</h2>
     <table>
       <tr>
         <th>Service</th>
         <th>Purpose</th>
-        <th>Data sent</th>
+        <th>Data transmitted</th>
+        <th>Retention</th>
       </tr>
       <tr>
-        <td>Apple iCloud</td>
-        <td>Cross-device sync</td>
-        <td>Memos &amp; tasks (your private database)</td>
+        <td>Apple iCloud (CloudKit)</td>
+        <td>Cross-device sync (Pro only)</td>
+        <td>Memos &amp; tasks (your private iCloud database)</td>
+        <td>Your control</td>
       </tr>
       <tr>
         <td>Apple Speech Recognition</td>
-        <td>Transcription (some devices)</td>
-        <td>Audio file (Apple's own pipeline)</td>
+        <td>English transcription (fallback path)</td>
+        <td>Audio file (Apple's own pipeline, not seen by us)</td>
+        <td>Apple's policy</td>
       </tr>
       <tr>
-        <td>Cloud AI provider</td>
-        <td>Task extraction</td>
-        <td>Transcript text only, no identifier</td>
+        <td>Groq Whisper API (api.groq.com)</td>
+        <td>Non-English transcription (Urdu, Arabic)</td>
+        <td>Audio file — not retained after processing</td>
+        <td>Not retained</td>
+      </tr>
+      <tr>
+        <td>Groq LLM API (api.groq.com)</td>
+        <td>AI task &amp; event extraction</td>
+        <td>Transcript text only — no identifier attached</td>
+        <td>Not retained</td>
       </tr>
       <tr>
         <td>Apple App Store</td>
-        <td>Subscriptions &amp; purchases</td>
+        <td>Subscription management</td>
         <td>Handled entirely by Apple</td>
+        <td>Apple's policy</td>
       </tr>
     </table>
 
-    <h2>Data retention</h2>
-    <p>Whisper Act stores data only on your device and in your private iCloud account. Deleting the app removes all local data. You can also delete everything from within the app via <strong>Settings → Delete All Data</strong>.</p>
+    <h2>9. Data Retention and Deletion</h2>
+    <p>Whisper Act stores your data only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of your data on any proprietary server.</p>
+    <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data.</p>
 
-    <h2>Children</h2>
-    <p>Whisper Act is not directed at children under 13 and does not knowingly collect information from children.</p>
+    <h2>10. Children's Privacy</h2>
+    <p>Whisper Act is not directed at children under the age of 13, and we do not knowingly collect personal information from children. If you believe a child under 13 has used the App, please contact us and we will take appropriate steps.</p>
 
-    <h2>Changes to this policy</h2>
-    <p>If this policy changes materially, the "Last updated" date at the top of this page will be updated. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+    <h2>11. Your Rights</h2>
+    <p>Because Whisper Act does not collect or store personal data on our servers, there is no data held by us to access, correct, or delete on your behalf. All data is under your direct control on your device and in your Apple account. You can delete all App data at any time as described in Section 9.</p>
 
-    <h2>Contact</h2>
-    <p>Questions about this policy? Email <a href="mailto:support@whisperact.com" style="color:#7C3AED;">support@whisperact.com</a></p>
+    <h2>12. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
+
+    <h2>13. Contact</h2>
+    <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com" style="color:var(--purple);">support@whisperact.com</a>.</p>
 
     <footer>
       <span>© 2026 Whisper Act. All rights reserved.</span>
-      <span><a href="/">Home</a> &nbsp;·&nbsp; <a href="/support">Support</a></span>
+      <span>
+        <a href="/">Home</a> &nbsp;·&nbsp;
+        <a href="/terms">Terms of Use</a> &nbsp;·&nbsp;
+        <a href="/support">Support</a>
+      </span>
     </footer>
 
   </div>
