@@ -8,9 +8,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;   /* passive brand — labels, highlights, nav */
-      --indigo: #4F46E5;
-      --coral:  #D85A30;   /* action accent — matches wa/accent in app */
+      --coral:       #D85A30;
+      --coral-dark:  #A83820;
+      --coral-light: #FFF5F0;
+      --coral-border:#FFDDD0;
+      --coral-text-dark: #8B2A10;
       --text:   #1a1a1a;
       --muted:  #6b7280;
     }
@@ -35,7 +37,7 @@
     .nav-brand {
       font-size: 18px;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -85,7 +87,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--coral);
       margin-bottom: 10px;
     }
 
@@ -125,17 +127,19 @@
     summary::-webkit-details-marker { display: none; }
 
     summary::after {
-      content: "+";
-      font-size: 20px;
-      font-weight: 300;
-      color: var(--purple);
-      transition: transform 0.2s;
+      content: "⌄";
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--coral);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
       margin-left: 12px;
+      line-height: 1;
+      display: inline-block;
     }
 
     details[open] summary::after {
-      transform: rotate(45deg);
+      transform: rotate(180deg);
     }
 
     details[open] summary {
@@ -150,13 +154,13 @@
     }
 
     .faq-answer a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
     /* Contact card */
     .contact-card {
-      background: linear-gradient(135deg, var(--purple), var(--indigo));
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
       border-radius: 20px;
       padding: 48px 40px;
       text-align: center;
@@ -183,7 +187,7 @@
     .contact-btn {
       display: inline-block;
       background: white;
-      color: var(--purple);
+      color: var(--coral);
       font-size: 15px;
       font-weight: 700;
       padding: 14px 32px;
@@ -210,7 +214,7 @@
     }
 
     footer a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
       margin: 0 8px;
     }

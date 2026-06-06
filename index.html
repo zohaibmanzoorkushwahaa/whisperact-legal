@@ -9,13 +9,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Brand purple — passive: nav, section labels, badges, privacy strip */
-      --purple: #7C3AED;
-      --violet: #9B59B6;
-      --indigo: #4F46E5;
-      /* Coral — action: CTAs, primary buttons, pricing CTA, checkmarks (matches wa/accent in app) */
+      /* All active brand color uses coral — matches wa/accent in app */
       --coral:  #D85A30;
+      --coral-dark: #A83820;
       --coral-hover: #B84520;
+      --coral-light: #FFF5F0;
+      --coral-border: #FFDDD0;
+      --coral-text-dark: #8B2A10;
       --dark:   #0f0f12;
       --text:   #1a1a1a;
       --muted:  #6b7280;
@@ -47,7 +47,7 @@
     .nav-brand {
       font-size: 18px;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--coral);
       letter-spacing: -0.3px;
     }
 
@@ -150,7 +150,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--coral);
       margin-bottom: 12px;
     }
 
@@ -194,7 +194,7 @@
     .feature-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--indigo), var(--purple), #C026D3);
+      background: linear-gradient(135deg, #E07040, var(--coral), var(--coral-dark));
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -355,9 +355,9 @@
 
     /* ── PRIVACY STRIP ───────────────────────────────── */
     .privacy-strip {
-      background: #f3f0ff;
-      border-top: 1px solid #e9d5ff;
-      border-bottom: 1px solid #e9d5ff;
+      background: var(--coral-light);
+      border-top: 1px solid var(--coral-border);
+      border-bottom: 1px solid var(--coral-border);
       padding: 56px 24px;
       text-align: center;
     }
@@ -365,13 +365,13 @@
     .privacy-strip h2 {
       font-size: 24px;
       font-weight: 800;
-      color: var(--purple);
+      color: var(--coral);
       margin-bottom: 12px;
     }
 
     .privacy-strip p {
       font-size: 15px;
-      color: #5b21b6;
+      color: var(--coral-text-dark);
       max-width: 560px;
       margin: 0 auto 20px;
       line-height: 1.7;
@@ -387,9 +387,9 @@
     .privacy-pill {
       font-size: 12px;
       font-weight: 600;
-      color: #5b21b6;
-      background: rgba(91,33,182,0.08);
-      border: 1px solid rgba(91,33,182,0.15);
+      color: var(--coral-text-dark);
+      background: rgba(216,90,48,0.08);
+      border: 1px solid rgba(216,90,48,0.20);
       border-radius: 100px;
       padding: 5px 14px;
     }
@@ -422,7 +422,7 @@
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--purple); }
+    .footer-links a:hover { color: var(--coral); }
   </style>
 </head>
 <body>

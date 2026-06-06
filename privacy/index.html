@@ -8,9 +8,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;   /* passive brand — labels, highlights, nav */
-      --indigo: #4F46E5;
-      --coral:  #D85A30;   /* action accent — matches wa/accent in app */
+      --coral:       #D85A30;
+      --coral-dark:  #A83820;
+      --coral-light: #FFF5F0;
+      --coral-border:#FFDDD0;
+      --coral-text-dark: #8B2A10;
       --text:   #1a1a1a;
       --muted:  #6b7280;
     }
@@ -35,7 +37,7 @@
     .nav-brand {
       font-size: 18px;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -61,8 +63,8 @@
 
     .badge {
       display: inline-block;
-      background: #f3f0ff;
-      color: var(--purple);
+      background: var(--coral-light);
+      color: var(--coral);
       font-size: 12px;
       font-weight: 600;
       padding: 4px 12px;
@@ -84,7 +86,7 @@
     }
 
     .meta a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -139,15 +141,15 @@
     tr:last-child td { border-bottom: none; }
 
     .highlight-box {
-      background: #f3f0ff;
-      border-left: 3px solid var(--purple);
+      background: var(--coral-light);
+      border-left: 3px solid var(--coral);
       border-radius: 0 8px 8px 0;
       padding: 16px 20px;
       margin: 24px 0;
     }
 
     .highlight-box p {
-      color: #5b21b6;
+      color: var(--coral-text-dark);
       margin: 0;
       font-size: 15px;
     }
@@ -171,7 +173,7 @@
     }
 
     footer a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
   </style>
@@ -215,7 +217,7 @@
 
     <h2>3. Voice Recordings</h2>
     <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. Whisper Act does not upload, retain, or transmit your raw audio to any server operated by Whisper Act.</p>
-    <p>For non-English recordings (Urdu, Arabic), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--purple);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
+    <p>For non-English recordings (Urdu, Arabic), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--coral);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
 
     <h2>4. Transcription</h2>
     <p>Transcription is handled differently depending on your language selection and device:</p>
@@ -292,7 +294,7 @@
     <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
 
     <h2>13. Contact</h2>
-    <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com" style="color:var(--purple);">support@whisperact.com</a>.</p>
+    <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com" style="color:var(--coral);">support@whisperact.com</a>.</p>
 
     <footer>
       <span>© 2026 Whisper Act. All rights reserved.</span>

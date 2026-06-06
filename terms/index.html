@@ -8,9 +8,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;   /* passive brand — labels, highlights, nav */
-      --indigo: #4F46E5;
-      --coral:  #D85A30;   /* action accent — matches wa/accent in app */
+      --coral:       #D85A30;
+      --coral-dark:  #A83820;
+      --coral-light: #FFF5F0;
+      --coral-border:#FFDDD0;
+      --coral-text-dark: #8B2A10;
       --text:   #1a1a1a;
       --muted:  #6b7280;
     }
@@ -35,7 +37,7 @@
     .nav-brand {
       font-size: 18px;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -61,8 +63,8 @@
 
     .badge {
       display: inline-block;
-      background: #f3f0ff;
-      color: var(--purple);
+      background: var(--coral-light);
+      color: var(--coral);
       font-size: 12px;
       font-weight: 600;
       padding: 4px 12px;
@@ -84,7 +86,7 @@
     }
 
     .meta a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -111,15 +113,15 @@
     }
 
     .highlight-box {
-      background: #f3f0ff;
-      border-left: 3px solid var(--purple);
+      background: var(--coral-light);
+      border-left: 3px solid var(--coral);
       border-radius: 0 8px 8px 0;
       padding: 16px 20px;
       margin: 24px 0;
     }
 
     .highlight-box p {
-      color: #5b21b6;
+      color: var(--coral-text-dark);
       margin: 0;
       font-size: 15px;
     }
@@ -131,7 +133,7 @@
     }
 
     a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
@@ -148,7 +150,7 @@
     }
 
     footer a {
-      color: var(--purple);
+      color: var(--coral);
       text-decoration: none;
     }
 
