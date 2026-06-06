@@ -68,22 +68,19 @@
 
     /* ── HERO ────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, #1a0533 0%, #0a0a0f 100%);
+      background: radial-gradient(ellipse at 50% 30%, #2d1209 0%, #160b08 45%, #0d0909 100%);
       color: white;
       text-align: center;
       padding: 100px 24px 90px;
     }
 
     .app-icon {
-      width: 96px;
-      height: 96px;
-      background: linear-gradient(135deg, var(--indigo), var(--purple), #C026D3);
-      border-radius: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      font-size: 42px;
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      display: block;
+      margin: 0 auto 32px;
+      box-shadow: 0 12px 48px rgba(216,90,48,0.40), 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .hero h1 {
@@ -224,8 +221,9 @@
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--purple);
-      background: rgba(124,58,237,0.08);
+      color: var(--coral);
+      background: rgba(216,90,48,0.10);
+      border: 1px solid rgba(216,90,48,0.20);
       border-radius: 4px;
       padding: 2px 7px;
       margin-bottom: 10px;
@@ -442,9 +440,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="app-icon">🎙</div>
+    <img src="/icon.png" class="app-icon" alt="Whisper Act app icon" />
     <h1>Whisper it.<br>We'll handle the rest.</h1>
-    <p>Speak freely — Whisper Act transcribes your voice, extracts tasks, reminders, and calendar events, and routes everything straight to Apple Reminders and Calendar.</p>
+    <p>Your voice memo becomes a to-do list, a reminder, and a calendar event — automatically. No typing. No copy-pasting. Just speak.</p>
     <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26 · English, Urdu &amp; Arabic</p>
     <div class="cta-group">
       <a href="https://apps.apple.com/app/id6776684339" class="btn-primary" target="_blank" rel="noopener">⬇ Download on the App Store</a>
@@ -456,63 +454,80 @@
   <section class="features">
     <p class="section-label">Features</p>
     <h2 class="section-title">Everything handled for you</h2>
-    <p class="section-sub">From the moment you tap the microphone to the moment a task lands in your Reminders app — Whisper Act handles every step.</p>
+    <p class="section-sub">From the moment you tap the mic to the moment a task lands in Apple Reminders — Whisper Act handles every step.</p>
 
     <div class="feature-grid">
 
+      <!-- 1 · RECORD -->
       <div class="feature-card">
         <div class="feature-icon">🎙</div>
         <h3>One tap to capture</h3>
-        <p>Speak naturally. No typing, no formatting, no friction. Whisper Act listens, transcribes, and understands — up to 2 minutes free, 20 minutes with Pro.</p>
+        <p>Tap the floating mic button and speak naturally. A live transcript streams in real time as you talk. Free recordings run up to 2 minutes — Pro extends that to 20 minutes per session.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <h3>Three-tier AI extraction</h3>
-        <p>Advanced cloud AI, on-device Apple Intelligence, and a local Smart Parser — in priority order. You always get results, even fully offline.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔔</div>
-        <h3>Reminders &amp; Calendar sync</h3>
-        <p>Spoken dates flow directly into Apple Reminders and Apple Calendar as real entries — fully editable in Apple's own apps, not locked in a silo.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📤</div>
-        <h3>Share &amp; export</h3>
-        <p>Share any memo as plain text or Markdown — free for everyone. Pro users unlock PDF export and bulk multi-memo export in one tap.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🗂</div>
-        <h3>Personal &amp; Work categories</h3>
-        <p>Assign memos to Personal or Work and filter your home list instantly. A lightweight organisation layer that requires zero setup.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📵</div>
-        <h3>Fully offline capable</h3>
-        <p>No internet? Whisper Act still captures, transcribes, and extracts tasks entirely on-device. Re-analyze with cloud AI the moment you're back online.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🔁</div>
-        <h3>Re-Analyze with Cloud AI</h3>
-        <div class="feature-badge">Pro</div>
-        <p>Recorded offline and got basic results? One tap re-processes your original transcript with the highest-accuracy cloud AI — no re-recording required.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">☁️</div>
-        <h3>iCloud sync</h3>
-        <p>Your memos follow you across iPhone and iPad automatically through your private iCloud account. No Whisper Act account, no Whisper Act server.</p>
-      </div>
-
+      <!-- 2 · LANGUAGE -->
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
         <h3>English, Urdu &amp; Arabic</h3>
-        <p>Record in English, Urdu (اردو), or Arabic (العربية). Switch language right from the recording screen — tasks and reminders always come out in English.</p>
+        <p>Switch languages right from the recording screen — English (EN), Urdu (اردو), or Arabic (العربية). Tasks and reminders always come out in English, no matter what language you record in.</p>
+      </div>
+
+      <!-- 3 · AI -->
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>Three-tier AI extraction</h3>
+        <p>Cloud AI (Groq) runs first for highest accuracy. Apple Intelligence takes over offline on supported hardware. A built-in smart parser ensures you always get results — even with no connection at all.</p>
+      </div>
+
+      <!-- 4 · MEMOS TAB -->
+      <div class="feature-card">
+        <div class="feature-icon">🗂</div>
+        <h3>Memos, organized</h3>
+        <p>Every recording is saved and grouped by time — Pinned, Today, Yesterday, This Week, and older. Filter by Personal or Work category, or pin important memos to the top.</p>
+      </div>
+
+      <!-- 5 · UPCOMING TAB -->
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Never miss a deadline</h3>
+        <p>The Upcoming tab surfaces every timed item across all your memos — grouped as Overdue, Today, Tomorrow, This Week, and Later. Switch to Tasks view to see all open undated work in one place.</p>
+      </div>
+
+      <!-- 6 · SYNC -->
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Reminders &amp; Calendar sync</h3>
+        <p>Spoken dates flow straight into Apple Reminders and Apple Calendar as real, editable entries. Free users get 7 syncs per month. Pro users get unlimited syncs — and can route to a specific Reminders list or Calendar.</p>
+      </div>
+
+      <!-- 7 · OFFLINE -->
+      <div class="feature-card">
+        <div class="feature-icon">📵</div>
+        <h3>Fully offline capable</h3>
+        <p>No internet? No problem. Whisper Act captures, transcribes, and extracts tasks entirely on-device for English. Items that couldn't sync are saved locally and pushed automatically when you reconnect.</p>
+      </div>
+
+      <!-- 8 · ICLOUD — PRO -->
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <span class="feature-badge">Pro</span>
+        <h3>iCloud sync across devices</h3>
+        <p>Your full memo library syncs automatically across all your iPhones and iPads through your private iCloud account. No Whisper Act account, no Whisper Act server — your data stays yours.</p>
+      </div>
+
+      <!-- 9 · RE-ANALYZE — PRO -->
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <span class="feature-badge">Pro</span>
+        <h3>Re-Analyze with Cloud AI</h3>
+        <p>Recorded offline and got basic results? One tap re-processes the saved transcript with the highest-accuracy cloud AI — no re-recording needed. Available for memos classified by offline or Apple Intelligence engines.</p>
+      </div>
+
+      <!-- 10 · SHARE & EXPORT -->
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <h3>Share &amp; export</h3>
+        <p>Share any memo as plain text or Markdown — free for everyone. Pro users unlock PDF export and bulk multi-memo export, letting you share an entire week's worth of notes in one tap.</p>
       </div>
 
     </div>
