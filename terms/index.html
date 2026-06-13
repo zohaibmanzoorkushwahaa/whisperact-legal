@@ -3,300 +3,412 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Use · Whisper Act</title>
+  <title>Terms of Use · WhisperAct</title>
+  <meta name="description" content="WhisperAct Terms of Use. Read the terms that govern your use of the WhisperAct iOS application." />
+  <link rel="canonical" href="https://whisperact.com/terms" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --coral:       #D85A30;
-      --coral-dark:  #A83820;
-      --coral-light: #FFF5F0;
-      --coral-border:#FFDDD0;
-      --coral-text-dark: #8B2A10;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
+      --coral:        #D85A30;
+      --coral-dim:    rgba(216,90,48,0.12);
+      --coral-border: rgba(216,90,48,0.28);
+      --ink:          #0a0a0d;
+      --ink-2:        #111116;
+      --ink-3:        #18181f;
+      --line:         rgba(255,255,255,0.07);
+      --line-2:       rgba(255,255,255,0.12);
+      --text:         #f0ede8;
+      --text-2:       rgba(240,237,232,0.60);
+      --text-3:       rgba(240,237,232,0.35);
+      --text-body:    rgba(240,237,232,0.78);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--ink);
       color: var(--text);
-      background: #F4F1EB;
-      padding: 0 0 80px;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      padding-bottom: 80px;
     }
 
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid #f3f4f6;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(10,10,13,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-brand {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--coral);
+      letter-spacing: -0.3px;
+      color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 56px 24px 0;
+    .nav-cta {
+      background: var(--coral) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
     }
 
-    .badge {
-      display: inline-block;
-      background: var(--coral-light);
+    /* ── PAGE HERO ───────────────────────────────────── */
+    .page-hero {
+      padding: 64px 24px 48px;
+      max-width: 760px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--coral);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 999px;
       margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 32px;
+    .page-badge::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 16px;
     }
 
-    .meta {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 48px;
+    .page-meta {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 28px;
     }
 
-    .meta a {
-      color: var(--coral);
-      text-decoration: none;
+    .page-meta a { color: var(--coral); text-decoration: none; }
+
+    .lead-box {
+      background: var(--coral-dim);
+      border: 1px solid var(--coral-border);
+      border-radius: 12px;
+      padding: 18px 22px;
+    }
+
+    .lead-box p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── CONTENT ─────────────────────────────────────── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    article {
+      padding: 48px 0;
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
       margin-top: 44px;
       margin-bottom: 12px;
     }
 
+    h2:first-child { margin-top: 0; }
+
     p {
-      color: #374151;
+      font-size: 15px;
+      color: var(--text-body);
       margin-bottom: 14px;
+      line-height: 1.75;
     }
 
     ul {
-      color: #374151;
       padding-left: 20px;
       margin-bottom: 14px;
     }
 
     ul li {
-      margin-bottom: 6px;
-    }
-
-    .highlight-box {
-      background: var(--coral-light);
-      border-left: 3px solid var(--coral);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin: 24px 0;
-    }
-
-    .highlight-box p {
-      color: var(--coral-text-dark);
-      margin: 0;
       font-size: 15px;
+      color: var(--text-body);
+      margin-bottom: 7px;
+      line-height: 1.65;
     }
+
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
 
     hr {
       border: none;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--line);
       margin: 44px 0;
     }
 
-    a {
-      color: var(--coral);
-      text-decoration: none;
+    /* Uppercase legal text */
+    .legal-caps {
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      line-height: 1.7;
     }
 
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid #f3f4f6;
-      font-size: 13px;
-      color: var(--muted);
+    /* ── FOOTER ──────────────────────────────────────── */
+    .page-footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--line);
       display: flex;
+      align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
 
-    footer a {
-      color: var(--coral);
-      text-decoration: none;
+    .page-footer p {
+      font-size: 13px;
+      color: var(--text-3);
+      margin: 0;
     }
+
+    .page-footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .page-footer-links a {
+      font-size: 13px;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .page-footer-links a:hover { color: var(--coral); }
 
     @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .page-hero { padding: 48px 20px 36px; }
+      .container { padding: 0 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links li:not(:last-child) { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-brand">Whisper Act</a>
-    <ul class="nav-links">
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-    </ul>
-  </nav>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <img src="/icon.png" alt="WhisperAct icon" />
+    WhisperAct
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/support">Support</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="https://apps.apple.com/app/id6776684339" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <p class="page-badge">Terms of Use</p>
+    <h1>Terms of Use</h1>
+    <p class="page-meta">Last updated: June 7, 2026 &nbsp;·&nbsp; Effective: June 7, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <div class="lead-box">
+      <p>Please read these Terms of Use carefully before using WhisperAct. By downloading or using the App, you agree to be bound by these terms.</p>
+    </div>
+  </div>
 
   <div class="container">
+    <article>
 
-    <span class="badge">Terms of Use</span>
-    <h1>Terms of Use</h1>
-    <p class="meta">Last updated: June 7, 2026 &nbsp;·&nbsp; Effective date: June 7, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+      <h2>1. Who We Are</h2>
+      <p>WhisperAct is developed and operated by Zohaib Manzoor Kushwaha, an individual developer based in Pakistan ("we", "us", or "our"). References to "WhisperAct" throughout these Terms refer to this individual operator.</p>
 
-    <div class="highlight-box">
-      <p>Please read these Terms of Use carefully before using Whisper Act. By downloading or using the App, you agree to be bound by these terms.</p>
-    </div>
+      <h2>2. Acceptance of Terms</h2>
+      <p>These Terms of Use ("Terms") govern your use of the WhisperAct iOS application ("App"). By downloading, installing, or using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a>, which is incorporated herein by reference.</p>
+      <p>If you do not agree to these Terms, do not download or use the App.</p>
 
-    <h2>1. Who We Are</h2>
-    <p>Whisper Act is developed and operated by Zohaib Manzoor Kushwaha, an individual developer based in Pakistan ("we", "us", or "our"). References to "Whisper Act" throughout these Terms refer to this individual operator.</p>
+      <h2>3. Description of the App</h2>
+      <p>WhisperAct is a voice memo application for iOS that transcribes your voice recordings and uses artificial intelligence to extract tasks, reminders, and calendar events. The App can optionally sync extracted items to Apple Reminders and Apple Calendar via Apple's EventKit framework.</p>
+      <p>The App is available as a free tier with certain usage limits and as a paid Pro subscription with expanded capabilities. The specific features available under each tier are described within the App and on our website at <a href="https://whisperact.com">https://whisperact.com</a>. We reserve the right to modify, add, or remove features at any time.</p>
 
-    <h2>2. Acceptance of Terms</h2>
-    <p>These Terms of Use ("Terms") govern your use of the Whisper Act iOS application ("App"). By downloading, installing, or using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a>, which is incorporated herein by reference.</p>
-    <p>If you do not agree to these Terms, do not download or use the App.</p>
+      <h2>4. Eligibility</h2>
+      <p>The App is intended for users aged 13 and older. By using the App, you represent that you are at least 13 years of age. If you are under 18, you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
+      <p>The App is designed for personal and professional productivity use. Use of the App in violation of these Terms or any applicable law is not permitted.</p>
 
-    <h2>3. Description of the App</h2>
-    <p>Whisper Act is a voice memo application for iOS that transcribes your voice recordings and uses artificial intelligence to extract tasks, reminders, and calendar events. The App can optionally sync extracted items to Apple Reminders and Apple Calendar via Apple's EventKit framework.</p>
-    <p>The App is available as a free tier with certain usage limits and as a paid Pro subscription with expanded capabilities. The specific features available under each tier are described within the App and on our website at <a href="https://whisperact.com">https://whisperact.com</a>. We reserve the right to modify, add, or remove features at any time.</p>
+      <h2>5. Subscriptions and Billing</h2>
+      <p>WhisperAct Pro is offered as an auto-renewing subscription available in monthly and annual billing periods. All subscriptions are processed exclusively through Apple's App Store using your Apple ID. The following terms apply:</p>
+      <ul>
+        <li>Payment is charged to your Apple ID account at the time of purchase and at the start of each renewal period.</li>
+        <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</li>
+        <li>You may manage or cancel your subscription at any time through your Apple ID Settings or via Settings → Manage Subscription within the App.</li>
+        <li>No refunds are provided for partial subscription periods unless required by applicable law. All billing disputes are governed by Apple's App Store Terms of Service.</li>
+        <li>Free trials, if offered, will be clearly disclosed within the App. Unused portions of a free trial are forfeited upon purchase of a subscription.</li>
+        <li>All payment processing is handled entirely by Apple. WhisperAct does not receive, store, or have access to any payment card or billing information.</li>
+      </ul>
 
-    <h2>4. Eligibility</h2>
-    <p>The App is intended for users aged 13 and older. By using the App, you represent that you are at least 13 years of age. If you are under 18, you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
-    <p>The App is designed for personal and professional productivity use. Use of the App in violation of these Terms or any applicable law is not permitted.</p>
+      <h2>6. Pricing and Changes</h2>
+      <p>Prices are displayed in US Dollars (USD) on our website and within the App. Actual pricing may vary by region according to Apple's regional App Store pricing tiers. The price you are charged will be confirmed at the point of purchase within the App Store.</p>
+      <p>We reserve the right to change subscription prices at any time. If we change the price of your active subscription, Apple will notify you in advance. Your subscription will not renew at the new price without your explicit consent, in accordance with Apple's guidelines.</p>
 
-    <h2>5. Subscriptions and Billing</h2>
-    <p>Whisper Act Pro is offered as an auto-renewing subscription available in monthly and annual billing periods. All subscriptions are processed exclusively through Apple's App Store using your Apple ID. The following terms apply:</p>
-    <ul>
-      <li>Payment is charged to your Apple ID account at the time of purchase and at the start of each renewal period.</li>
-      <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</li>
-      <li>You may manage or cancel your subscription at any time through your Apple ID Settings or via Settings → Manage Subscription within the App.</li>
-      <li>No refunds are provided for partial subscription periods unless required by applicable law. All billing disputes are governed by Apple's App Store Terms of Service.</li>
-      <li>Free trials, if offered, will be clearly disclosed within the App. Unused portions of a free trial are forfeited upon purchase of a subscription.</li>
-      <li>All payment processing is handled entirely by Apple. Whisper Act does not receive, store, or have access to any payment card or billing information.</li>
-    </ul>
+      <h2>7. Free Plan Limitations</h2>
+      <p>The free plan is subject to usage limits including, but not limited to, recording duration per session, the number of Apple syncs per calendar month, and the number of accessible memos. These limits are displayed in the Usage tab within the App and on our website. We reserve the right to adjust these limits at our discretion with reasonable notice.</p>
 
-    <h2>6. Pricing and Changes</h2>
-    <p>Prices are displayed in US Dollars (USD) on our website and within the App. Actual pricing may vary by region according to Apple's regional App Store pricing tiers. The price you are charged will be confirmed at the point of purchase within the App Store.</p>
-    <p>We reserve the right to change subscription prices at any time. If we change the price of your active subscription, Apple will notify you in advance. Your subscription will not renew at the new price without your explicit consent, in accordance with Apple's guidelines.</p>
+      <h2>8. Acceptable Use</h2>
+      <p>You agree to use the App only for lawful purposes and in a manner that does not infringe the rights of others. You must not:</p>
+      <ul>
+        <li>Record or process audio of third parties without their consent where consent is legally required.</li>
+        <li>Attempt to reverse-engineer, decompile, or disassemble any portion of the App.</li>
+        <li>Use the App in a manner that could damage, disable, or impair the App's functionality or the experience of other users.</li>
+        <li>Circumvent, disable, or otherwise interfere with security-related features of the App.</li>
+        <li>Use the App to transmit any unlawful, harmful, threatening, defamatory, or otherwise objectionable content.</li>
+        <li>Use the App for any commercial purpose that violates these Terms or any applicable law.</li>
+      </ul>
 
-    <h2>7. Free Plan Limitations</h2>
-    <p>The free plan is subject to usage limits including, but not limited to, recording duration per session, the number of Apple syncs per calendar month, and the number of accessible memos. These limits are displayed in the Usage tab within the App and on our website. We reserve the right to adjust these limits at our discretion with reasonable notice.</p>
+      <h2>9. AI-Generated Content</h2>
+      <p>The App uses artificial intelligence to transcribe audio and extract tasks, reminders, and calendar events. AI-generated output is provided for convenience only and may contain errors, omissions, or inaccuracies. You are solely responsible for reviewing, verifying, and acting on any items created by the App before relying on them. WhisperAct makes no warranty regarding the accuracy, completeness, or reliability of AI-generated transcriptions or extracted items.</p>
 
-    <h2>8. Acceptable Use</h2>
-    <p>You agree to use the App only for lawful purposes and in a manner that does not infringe the rights of others. You must not:</p>
-    <ul>
-      <li>Record or process audio of third parties without their consent where consent is legally required.</li>
-      <li>Attempt to reverse-engineer, decompile, or disassemble any portion of the App.</li>
-      <li>Use the App in a manner that could damage, disable, or impair the App's functionality or the experience of other users.</li>
-      <li>Circumvent, disable, or otherwise interfere with security-related features of the App.</li>
-      <li>Use the App to transmit any unlawful, harmful, threatening, defamatory, or otherwise objectionable content.</li>
-      <li>Use the App for any commercial purpose that violates these Terms or any applicable law.</li>
-    </ul>
+      <h2>10. Intellectual Property</h2>
+      <p>The App, including its design, code, graphics, and all content (excluding your own memos and data), is owned by or licensed to WhisperAct and is protected by applicable intellectual property laws. Nothing in these Terms grants you any right to use our name, trademarks, logos, or brand elements.</p>
+      <p>You retain full ownership of your voice recordings, transcripts, and notes created through the App. By using the App, you grant WhisperAct no rights to your content beyond what is strictly necessary to operate the App as described in our <a href="/privacy">Privacy Policy</a>.</p>
 
-    <h2>9. AI-Generated Content</h2>
-    <p>The App uses artificial intelligence to transcribe audio and extract tasks, reminders, and calendar events. AI-generated output is provided for convenience only and may contain errors, omissions, or inaccuracies. You are solely responsible for reviewing, verifying, and acting on any items created by the App before relying on them. Whisper Act makes no warranty regarding the accuracy, completeness, or reliability of AI-generated transcriptions or extracted items.</p>
+      <h2>11. Third-Party Services</h2>
+      <p>The App integrates with third-party services including Apple iCloud (CloudKit), Apple EventKit (Reminders and Calendar), and Groq's AI API (api.groq.com). Your use of these services is governed by their respective terms and privacy policies. We are not responsible for the availability, accuracy, security, or conduct of any third-party service.</p>
+      <ul>
+        <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+        <li><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Groq Privacy Policy</a></li>
+      </ul>
 
-    <h2>10. Intellectual Property</h2>
-    <p>The App, including its design, code, graphics, and all content (excluding your own memos and data), is owned by or licensed to Whisper Act and is protected by applicable intellectual property laws. Nothing in these Terms grants you any right to use our name, trademarks, logos, or brand elements.</p>
-    <p>You retain full ownership of your voice recordings, transcripts, and notes created through the App. By using the App, you grant Whisper Act no rights to your content beyond what is strictly necessary to operate the App as described in our <a href="/privacy">Privacy Policy</a>.</p>
+      <h2>12. Privacy</h2>
+      <p>Your privacy is important to us. Our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a> explains how the App handles your information. Key points: we do not operate a backend server for your data, we do not collect analytics or advertising identifiers, and your memos are stored on your device and in your private iCloud account. Please read the full Privacy Policy before using the App.</p>
 
-    <h2>11. Third-Party Services</h2>
-    <p>The App integrates with third-party services including Apple iCloud (CloudKit), Apple EventKit (Reminders and Calendar), and Groq's AI API (api.groq.com). Your use of these services is governed by their respective terms and privacy policies. We are not responsible for the availability, accuracy, security, or conduct of any third-party service.</p>
-    <p>Links to third-party policies:</p>
-    <ul>
-      <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
-      <li><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Groq Privacy Policy</a></li>
-    </ul>
+      <h2>13. Disclaimer of Warranties</h2>
+      <p class="legal-caps">THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF HARMFUL COMPONENTS. YOUR USE OF THE APP IS AT YOUR SOLE RISK.</p>
+      <p class="legal-caps">WE DO NOT WARRANT THE ACCURACY OR RELIABILITY OF ANY AI-GENERATED TRANSCRIPTION, TASK, REMINDER, OR CALENDAR EVENT PRODUCED BY THE APP.</p>
 
-    <h2>12. Privacy</h2>
-    <p>Your privacy is important to us. Our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a> explains how the App handles your information. Key points: we do not operate a backend server for your data, we do not collect analytics or advertising identifiers, and your memos are stored on your device and in your private iCloud account. Please read the full Privacy Policy before using the App.</p>
+      <h2>14. Limitation of Liability</h2>
+      <p class="legal-caps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WHISPERACT AND ITS OPERATOR SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF OR INABILITY TO USE THE APP, INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF REVENUE, OR LOSS OF BUSINESS OPPORTUNITY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p class="legal-caps">OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATING TO THE APP SHALL NOT EXCEED THE TOTAL AMOUNT YOU HAVE PAID TO US VIA IN-APP PURCHASE IN THE 12 MONTHS IMMEDIATELY PRECEDING THE CLAIM. IF YOU HAVE NOT MADE ANY PAYMENTS, OUR TOTAL LIABILITY SHALL NOT EXCEED USD $10.00.</p>
+      <p class="legal-caps">SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES OR LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY IS LIMITED TO THE GREATEST EXTENT PERMITTED BY LAW.</p>
 
-    <h2>13. Disclaimer of Warranties</h2>
-    <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF HARMFUL COMPONENTS. YOUR USE OF THE APP IS AT YOUR SOLE RISK.</p>
-    <p>WE DO NOT WARRANT THE ACCURACY OR RELIABILITY OF ANY AI-GENERATED TRANSCRIPTION, TASK, REMINDER, OR CALENDAR EVENT PRODUCED BY THE APP.</p>
+      <h2>15. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless WhisperAct and its operator from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or relating to: (a) your use of the App; (b) your violation of these Terms; or (c) your violation of any rights of a third party.</p>
 
-    <h2>14. Limitation of Liability</h2>
-    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WHISPER ACT AND ITS OPERATOR SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF OR INABILITY TO USE THE APP, INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF REVENUE, OR LOSS OF BUSINESS OPPORTUNITY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
-    <p>OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATING TO THE APP SHALL NOT EXCEED THE TOTAL AMOUNT YOU HAVE PAID TO US VIA IN-APP PURCHASE IN THE 12 MONTHS IMMEDIATELY PRECEDING THE CLAIM. IF YOU HAVE NOT MADE ANY PAYMENTS, OUR TOTAL LIABILITY SHALL NOT EXCEED USD $10.00.</p>
-    <p>SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN WARRANTIES OR LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY IS LIMITED TO THE GREATEST EXTENT PERMITTED BY LAW.</p>
+      <h2>16. Termination</h2>
+      <p>You may stop using the App at any time by deleting it from your device. We reserve the right to suspend or terminate your access to the App at our discretion if you violate these Terms or engage in conduct that is harmful to other users or to us. Upon termination, your right to use the App ceases immediately.</p>
+      <p>Sections 10, 13, 14, 15, 17, and 18 survive any termination of these Terms.</p>
 
-    <h2>15. Indemnification</h2>
-    <p>You agree to indemnify, defend, and hold harmless Whisper Act and its operator from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or relating to: (a) your use of the App; (b) your violation of these Terms; or (c) your violation of any rights of a third party.</p>
+      <h2>17. Governing Law and Dispute Resolution</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions.</p>
+      <p>Any dispute arising from or relating to these Terms or your use of the App that cannot be resolved informally through good-faith negotiation between the parties shall be subject to the exclusive jurisdiction of the courts of Lahore, Punjab, Pakistan.</p>
+      <p>If you are a consumer resident in a jurisdiction where mandatory consumer protection laws provide you additional rights, nothing in these Terms limits those rights.</p>
 
-    <h2>16. Termination</h2>
-    <p>You may stop using the App at any time by deleting it from your device. We reserve the right to suspend or terminate your access to the App at our discretion if you violate these Terms or engage in conduct that is harmful to other users or to us. Upon termination, your right to use the App ceases immediately.</p>
-    <p>Sections 10, 13, 14, 15, 17, and 18 survive any termination of these Terms.</p>
+      <h2>18. Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised Terms. We recommend reviewing this page periodically.</p>
+      <p>For significant changes, we will make reasonable efforts to notify users through the App or via our website.</p>
 
-    <h2>17. Governing Law and Dispute Resolution</h2>
-    <p>These Terms shall be governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions.</p>
-    <p>Any dispute arising from or relating to these Terms or your use of the App that cannot be resolved informally through good-faith negotiation between the parties shall be subject to the exclusive jurisdiction of the courts of Lahore, Punjab, Pakistan.</p>
-    <p>If you are a consumer resident in a jurisdiction where mandatory consumer protection laws provide you additional rights, nothing in these Terms limits those rights.</p>
+      <h2>19. Severability</h2>
+      <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force and effect.</p>
 
-    <h2>18. Changes to These Terms</h2>
-    <p>We may update these Terms from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised Terms. We recommend reviewing this page periodically.</p>
-    <p>For significant changes, we will make reasonable efforts to notify users through the App or via our website.</p>
+      <h2>20. Entire Agreement</h2>
+      <p>These Terms, together with our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a>, constitute the entire agreement between you and WhisperAct regarding your use of the App and supersede all prior agreements, understandings, and representations relating to the same subject matter.</p>
 
-    <h2>19. Severability</h2>
-    <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force and effect.</p>
+      <h2>21. Contact</h2>
+      <p>If you have questions about these Terms, please contact us at:</p>
+      <ul>
+        <li>Email: <a href="mailto:support@whisperact.com">support@whisperact.com</a></li>
+        <li>Website: <a href="https://whisperact.com/support">https://whisperact.com/support</a></li>
+      </ul>
+      <p>WhisperAct is operated by Zohaib Manzoor Kushwaha, Lahore, Punjab, Pakistan.</p>
 
-    <h2>20. Entire Agreement</h2>
-    <p>These Terms, together with our <a href="/privacy">Privacy Policy</a> at <a href="https://whisperact.com/privacy">https://whisperact.com/privacy</a>, constitute the entire agreement between you and Whisper Act regarding your use of the App and supersede all prior agreements, understandings, and representations relating to the same subject matter.</p>
+      <hr />
 
-    <h2>21. Contact</h2>
-    <p>If you have questions about these Terms, please contact us at:</p>
-    <ul>
-      <li>Email: <a href="mailto:support@whisperact.com">support@whisperact.com</a></li>
-      <li>Website: <a href="https://whisperact.com/support">https://whisperact.com/support</a></li>
-    </ul>
-    <p>Whisper Act is operated by Zohaib Manzoor Kushwaha, Lahore, Punjab, Pakistan.</p>
+      <p style="font-size:13px; color: var(--text-3);">These Terms of Use were last updated on June 7, 2026 and apply to all versions of WhisperAct available on the Apple App Store.</p>
 
-    <hr />
-
-    <p style="font-size:14px; color: var(--muted);">These Terms of Use were last updated on June 7, 2026 and apply to all versions of Whisper Act available on the Apple App Store.</p>
-
-    <footer>
-      <span>© 2026 Whisper Act. All rights reserved.</span>
-      <span>
-        <a href="/">Home</a> &nbsp;·&nbsp;
-        <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp;
-        <a href="/support">Support</a>
-      </span>
-    </footer>
-
+    </article>
   </div>
+
+</main>
+
+<footer>
+  <div class="page-footer">
+    <p>© 2026 WhisperAct. All rights reserved.</p>
+    <ul class="page-footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+  </div>
+</footer>
 
 </body>
 </html>

@@ -3,330 +3,501 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support · Whisper Act</title>
+  <title>Support · WhisperAct</title>
+  <meta name="description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <link rel="canonical" href="https://whisperact.com/support" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --coral:       #D85A30;
-      --coral-dark:  #A83820;
-      --coral-light: #FFF5F0;
-      --coral-border:#FFDDD0;
-      --coral-text-dark: #8B2A10;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
+      --coral:        #D85A30;
+      --coral-dim:    rgba(216,90,48,0.12);
+      --coral-border: rgba(216,90,48,0.28);
+      --ink:          #0a0a0d;
+      --ink-2:        #111116;
+      --ink-3:        #18181f;
+      --line:         rgba(255,255,255,0.07);
+      --line-2:       rgba(255,255,255,0.12);
+      --text:         #f0ede8;
+      --text-2:       rgba(240,237,232,0.60);
+      --text-3:       rgba(240,237,232,0.35);
+      --text-body:    rgba(240,237,232,0.78);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--ink);
       color: var(--text);
-      background: #F4F1EB;
-      padding: 0 0 80px;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
     }
 
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid #E7E1D7;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(10,10,13,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-brand {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--coral);
+      letter-spacing: -0.3px;
+      color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    .hero {
-      background: transparent;
-      color: var(--text);
+    .nav-cta {
+      background: var(--coral) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+    }
+
+    /* ── PAGE HERO ───────────────────────────────────── */
+    .page-hero {
+      padding: 80px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--line);
       text-align: center;
-      padding: 64px 24px 56px;
     }
 
-    .hero h1 {
-      font-size: clamp(26px, 5vw, 38px);
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .page-badge::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+    }
+
+    .page-badge::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 16px;
     }
 
-    .hero p {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 460px;
-      margin: 0 auto;
+    .page-hero p {
+      font-size: 17px;
+      color: var(--text-2);
+      line-height: 1.65;
     }
 
+    /* ── CONTENT ─────────────────────────────────────── */
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 64px 24px 0;
+      padding: 0 24px;
     }
 
     .section-label {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--coral);
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      display: block;
+      margin-top: 56px;
     }
 
-    h2 {
-      font-size: 22px;
+    .section-title {
+      font-size: clamp(20px, 3vw, 28px);
       font-weight: 800;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.8px;
       margin-bottom: 28px;
     }
 
-    /* FAQ */
+    /* ── FAQ ─────────────────────────────────────────── */
     .faq-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 2px;
       margin-bottom: 64px;
-    }
-
-    details {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       overflow: hidden;
     }
 
+    details {
+      background: var(--ink-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    details:last-child { border-bottom: none; }
+
     summary {
-      padding: 18px 20px;
-      font-weight: 600;
+      padding: 20px 24px;
       font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
       cursor: pointer;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #fafafa;
+      gap: 16px;
+      transition: background 0.15s;
+      user-select: none;
     }
 
     summary::-webkit-details-marker { display: none; }
 
-    summary::after {
-      content: "⌄";
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--coral);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    summary:hover { background: var(--ink-3); }
+
+    .faq-chevron {
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
-      margin-left: 12px;
-      line-height: 1;
-      display: inline-block;
+      color: var(--coral);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    details[open] summary::after {
-      transform: rotate(180deg);
-    }
+    details[open] .faq-chevron { transform: rotate(180deg); }
 
     details[open] summary {
-      border-bottom: 1px solid #e5e7eb;
+      background: var(--ink-3);
+      border-bottom: 1px solid var(--line);
     }
 
     .faq-answer {
-      padding: 18px 20px;
+      padding: 20px 24px 24px;
       font-size: 15px;
-      color: #374151;
-      line-height: 1.7;
+      color: var(--text-body);
+      line-height: 1.75;
+      background: var(--ink-2);
     }
 
-    .faq-answer a {
-      color: var(--coral);
-      text-decoration: none;
-    }
+    .faq-answer p { margin-bottom: 12px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
 
-    /* Contact card */
+    .faq-answer a { color: var(--coral); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    .faq-answer strong { color: var(--text); font-weight: 600; }
+
+    /* ── CONTACT CARD ────────────────────────────────── */
     .contact-card {
-      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      background: var(--ink-2);
+      border: 1px solid var(--coral-border);
       border-radius: 20px;
-      padding: 48px 40px;
+      padding: 52px 40px;
       text-align: center;
-      color: white;
       margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(216,90,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .contact-card h2 {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 800;
-      margin-bottom: 10px;
-      color: white;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      position: relative;
     }
 
     .contact-card p {
       font-size: 15px;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 28px;
+      color: var(--text-2);
+      margin-bottom: 32px;
       max-width: 360px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.65;
+      position: relative;
     }
 
     .contact-btn {
-      display: inline-block;
-      background: white;
-      color: var(--coral);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--coral);
+      color: #fff;
       font-size: 15px;
-      font-weight: 700;
-      padding: 14px 32px;
+      font-weight: 600;
+      padding: 14px 30px;
       border-radius: 12px;
       text-decoration: none;
-      transition: opacity 0.15s;
+      letter-spacing: -0.2px;
+      transition: opacity 0.15s, transform 0.15s;
+      position: relative;
     }
 
-    .contact-btn:hover { opacity: 0.9; }
+    .contact-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
     .response-note {
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      margin-top: 14px;
+      color: var(--text-3);
+      margin-top: 16px;
       margin-bottom: 0;
+      position: relative;
     }
 
-    footer {
-      text-align: center;
-      padding-top: 32px;
-      border-top: 1px solid #f3f4f6;
+    /* ── FOOTER ──────────────────────────────────────── */
+    .page-footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-footer p {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-3);
+      margin: 0;
     }
 
-    footer a {
-      color: var(--coral);
-      text-decoration: none;
-      margin: 0 8px;
+    .page-footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
     }
+
+    .page-footer-links a {
+      font-size: 13px;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .page-footer-links a:hover { color: var(--coral); }
 
     @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .page-hero { padding: 56px 20px 44px; }
+      .container { padding: 0 20px; }
       .contact-card { padding: 36px 24px; }
+      summary { padding: 18px 20px; }
+      .faq-answer { padding: 16px 20px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links li:not(:last-child) { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-brand">Whisper Act</a>
-    <ul class="nav-links">
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-    </ul>
-  </nav>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <img src="/icon.png" alt="WhisperAct icon" />
+    WhisperAct
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/support">Support</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="https://apps.apple.com/app/id6776684339" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
+  </ul>
+</nav>
 
-  <section class="hero">
+<main>
+
+  <div class="page-hero">
+    <p class="page-badge">Support</p>
     <h1>How can we help?</h1>
-    <p>Find answers below or reach out directly — we read every email.</p>
-  </section>
+    <p>Find answers below, or reach out directly — we read every email.</p>
+  </div>
 
   <div class="container">
 
-    <!-- FAQ -->
-    <p class="section-label">Common questions</p>
-    <h2>Frequently asked</h2>
+    <span class="section-label">Common questions</span>
+    <h2 class="section-title">Frequently asked</h2>
 
     <div class="faq-list">
 
       <details>
-        <summary>How do I start recording?</summary>
+        <summary>
+          How do I start recording?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Tap the floating microphone button at the bottom of the screen. Whisper Act will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically.
+          <p>Tap the floating microphone button at the bottom of the screen. WhisperAct will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically.</p>
         </div>
       </details>
 
       <details>
-        <summary>What languages does Whisper Act support?</summary>
+        <summary>
+          What languages does WhisperAct support?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Whisper Act supports 12 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tap the language selector in the top-right corner of the recording screen to switch languages before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the language you record in, so they work correctly in Apple Reminders and Calendar.
+          <p>WhisperAct supports 12 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tap the language selector in the top-right corner of the recording screen to switch before you record.</p>
+          <p>English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the recording language, so they work correctly in Apple Reminders and Calendar.</p>
         </div>
       </details>
 
       <details>
-        <summary>Why aren't my tasks showing up in Apple Reminders or Calendar?</summary>
+        <summary>
+          Why aren't my tasks showing up in Apple Reminders or Calendar?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Free users can sync up to 7 items per month to Apple Reminders and Calendar — this resets at the start of each calendar month. If you have reached your monthly limit, items will still be saved locally in Whisper Act and can be synced later. Pro subscribers get unlimited syncs every month.<br /><br />
-          You also need to have granted Reminders and Calendar permissions when prompted. To check, go to your iPhone's <strong>Settings → Privacy &amp; Security → Reminders</strong> (or Calendar) and confirm Whisper Act is listed and set to "Full Access".
+          <p>Free users can sync up to 7 items per month to Apple Reminders and Calendar — this resets at the start of each calendar month. If you have reached your monthly limit, items will still be saved locally in WhisperAct and can be synced later. Pro subscribers get unlimited syncs every month.</p>
+          <p>You also need to have granted Reminders and Calendar permissions when prompted. To check, go to <strong>Settings → Privacy &amp; Security → Reminders</strong> (or Calendar) and confirm WhisperAct is listed and set to "Full Access".</p>
         </div>
       </details>
 
       <details>
-        <summary>How many free Apple syncs do I get?</summary>
+        <summary>
+          How many free Apple syncs do I get?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          The free plan includes <strong>7 Apple syncs per month</strong>. Each time a reminder or calendar event is created, updated, or synced to Apple Reminders or Apple Calendar, it counts as one sync. The counter resets at the start of each calendar month. Pro subscribers have unlimited syncs. You can check your current usage at any time in the <strong>Usage</strong> tab inside the App.
+          <p>The free plan includes <strong>7 Apple syncs per month</strong>. Each time a reminder or calendar event is created, updated, or synced to Apple Reminders or Apple Calendar, it counts as one sync. The counter resets at the start of each calendar month.</p>
+          <p>Pro subscribers have unlimited syncs. You can check your current usage at any time in the <strong>Usage</strong> tab inside the App.</p>
         </div>
       </details>
 
       <details>
-        <summary>What is Re-Analyze and when does it appear?</summary>
+        <summary>
+          What is Re-Analyze and when does it appear?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          If you recorded a memo while offline, it was processed by the built-in offline AI. Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view. Re-Analyze is a Pro feature. Free users with non-English offline memos that failed to extract any tasks receive one complimentary Re-Analyze per qualifying memo.
+          <p>If you recorded a memo while offline, it was processed by the built-in offline AI. Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view.</p>
+          <p>Re-Analyze is a Pro feature. Free users with non-English offline memos that failed to extract any tasks receive one complimentary Re-Analyze per qualifying memo.</p>
         </div>
       </details>
 
       <details>
-        <summary>Does Whisper Act work without an internet connection?</summary>
+        <summary>
+          Does WhisperAct work without an internet connection?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Yes, with some limitations. Recording and transcription both work offline for English (on-device transcription on iOS 26 devices; 60-second cap on other devices offline). AI task extraction falls back to the built-in on-device engine when offline. Non-English recording (any language other than English) requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.
+          <p>Yes, with some limitations. Recording and transcription both work offline for English — using on-device transcription on iOS 26 devices, with a 60-second cap on other devices offline. AI task extraction falls back to the built-in on-device engine when offline.</p>
+          <p>Non-English recording requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.</p>
         </div>
       </details>
 
       <details>
-        <summary>Is my voice data private?</summary>
+        <summary>
+          Is my voice data private?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Yes. Audio recorded in English is never uploaded by Whisper Act. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us.<br /><br />
-          For non-English recordings (any language other than English), the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.
+          <p>Yes. Audio recorded in English is never uploaded by WhisperAct. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us.</p>
+          <p>For non-English recordings, the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.</p>
         </div>
       </details>
 
       <details>
-        <summary>How do I cancel my subscription?</summary>
+        <summary>
+          How do I cancel my subscription?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Open your iPhone's <strong>Settings app → tap your name → Subscriptions → Whisper Act → Cancel Subscription</strong>. You can also reach this directly from within the App under <strong>Settings → Manage Subscription</strong>. Your Pro access continues until the end of the current billing period after cancellation.
+          <p>Open your iPhone's <strong>Settings app → tap your name → Subscriptions → WhisperAct → Cancel Subscription</strong>. You can also reach this directly from within the App under <strong>Settings → Manage Subscription</strong>. Your Pro access continues until the end of the current billing period after cancellation.</p>
         </div>
       </details>
 
       <details>
-        <summary>I lost my purchase after reinstalling. How do I restore?</summary>
+        <summary>
+          I lost my purchase after reinstalling. How do I restore?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Open Whisper Act and navigate to the upgrade screen, then tap <strong>"Restore Purchases"</strong> at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID that was used for the original purchase. If the issue persists, please contact us.
+          <p>Open WhisperAct and navigate to the upgrade screen, then tap <strong>"Restore Purchases"</strong> at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID used for the original purchase. If the issue persists, please contact us.</p>
         </div>
       </details>
 
       <details>
-        <summary>How do I access my older memos?</summary>
+        <summary>
+          How do I access my older memos?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss.
+          <p>Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss.</p>
         </div>
       </details>
 
       <details>
-        <summary>How do I delete all my data?</summary>
+        <summary>
+          How do I delete all my data?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <div class="faq-answer">
-          Go to <strong>Settings</strong> inside Whisper Act and tap <strong>"Delete All Data"</strong>. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.
+          <p>Go to <strong>Settings</strong> inside WhisperAct and tap <strong>"Delete All Data"</strong>. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.</p>
         </div>
       </details>
 
@@ -336,20 +507,27 @@
     <div class="contact-card">
       <h2>Still need help?</h2>
       <p>Send us an email and we'll get back to you as soon as possible.</p>
-      <a href="mailto:support@whisperact.com" class="contact-btn">Email Support</a>
+      <a href="mailto:support@whisperact.com" class="contact-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Support
+      </a>
       <p class="response-note">We typically respond within 24 hours.</p>
     </div>
 
-    <footer>
-      <p>© 2026 Whisper Act. All rights reserved.</p>
-      <p style="margin-top:10px;">
-        <a href="/">Home</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Use</a>
-      </p>
-    </footer>
-
   </div>
+
+</main>
+
+<footer>
+  <div class="page-footer">
+    <p>© 2026 WhisperAct. All rights reserved.</p>
+    <ul class="page-footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Use</a></li>
+    </ul>
+  </div>
+</footer>
 
 </body>
 </html>

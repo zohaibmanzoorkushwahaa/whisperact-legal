@@ -3,309 +3,458 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy · Whisper Act</title>
+  <title>Privacy Policy · WhisperAct</title>
+  <meta name="description" content="WhisperAct Privacy Policy. No accounts, no tracking, no ads. Your memos live on your device and in your private iCloud — not ours." />
+  <link rel="canonical" href="https://whisperact.com/privacy" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --coral:       #D85A30;
-      --coral-dark:  #A83820;
-      --coral-light: #FFF5F0;
-      --coral-border:#FFDDD0;
-      --coral-text-dark: #8B2A10;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
+      --coral:        #D85A30;
+      --coral-dim:    rgba(216,90,48,0.12);
+      --coral-border: rgba(216,90,48,0.28);
+      --ink:          #0a0a0d;
+      --ink-2:        #111116;
+      --ink-3:        #18181f;
+      --line:         rgba(255,255,255,0.07);
+      --line-2:       rgba(255,255,255,0.12);
+      --text:         #f0ede8;
+      --text-2:       rgba(240,237,232,0.60);
+      --text-3:       rgba(240,237,232,0.35);
+      --text-body:    rgba(240,237,232,0.78);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--ink);
       color: var(--text);
-      background: #F4F1EB;
-      padding: 0 0 80px;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      padding-bottom: 80px;
     }
 
+    /* ── NAV ─────────────────────────────────────────── */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid #f3f4f6;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(10,10,13,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-brand {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--coral);
+      letter-spacing: -0.3px;
+      color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
       text-decoration: none;
+      transition: color 0.15s;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 56px 24px 0;
+    .nav-cta {
+      background: var(--coral) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
     }
 
-    .badge {
-      display: inline-block;
-      background: var(--coral-light);
+    /* ── PAGE HERO ───────────────────────────────────── */
+    .page-hero {
+      padding: 64px 24px 48px;
+      max-width: 760px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--coral);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 999px;
       margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 32px;
+    .page-badge::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 16px;
     }
 
-    .meta {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 48px;
+    .page-meta {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 28px;
     }
 
-    .meta a {
-      color: var(--coral);
-      text-decoration: none;
+    .page-meta a { color: var(--coral); text-decoration: none; }
+
+    /* Lead callout */
+    .lead-box {
+      background: var(--coral-dim);
+      border: 1px solid var(--coral-border);
+      border-radius: 12px;
+      padding: 18px 22px;
+    }
+
+    .lead-box p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── CONTENT ─────────────────────────────────────── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    article {
+      padding: 48px 0;
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
       margin-top: 44px;
       margin-bottom: 12px;
     }
 
+    h2:first-child { margin-top: 0; }
+
     p {
-      color: #374151;
+      font-size: 15px;
+      color: var(--text-body);
       margin-bottom: 14px;
+      line-height: 1.75;
     }
 
     ul {
-      color: #374151;
       padding-left: 20px;
       margin-bottom: 14px;
     }
 
     ul li {
-      margin-bottom: 6px;
+      font-size: 15px;
+      color: var(--text-body);
+      margin-bottom: 7px;
+      line-height: 1.65;
+    }
+
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 44px 0;
+    }
+
+    /* Data table */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0 28px;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14px;
-      margin: 16px 0 24px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e5e7eb;
+      font-size: 13px;
+      min-width: 540px;
     }
 
     th {
       text-align: left;
       padding: 12px 16px;
-      background: #f9fafb;
+      background: var(--ink-3);
       font-weight: 600;
-      color: #111827;
-      border-bottom: 1px solid #e5e7eb;
+      color: var(--text);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--line-2);
     }
 
     td {
       padding: 12px 16px;
-      border-bottom: 1px solid #f3f4f6;
-      color: #374151;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-body);
       vertical-align: top;
     }
 
     tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
 
-    .highlight-box {
-      background: var(--coral-light);
-      border-left: 3px solid var(--coral);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin: 24px 0;
+    /* Section divider label */
+    .section-anchor {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 20px;
+      display: block;
+      margin-top: 56px;
     }
 
-    .highlight-box p {
-      color: var(--coral-text-dark);
-      margin: 0;
-      font-size: 15px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin: 44px 0;
-    }
-
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid #f3f4f6;
-      font-size: 13px;
-      color: var(--muted);
+    /* ── FOOTER ──────────────────────────────────────── */
+    .page-footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--line);
       display: flex;
+      align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
 
-    footer a {
-      color: var(--coral);
+    .page-footer p {
+      font-size: 13px;
+      color: var(--text-3);
+      margin: 0;
+    }
+
+    .page-footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .page-footer-links a {
+      font-size: 13px;
+      color: var(--text-3);
       text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .page-footer-links a:hover { color: var(--coral); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .page-hero { padding: 48px 20px 36px; }
+      .container { padding: 0 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links li:not(:last-child) { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-brand">Whisper Act</a>
-    <ul class="nav-links">
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-    </ul>
-  </nav>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <img src="/icon.png" alt="WhisperAct icon" />
+    WhisperAct
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/support">Support</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="https://apps.apple.com/app/id6776684339" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <p class="page-badge">Privacy Policy</p>
+    <h1>Your privacy,<br>protected.</h1>
+    <p class="page-meta">Last updated: June 2026 &nbsp;·&nbsp; Effective: June 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <div class="lead-box">
+      <p>No accounts. No tracking. No ads. WhisperAct has no servers of its own. Your memos live on your device and in your private iCloud account — not ours.</p>
+    </div>
+  </div>
 
   <div class="container">
+    <article>
 
-    <span class="badge">Privacy Policy</span>
-    <h1>Your privacy, protected.</h1>
-    <p class="meta">Last updated: June 2026 &nbsp;·&nbsp; Effective date: June 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+      <h2>1. Overview</h2>
+      <p>This Privacy Policy describes how WhisperAct ("we", "us", or "the App") handles information when you use the WhisperAct iOS application. By using the App, you agree to the practices described in this policy.</p>
+      <p>WhisperAct is designed with a minimal data footprint. The App does not create user accounts, does not operate proprietary servers for your data, and does not collect analytics, advertising identifiers, or behavioral tracking data of any kind.</p>
 
-    <div class="highlight-box">
-      <p>No accounts. No tracking. No ads. Whisper Act has no servers of its own. Your memos live on your device and in your private iCloud account — not ours.</p>
-    </div>
+      <h2>2. Information We Do Not Collect</h2>
+      <p>We do not collect, store, or transmit:</p>
+      <ul>
+        <li>Your name, email address, or any contact information</li>
+        <li>Device identifiers, advertising IDs (IDFA), or IP addresses</li>
+        <li>Analytics, usage statistics, or crash reports via any SDK</li>
+        <li>Location data</li>
+        <li>Contacts, photos, or any data outside the App's scope</li>
+      </ul>
+      <p>The App contains no analytics SDK, no advertising SDK, and no third-party tracking framework.</p>
 
-    <h2>1. Overview</h2>
-    <p>This Privacy Policy describes how Whisper Act ("we", "us", or "the App") handles information when you use the Whisper Act iOS application. By using the App, you agree to the practices described in this policy.</p>
-    <p>Whisper Act is designed with a minimal data footprint. The App does not create user accounts, does not operate proprietary servers for your data, and does not collect analytics, advertising identifiers, or behavioral tracking data of any kind.</p>
+      <h2>3. Voice Recordings</h2>
+      <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. WhisperAct does not upload, retain, or transmit your raw audio to any server operated by WhisperAct.</p>
+      <p>For non-English recordings (any of the supported languages other than English), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
 
-    <h2>2. Information We Do Not Collect</h2>
-    <p>We do not collect, store, or transmit:</p>
-    <ul>
-      <li>Your name, email address, or any contact information</li>
-      <li>Device identifiers, advertising IDs (IDFA), or IP addresses</li>
-      <li>Analytics, usage statistics, or crash reports via any SDK</li>
-      <li>Location data</li>
-      <li>Contacts, photos, or any data outside the App's scope</li>
-    </ul>
-    <p>The App contains no analytics SDK, no advertising SDK, and no third-party tracking framework.</p>
+      <h2>4. Transcription</h2>
+      <p>Transcription is handled differently depending on your language selection and device:</p>
+      <ul>
+        <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
+        <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. WhisperAct does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
+        <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
+      </ul>
 
-    <h2>3. Voice Recordings</h2>
-    <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. Whisper Act does not upload, retain, or transmit your raw audio to any server operated by Whisper Act.</p>
-    <p>For non-English recordings (any of the supported languages other than English), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--coral);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
+      <h2>5. Task and Event Extraction (AI)</h2>
+      <p>When you are online, the text transcript — not the audio — is sent to Groq's language model API (api.groq.com) to identify tasks, reminders, and calendar events. The request contains only the transcript text and the current date and time. It is not linked to your name, Apple ID, device identifier, or any personally identifiable information. Groq does not retain transcript data after processing.</p>
+      <p>When you are offline, or as a fallback, AI extraction runs entirely on-device using Apple Intelligence or a built-in keyword analysis engine. No data leaves your device in this path.</p>
 
-    <h2>4. Transcription</h2>
-    <p>Transcription is handled differently depending on your language selection and device:</p>
-    <ul>
-      <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
-      <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. Whisper Act does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
-      <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
-    </ul>
+      <h2>6. Memos, Tasks, and Calendar Data</h2>
+      <p>All memos and tasks are stored locally on your device using SwiftData. If you subscribe to WhisperAct Pro, your data is synced to your private iCloud database via Apple's CloudKit framework. This data is stored in your personal Apple account and is not accessible to us. WhisperAct has no access to your iCloud content.</p>
+      <p>Reminders and calendar events are written directly to your device via Apple's EventKit framework and remain fully under your control within Apple's Reminders and Calendar applications.</p>
 
-    <h2>5. Task and Event Extraction (AI)</h2>
-    <p>When you are online, the text transcript — not the audio — is sent to Groq's language model API (api.groq.com) to identify tasks, reminders, and calendar events. The request contains only the transcript text and the current date and time. It is not linked to your name, Apple ID, device identifier, or any personally identifiable information. Groq does not retain transcript data after processing.</p>
-    <p>When you are offline, or as a fallback, AI extraction runs entirely on-device using Apple Intelligence or a built-in keyword analysis engine. No data leaves your device in this path.</p>
+      <h2>7. Subscriptions and Purchases</h2>
+      <p>All subscription purchases are processed entirely by Apple through the App Store. WhisperAct does not receive, store, or have access to any payment card information, billing details, or purchase history beyond what Apple exposes to the App (your current subscription status).</p>
 
-    <h2>6. Memos, Tasks, and Calendar Data</h2>
-    <p>All memos and tasks are stored locally on your device using SwiftData. If you subscribe to Whisper Act Pro, your data is synced to your private iCloud database via Apple's CloudKit framework. This data is stored in your personal Apple account and is not accessible to us. Whisper Act has no access to your iCloud content.</p>
-    <p>Reminders and calendar events are written directly to your device via Apple's EventKit framework and remain fully under your control within Apple's Reminders and Calendar applications.</p>
+      <hr />
 
-    <h2>7. Subscriptions and Purchases</h2>
-    <p>All subscription purchases are processed entirely by Apple through the App Store. Whisper Act does not receive, store, or have access to any payment card information, billing details, or purchase history beyond what Apple exposes to the App (your current subscription status).</p>
+      <span class="section-anchor">Third-party services</span>
+      <h2>8. Third-Party Services Summary</h2>
 
-    <hr />
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Purpose</th>
+              <th>Data transmitted</th>
+              <th>Retention</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apple iCloud (CloudKit)</td>
+              <td>Cross-device sync (Pro only)</td>
+              <td>Memos &amp; tasks (your private iCloud database)</td>
+              <td>Your control</td>
+            </tr>
+            <tr>
+              <td>Apple Speech Recognition</td>
+              <td>English transcription (fallback path)</td>
+              <td>Audio file (Apple's own pipeline, not seen by us)</td>
+              <td>Apple's policy</td>
+            </tr>
+            <tr>
+              <td>Groq Whisper API</td>
+              <td>Non-English transcription (11 languages)</td>
+              <td>Audio file — not retained after processing</td>
+              <td>Not retained</td>
+            </tr>
+            <tr>
+              <td>Groq LLM API</td>
+              <td>AI task &amp; event extraction</td>
+              <td>Transcript text only — no identifier attached</td>
+              <td>Not retained</td>
+            </tr>
+            <tr>
+              <td>Apple App Store</td>
+              <td>Subscription management</td>
+              <td>Handled entirely by Apple</td>
+              <td>Apple's policy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <h2>8. Third-Party Services Summary</h2>
-    <table>
-      <tr>
-        <th>Service</th>
-        <th>Purpose</th>
-        <th>Data transmitted</th>
-        <th>Retention</th>
-      </tr>
-      <tr>
-        <td>Apple iCloud (CloudKit)</td>
-        <td>Cross-device sync (Pro only)</td>
-        <td>Memos &amp; tasks (your private iCloud database)</td>
-        <td>Your control</td>
-      </tr>
-      <tr>
-        <td>Apple Speech Recognition</td>
-        <td>English transcription (fallback path)</td>
-        <td>Audio file (Apple's own pipeline, not seen by us)</td>
-        <td>Apple's policy</td>
-      </tr>
-      <tr>
-        <td>Groq Whisper API (api.groq.com)</td>
-        <td>Non-English transcription (11 languages)</td>
-        <td>Audio file — not retained after processing</td>
-        <td>Not retained</td>
-      </tr>
-      <tr>
-        <td>Groq LLM API (api.groq.com)</td>
-        <td>AI task &amp; event extraction</td>
-        <td>Transcript text only — no identifier attached</td>
-        <td>Not retained</td>
-      </tr>
-      <tr>
-        <td>Apple App Store</td>
-        <td>Subscription management</td>
-        <td>Handled entirely by Apple</td>
-        <td>Apple's policy</td>
-      </tr>
-    </table>
+      <h2>9. Data Retention and Deletion</h2>
+      <p>WhisperAct stores your data only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of your data on any proprietary server.</p>
+      <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data.</p>
 
-    <h2>9. Data Retention and Deletion</h2>
-    <p>Whisper Act stores your data only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of your data on any proprietary server.</p>
-    <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data.</p>
+      <h2>10. Children's Privacy</h2>
+      <p>WhisperAct is not directed at children under the age of 13, and we do not knowingly collect personal information from children. If you believe a child under 13 has used the App, please contact us and we will take appropriate steps.</p>
 
-    <h2>10. Children's Privacy</h2>
-    <p>Whisper Act is not directed at children under the age of 13, and we do not knowingly collect personal information from children. If you believe a child under 13 has used the App, please contact us and we will take appropriate steps.</p>
+      <h2>11. Your Rights</h2>
+      <p>Because WhisperAct does not collect or store personal data on our servers, there is no data held by us to access, correct, or delete on your behalf. All data is under your direct control on your device and in your Apple account. You can delete all App data at any time as described in Section 9.</p>
 
-    <h2>11. Your Rights</h2>
-    <p>Because Whisper Act does not collect or store personal data on our servers, there is no data held by us to access, correct, or delete on your behalf. All data is under your direct control on your device and in your Apple account. You can delete all App data at any time as described in Section 9.</p>
+      <h2>12. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
 
-    <h2>12. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
+      <h2>13. Contact</h2>
+      <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
 
-    <h2>13. Contact</h2>
-    <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com" style="color:var(--coral);">support@whisperact.com</a>.</p>
+      <hr />
 
-    <footer>
-      <span>© 2026 Whisper Act. All rights reserved.</span>
-      <span>
-        <a href="/">Home</a> &nbsp;·&nbsp;
-        <a href="/terms">Terms of Use</a> &nbsp;·&nbsp;
-        <a href="/support">Support</a>
-      </span>
-    </footer>
+      <p style="font-size:13px; color: var(--text-3);">This Privacy Policy applies to all versions of WhisperAct available on the Apple App Store.</p>
 
+    </article>
   </div>
+
+</main>
+
+<footer>
+  <div class="page-footer">
+    <p>© 2026 WhisperAct. All rights reserved.</p>
+    <ul class="page-footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/terms">Terms of Use</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+  </div>
+</footer>
 
 </body>
 </html>
