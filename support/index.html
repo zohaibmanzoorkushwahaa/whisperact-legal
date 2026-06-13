@@ -22,7 +22,7 @@
       font-size: 16px;
       line-height: 1.7;
       color: var(--text);
-      background: #ffffff;
+      background: #F4F1EB;
       padding: 0 0 80px;
     }
 
@@ -261,7 +261,7 @@
       <details>
         <summary>What languages does Whisper Act support?</summary>
         <div class="faq-answer">
-          Whisper Act supports English, Urdu (اردو), and Arabic (العربية). Tap the language selector in the top-right corner of the recording screen to switch languages before you record. Tasks, reminders, and event titles are always extracted in English regardless of the language you record in, so they work correctly in Apple Reminders and Calendar.
+          Whisper Act supports 12 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tap the language selector in the top-right corner of the recording screen to switch languages before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the language you record in, so they work correctly in Apple Reminders and Calendar.
         </div>
       </details>
 
@@ -290,7 +290,7 @@
       <details>
         <summary>Does Whisper Act work without an internet connection?</summary>
         <div class="faq-answer">
-          Yes, with some limitations. Recording and transcription both work offline for English (on-device transcription on iOS 26 devices; 60-second cap on other devices offline). AI task extraction falls back to the built-in on-device engine when offline. Non-English recording (Urdu, Arabic) requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.
+          Yes, with some limitations. Recording and transcription both work offline for English (on-device transcription on iOS 26 devices; 60-second cap on other devices offline). AI task extraction falls back to the built-in on-device engine when offline. Non-English recording (any language other than English) requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.
         </div>
       </details>
 
@@ -298,7 +298,7 @@
         <summary>Is my voice data private?</summary>
         <div class="faq-answer">
           Yes. Audio recorded in English is never uploaded by Whisper Act. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us.<br /><br />
-          For non-English recordings (Urdu, Arabic), the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.
+          For non-English recordings (any language other than English), the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.
         </div>
       </details>
 

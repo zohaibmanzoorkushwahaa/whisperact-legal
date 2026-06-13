@@ -19,13 +19,15 @@
       --dark:   #0f0f12;
       --text:   #1a1a1a;
       --muted:  #6b7280;
-      --bg-alt: #f9fafb;
-      --border: #f3f4f6;
+      /* Warm-paper palette — matches the app's greige canvas + white cards */
+      --paper:  #F4F1EB;
+      --bg-alt: #EDE9E1;
+      --border: #E7E1D7;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #ffffff;
+      background: var(--paper);
       color: var(--text);
     }
 
@@ -38,7 +40,7 @@
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.92);
+      background: rgba(244,241,235,0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       z-index: 100;
@@ -185,7 +187,7 @@
     }
 
     .feature-card {
-      background: var(--bg-alt);
+      background: #ffffff;
       border-radius: 16px;
       padding: 28px 24px;
       border: 1px solid var(--border);
@@ -443,7 +445,7 @@
     <img src="/icon.png" class="app-icon" alt="Whisper Act app icon" />
     <h1>Whisper it.<br>We'll handle the rest.</h1>
     <p>Your voice memo becomes a to-do list, a reminder, and a calendar event — automatically. No typing. No copy-pasting. Just speak.</p>
-    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26 · English, Urdu &amp; Arabic</p>
+    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26 · 12 languages</p>
     <div class="cta-group">
       <a href="https://apps.apple.com/app/id6776684339" class="btn-primary" target="_blank" rel="noopener">⬇ Download on the App Store</a>
       <a href="#pricing" class="btn-secondary">See plans</a>
@@ -468,8 +470,8 @@
       <!-- 2 · LANGUAGE -->
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
-        <h3>English, Urdu &amp; Arabic</h3>
-        <p>Switch languages right from the recording screen — English (EN), Urdu (اردو), or Arabic (العربية). Tasks and reminders always come out in English, no matter what language you record in.</p>
+        <h3>Speak 12 languages</h3>
+        <p>Switch languages right from the recording screen — English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tasks and reminders always come out in English, no matter what language you record in.</p>
       </div>
 
       <!-- 3 · AI -->
@@ -530,6 +532,28 @@
         <p>Share any memo as plain text or Markdown — free for everyone. Pro users unlock PDF export and bulk multi-memo export, letting you share an entire week's worth of notes in one tap.</p>
       </div>
 
+      <!-- 11 · DAILY DIGEST — PRO -->
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <span class="feature-badge">Pro</span>
+        <h3>Daily Digest briefing</h3>
+        <p>Start the day with a single glanceable notification — a time-ordered rundown of today's events, reminders, and anything overdue. Pick the delivery time; quiet days stay silent. No briefing fires when there's nothing to surface.</p>
+      </div>
+
+      <!-- 12 · EVENT DETAILS -->
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Times &amp; places, captured</h3>
+        <p>Say "lunch at Dolmen Mall from 1 to 2" and Whisper Act captures the start, end, and location — writing a properly timed Apple Calendar event with the place attached. Inferred durations are clearly marked so you always know what was guessed.</p>
+      </div>
+
+      <!-- 13 · NOTIFICATION SOUNDS -->
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Pick your alert sound</h3>
+        <p>Choose from ten bundled chimes — Whisper, Bell, Marimba, Glass, Ripple, and more — or stick with the system default. Tap any sound to preview it before you set it. Free for everyone.</p>
+      </div>
+
     </div>
   </section>
 
@@ -551,7 +575,7 @@
             <li><span class="check">✓</span> 7 Apple syncs / month (Reminders + Calendar)</li>
             <li><span class="check">✓</span> 7 most recent memos accessible</li>
             <li><span class="check">✓</span> Plain text &amp; Markdown sharing</li>
-            <li><span class="check">✓</span> English, Urdu &amp; Arabic</li>
+            <li><span class="check">✓</span> 12 recording languages</li>
             <li><span class="check">✓</span> Works fully offline</li>
           </ul>
           <a href="https://apps.apple.com/app/id6776684339" class="plan-cta free-cta" target="_blank" rel="noopener">Download Free</a>
@@ -567,6 +591,7 @@
             <li><span class="check">✓</span> <strong>Full</strong> memo history — unlimited</li>
             <li><span class="check">✓</span> iCloud sync across all your devices</li>
             <li><span class="check">✓</span> Re-Analyze with Cloud AI</li>
+            <li><span class="check">✓</span> Daily Digest morning briefing</li>
             <li><span class="check">✓</span> Choose your Reminders list &amp; Calendar</li>
             <li><span class="check">✓</span> PDF export + bulk export</li>
             <li><span class="check">✓</span> Delete memos</li>

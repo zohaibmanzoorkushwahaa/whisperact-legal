@@ -22,7 +22,7 @@
       font-size: 16px;
       line-height: 1.7;
       color: var(--text);
-      background: #ffffff;
+      background: #F4F1EB;
       padding: 0 0 80px;
     }
 
@@ -217,14 +217,14 @@
 
     <h2>3. Voice Recordings</h2>
     <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. Whisper Act does not upload, retain, or transmit your raw audio to any server operated by Whisper Act.</p>
-    <p>For non-English recordings (Urdu, Arabic), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--coral);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
+    <p>For non-English recordings (any of the supported languages other than English), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" style="color:var(--coral);" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
 
     <h2>4. Transcription</h2>
     <p>Transcription is handled differently depending on your language selection and device:</p>
     <ul>
       <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
       <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. Whisper Act does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
-      <li><strong>Non-English languages (Urdu, Arabic):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
+      <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
     </ul>
 
     <h2>5. Task and Event Extraction (AI)</h2>
@@ -262,7 +262,7 @@
       </tr>
       <tr>
         <td>Groq Whisper API (api.groq.com)</td>
-        <td>Non-English transcription (Urdu, Arabic)</td>
+        <td>Non-English transcription (11 languages)</td>
         <td>Audio file — not retained after processing</td>
         <td>Not retained</td>
       </tr>
