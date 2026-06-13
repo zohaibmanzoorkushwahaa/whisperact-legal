@@ -3,295 +3,551 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Whisper Act — Speak freely. Tasks, reminders, and calendar events extracted automatically. Free to start, Pro for power users." />
-  <title>Whisper Act — Whisper it. We'll handle the rest.</title>
+
+  <!-- SEO -->
+  <title>WhisperAct — Voice Task Planner for iPhone &amp; iPad</title>
+  <meta name="description" content="Speak a thought. WhisperAct turns your voice into tasks, reminders, and calendar events — automatically synced to Apple Reminders and Calendar. Free to start." />
+  <meta name="keywords" content="voice task app, iOS voice memo, speech to task, Apple Reminders, voice productivity, iPhone task planner" />
+  <link rel="canonical" href="https://whisperact.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whisperact.com/" />
+  <meta property="og:title" content="WhisperAct — Voice Task Planner" />
+  <meta property="og:description" content="Speak a thought. WhisperAct turns your voice into tasks, reminders, and calendar events automatically." />
+  <meta property="og:image" content="https://whisperact.com/icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WhisperAct — Voice Task Planner" />
+  <meta name="twitter:description" content="Speak a thought. WhisperAct turns your voice into tasks, reminders, and calendar events automatically." />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "WhisperAct",
+    "operatingSystem": "iOS",
+    "applicationCategory": "ProductivityApplication",
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "price": "2.99", "priceCurrency": "USD", "billingIncrement": "P1M" }
+    ],
+    "url": "https://apps.apple.com/app/id6776684339",
+    "description": "Voice memo app that automatically extracts tasks, reminders, and calendar events."
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* All active brand color uses coral — matches wa/accent in app */
-      --coral:  #D85A30;
-      --coral-dark: #A83820;
-      --coral-hover: #B84520;
-      --coral-light: #FFF5F0;
-      --coral-border: #FFDDD0;
-      --coral-text-dark: #8B2A10;
-      --dark:   #0f0f12;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
-      /* Warm-paper palette — matches the app's greige canvas + white cards */
-      --paper:  #F4F1EB;
-      --bg-alt: #EDE9E1;
-      --border: #E7E1D7;
+      --coral:        #D85A30;
+      --coral-dim:    rgba(216,90,48,0.15);
+      --coral-border: rgba(216,90,48,0.30);
+      --ink:          #0a0a0d;
+      --ink-2:        #111116;
+      --ink-3:        #18181f;
+      --ink-4:        #222229;
+      --line:         rgba(255,255,255,0.07);
+      --line-2:       rgba(255,255,255,0.12);
+      --text:         #f0ede8;
+      --text-2:       rgba(240,237,232,0.60);
+      --text-3:       rgba(240,237,232,0.35);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--paper);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--ink);
       color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ── NAV ─────────────────────────────────────────── */
+    /* ─── NAV ──────────────────────────────────────────── */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(244,241,235,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(10,10,13,0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
 
     .nav-brand {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--coral);
       letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
       text-decoration: none;
       transition: color 0.15s;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ────────────────────────────────────────── */
+    .nav-cta {
+      background: var(--coral) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
     .hero {
-      background: radial-gradient(ellipse at 50% 30%, #2d1209 0%, #160b08 45%, #0d0909 100%);
-      color: white;
-      text-align: center;
-      padding: 100px 24px 90px;
-    }
-
-    .app-icon {
-      width: 120px;
-      height: 120px;
-      border-radius: 26px;
-      display: block;
-      margin: 0 auto 32px;
-      box-shadow: 0 12px 48px rgba(216,90,48,0.40), 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      font-size: clamp(16px, 2.5vw, 20px);
-      color: rgba(255,255,255,0.62);
-      max-width: 540px;
-      margin: 0 auto 16px;
-      line-height: 1.6;
-    }
-
-    .hero-note {
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 36px;
-    }
-
-    .cta-group {
+      min-height: 88vh;
       display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 40px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .btn-primary {
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse 60% 50% at 60% 40%, rgba(216,90,48,0.06) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--coral);
-      color: white;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: opacity 0.15s;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 28px;
     }
 
-    .btn-primary:hover { opacity: 0.88; }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--coral);
+    }
 
-    .btn-secondary {
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--coral);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.65;
+      color: var(--text-2);
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn-dl {
       display: inline-flex;
       align-items: center;
-      background: rgba(255,255,255,0.1);
-      color: white;
+      gap: 9px;
+      background: var(--coral);
+      color: #fff;
       font-size: 15px;
-      font-weight: 500;
-      padding: 14px 28px;
+      font-weight: 600;
+      padding: 14px 26px;
       border-radius: 12px;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.15s;
+      letter-spacing: -0.2px;
+      transition: opacity 0.15s, transform 0.15s;
     }
 
-    .btn-secondary:hover { background: rgba(255,255,255,0.16); }
+    .btn-dl:hover { opacity: 0.88; transform: translateY(-1px); }
 
-    /* ── SECTION SHARED ──────────────────────────────── */
+    .btn-ghost {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .btn-ghost:hover { color: var(--text); }
+
+    .hero-meta {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-meta-num {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .hero-meta-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* Waveform */
+    .hero-visual {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 440px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @media (max-width: 860px) { .hero-visual { display: none; } }
+
+    .waveform-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 200px;
+    }
+
+    .wf-bar {
+      width: 4px;
+      border-radius: 3px;
+      background: var(--coral);
+      animation: wave 1.4s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.25); opacity: 0.35; }
+      50%       { transform: scaleY(1);    opacity: 0.85; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wf-bar { animation: none; opacity: 0.4; transform: scaleY(0.5); }
+    }
+
+    /* App icon float */
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
+      margin: 0 auto 32px;
+      display: block;
+      box-shadow: 0 0 0 1px rgba(216,90,48,0.25), 0 20px 60px rgba(216,90,48,0.20);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-icon { animation: none; }
+    }
+
+    /* ─── SECTION BASE ──────────────────────────────────── */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
     .section-label {
-      text-align: center;
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    /* ─── DIVIDER ───────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ─── HOW IT WORKS — 3 steps ──────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .step {
+      background: var(--ink-2);
+      padding: 40px 36px;
+      transition: background 0.2s;
+    }
+
+    .step:hover { background: var(--ink-3); }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--coral);
+      margin-bottom: 20px;
+    }
+
+    .step-icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 20px;
+      color: var(--text-2);
+    }
+
+    .step h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* ─── BENTO FEATURES ────────────────────────────────── */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+
+    .bento-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .bento-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, background 0.2s;
+    }
+
+    .bento-card:hover {
+      border-color: var(--line-2);
+      background: var(--ink-3);
+      transform: translateY(-2px) !important;
+    }
+
+    .bento-card.span-2 { grid-column: span 2; }
+    .bento-card.span-full { grid-column: 1 / -1; }
+
+    .bento-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 18px;
+      color: var(--coral);
+      opacity: 0.85;
+    }
+
+    .bento-badge {
+      display: inline-block;
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--coral);
+      background: var(--coral-dim);
+      border: 1px solid var(--coral-border);
+      border-radius: 4px;
+      padding: 3px 8px;
       margin-bottom: 12px;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-    }
-
-    .section-sub {
-      text-align: center;
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 540px;
-      margin: 0 auto 52px;
-      line-height: 1.6;
-    }
-
-    /* ── FEATURES ────────────────────────────────────── */
-    .features {
-      padding: 80px 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #E07040, var(--coral), var(--coral-dark));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .feature-card h3 {
+    .bento-card h3 {
       font-size: 16px;
       font-weight: 700;
-      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
     }
 
-    .feature-card p {
+    .bento-card p {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-2);
       line-height: 1.65;
     }
 
-    .feature-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--coral);
-      background: rgba(216,90,48,0.10);
-      border: 1px solid rgba(216,90,48,0.20);
-      border-radius: 4px;
-      padding: 2px 7px;
-      position: absolute;
-      top: 22px;
-      right: 22px;
+    /* Inline waveform accent inside feature card */
+    .mini-wave {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 20px;
     }
 
-    /* ── PRICING ─────────────────────────────────────── */
-    .pricing {
-      padding: 80px 24px;
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .mini-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: var(--coral);
+      opacity: 0.5;
     }
 
-    .pricing-inner {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    .pricing-cards {
+    /* ─── PRICING ───────────────────────────────────────── */
+    .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .pricing-cards { grid-template-columns: 1fr; }
-      nav { padding: 16px 20px; }
-      .nav-links { gap: 18px; }
+      gap: 16px;
+      max-width: 780px;
     }
 
     .pricing-card {
-      background: white;
+      background: var(--ink-2);
+      border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 32px 28px;
-      border: 1px solid var(--border);
+      padding: 36px 32px;
     }
 
-    .pricing-card.pro {
-      border-color: var(--coral);
-      box-shadow: 0 0 0 1px var(--coral), 0 8px 32px rgba(216,90,48,0.14);
+    .pricing-card.pro-card {
+      border-color: var(--coral-border);
+      background: rgba(216,90,48,0.04);
+      position: relative;
     }
 
-    .plan-label {
-      font-size: 12px;
+    .pro-pill {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--coral);
+      color: #fff;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
+      padding: 5px 14px;
+      border-radius: 0 0 10px 10px;
     }
 
-    .pricing-card.pro .plan-label { color: var(--coral); }
+    .plan-tier {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 10px;
+    }
+
+    .pro-card .plan-tier { color: var(--coral); }
 
     .plan-price {
-      font-size: 36px;
+      font-size: 44px;
       font-weight: 800;
-      letter-spacing: -1px;
+      letter-spacing: -2px;
       margin-bottom: 4px;
     }
 
     .plan-billing {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-3);
+      margin-bottom: 28px;
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--line);
       margin-bottom: 24px;
     }
 
@@ -299,338 +555,479 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 28px;
     }
 
     .plan-features li {
       font-size: 14px;
-      color: var(--text);
+      color: var(--text-2);
       display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
       line-height: 1.4;
     }
 
-    .plan-features li .check {
+    .plan-features li .ck {
       color: var(--coral);
       font-weight: 700;
       flex-shrink: 0;
-      margin-top: 1px;
     }
 
-    .plan-features li .dim {
-      color: var(--muted);
+    .plan-features li strong {
+      color: var(--text);
+      font-weight: 600;
     }
 
-    .plan-features li.muted-row {
-      color: var(--muted);
-    }
-
-    .pricing-card .plan-cta {
+    .btn-plan {
       display: block;
       text-align: center;
-      margin-top: 28px;
-      padding: 13px;
+      padding: 14px;
       border-radius: 12px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      transition: opacity 0.15s;
+      transition: opacity 0.15s, transform 0.15s;
     }
 
-    .pricing-card .plan-cta.free-cta {
-      background: var(--bg-alt);
+    .btn-plan:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-plan-free {
+      background: var(--ink-4);
+      border: 1px solid var(--line-2);
       color: var(--text);
-      border: 1px solid var(--border);
     }
 
-    .pricing-card .plan-cta.pro-cta {
+    .btn-plan-pro {
       background: var(--coral);
-      color: white;
+      color: #fff;
     }
 
-    .pricing-card .plan-cta:hover { opacity: 0.85; }
-
-    .pro-note {
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
+    .pricing-note {
+      font-size: 12px;
+      color: var(--text-3);
       margin-top: 20px;
+      line-height: 1.6;
+      max-width: 780px;
     }
 
-    /* ── PRIVACY STRIP ───────────────────────────────── */
+    /* ─── PRIVACY STRIP ─────────────────────────────────── */
     .privacy-strip {
-      background: var(--coral-light);
-      border-top: 1px solid var(--coral-border);
-      border-bottom: 1px solid var(--coral-border);
-      padding: 56px 24px;
-      text-align: center;
+      background: var(--ink-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .privacy-strip h2 {
-      font-size: 24px;
+    .privacy-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .privacy-copy { flex: 1; }
+
+    .privacy-copy h2 {
+      font-size: clamp(22px, 3vw, 32px);
       font-weight: 800;
-      color: var(--coral);
-      margin-bottom: 12px;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
     }
 
-    .privacy-strip p {
+    .privacy-copy p {
       font-size: 15px;
-      color: var(--coral-text-dark);
-      max-width: 560px;
-      margin: 0 auto 20px;
+      color: var(--text-2);
       line-height: 1.7;
+      max-width: 480px;
     }
 
     .privacy-pills {
       display: flex;
+      flex-direction: column;
       gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-shrink: 0;
     }
 
     .privacy-pill {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--coral-text-dark);
-      background: rgba(216,90,48,0.08);
-      border: 1px solid rgba(216,90,48,0.20);
-      border-radius: 100px;
-      padding: 5px 14px;
-    }
-
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      padding: 36px 24px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-
-    footer p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .privacy-pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-3);
     }
 
     .footer-links {
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      gap: 24px;
       list-style: none;
       flex-wrap: wrap;
     }
 
     .footer-links a {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-3);
       text-decoration: none;
       transition: color 0.15s;
     }
 
     .footer-links a:hover { color: var(--coral); }
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 60px 20px; min-height: auto; }
+      .section-wrap { padding: 60px 20px; }
+      .steps { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr; }
+      .bento-card.span-2 { grid-column: span 1; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .privacy-inner { flex-direction: column; gap: 32px; padding: 48px 20px; }
+      footer { padding: 32px 20px; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-brand">Whisper Act</span>
-    <ul class="nav-links">
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-    </ul>
-  </nav>
+<div class="hero-bg" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-brand">
+    <img src="/icon.png" alt="WhisperAct icon" />
+    WhisperAct
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="https://apps.apple.com/app/id6776684339" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
+  </ul>
+</nav>
+
+<main>
 
   <!-- HERO -->
-  <section class="hero">
-    <img src="/icon.png" class="app-icon" alt="Whisper Act app icon" />
-    <h1>Whisper it.<br>We'll handle the rest.</h1>
-    <p>Your voice memo becomes a to-do list, a reminder, and a calendar event — automatically. No typing. No copy-pasting. Just speak.</p>
-    <p class="hero-note">Free to start · iPhone &amp; iPad · iOS 26 · 12 languages</p>
-    <div class="cta-group">
-      <a href="https://apps.apple.com/app/id6776684339" class="btn-primary" target="_blank" rel="noopener">⬇ Download on the App Store</a>
-      <a href="#pricing" class="btn-secondary">See plans</a>
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Voice Task Planner for iPhone &amp; iPad</p>
+      <h1 id="hero-heading">Speak.<br><em>Done.</em></h1>
+      <p class="hero-sub">WhisperAct listens to your voice and turns it into tasks, reminders, and calendar events — routed directly into Apple Reminders and Calendar. No typing. No copy-pasting.</p>
+      <div class="hero-actions">
+        <a href="https://apps.apple.com/app/id6776684339" class="btn-dl" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
+          Download on the App Store
+        </a>
+        <a href="#pricing" class="btn-ghost">See plans →</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">12</span>
+          <span class="hero-meta-label">Languages</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">3-tier</span>
+          <span class="hero-meta-label">AI pipeline</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">0</span>
+          <span class="hero-meta-label">Accounts needed</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-num">Free</span>
+          <span class="hero-meta-label">To start</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waveform visual -->
+    <div class="hero-visual" aria-hidden="true">
+      <img src="/icon.png" class="hero-icon" alt="" />
+      <div class="waveform-wrap" id="waveform"></div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features">
-    <p class="section-label">Features</p>
-    <h2 class="section-title">Everything handled for you</h2>
-    <p class="section-sub">From the moment you tap the mic to the moment a task lands in Apple Reminders — Whisper Act handles every step.</p>
+  <div class="divider"></div>
 
-    <div class="feature-grid">
+  <!-- HOW IT WORKS -->
+  <section id="how" aria-labelledby="how-heading">
+    <div class="section-wrap">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title" id="how-heading">Three steps, zero effort</h2>
+      <p class="section-sub">From spoken thought to structured action in seconds.</p>
 
-      <!-- 1 · RECORD -->
-      <div class="feature-card">
-        <div class="feature-icon">🎙</div>
-        <h3>One tap to capture</h3>
-        <p>Tap the floating mic button and speak naturally. A live transcript streams in real time as you talk. Free recordings run up to 2 minutes — Pro extends that to 20 minutes per session.</p>
+      <div class="steps">
+        <div class="step">
+          <p class="step-num">01</p>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          <h3>Tap and speak</h3>
+          <p>Hit the mic. Talk freely — tasks, reminders, events, or just notes. A live transcript streams as you speak.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">02</p>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <h3>AI extracts structure</h3>
+          <p>Cloud AI, Apple Intelligence, and a local smart parser work in cascade — so you always get results, even offline.</p>
+        </div>
+        <div class="step">
+          <p class="step-num">03</p>
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3>Synced to Apple apps</h3>
+          <p>Tasks land in Apple Reminders. Events land in Apple Calendar. Everything editable right where you already work.</p>
+        </div>
       </div>
-
-      <!-- 2 · LANGUAGE -->
-      <div class="feature-card">
-        <div class="feature-icon">🌐</div>
-        <h3>Speak 12 languages</h3>
-        <p>Switch languages right from the recording screen — English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tasks and reminders always come out in English, no matter what language you record in.</p>
-      </div>
-
-      <!-- 3 · AI -->
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <h3>Three-tier AI extraction</h3>
-        <p>Cloud AI (Groq) runs first for highest accuracy. Apple Intelligence takes over offline on supported hardware. A built-in smart parser ensures you always get results — even with no connection at all.</p>
-      </div>
-
-      <!-- 4 · MEMOS TAB -->
-      <div class="feature-card">
-        <div class="feature-icon">🗂</div>
-        <h3>Memos, organized</h3>
-        <p>Every recording is saved and grouped by time — Pinned, Today, Yesterday, This Week, and older. Filter by Personal or Work category, or pin important memos to the top.</p>
-      </div>
-
-      <!-- 5 · UPCOMING TAB -->
-      <div class="feature-card">
-        <div class="feature-icon">📅</div>
-        <h3>Never miss a deadline</h3>
-        <p>The Upcoming tab surfaces every timed item across all your memos — grouped as Overdue, Today, Tomorrow, This Week, and Later. Switch to Tasks view to see all open undated work in one place.</p>
-      </div>
-
-      <!-- 6 · SYNC -->
-      <div class="feature-card">
-        <div class="feature-icon">🔔</div>
-        <h3>Reminders &amp; Calendar sync</h3>
-        <p>Spoken dates flow straight into Apple Reminders and Apple Calendar as real, editable entries. Free users get 7 syncs per month. Pro users get unlimited syncs — and can route to a specific Reminders list or Calendar.</p>
-      </div>
-
-      <!-- 7 · OFFLINE -->
-      <div class="feature-card">
-        <div class="feature-icon">📵</div>
-        <h3>Fully offline capable</h3>
-        <p>No internet? No problem. Whisper Act captures, transcribes, and extracts tasks entirely on-device for English. Items that couldn't sync are saved locally and pushed automatically when you reconnect.</p>
-      </div>
-
-      <!-- 8 · ICLOUD — PRO -->
-      <div class="feature-card">
-        <div class="feature-icon">☁️</div>
-        <span class="feature-badge">Pro</span>
-        <h3>iCloud sync across devices</h3>
-        <p>Your full memo library syncs automatically across all your iPhones and iPads through your private iCloud account. No Whisper Act account, no Whisper Act server — your data stays yours.</p>
-      </div>
-
-      <!-- 9 · RE-ANALYZE — PRO -->
-      <div class="feature-card">
-        <div class="feature-icon">🔁</div>
-        <span class="feature-badge">Pro</span>
-        <h3>Re-Analyze with Cloud AI</h3>
-        <p>Recorded offline and got basic results? One tap re-processes the saved transcript with the highest-accuracy cloud AI — no re-recording needed. Available for memos classified by offline or Apple Intelligence engines.</p>
-      </div>
-
-      <!-- 10 · SHARE & EXPORT -->
-      <div class="feature-card">
-        <div class="feature-icon">📤</div>
-        <h3>Share &amp; export</h3>
-        <p>Share any memo as plain text or Markdown — free for everyone. Pro users unlock PDF export and bulk multi-memo export, letting you share an entire week's worth of notes in one tap.</p>
-      </div>
-
-      <!-- 11 · DAILY DIGEST — PRO -->
-      <div class="feature-card">
-        <div class="feature-icon">📋</div>
-        <span class="feature-badge">Pro</span>
-        <h3>Daily Digest briefing</h3>
-        <p>Start the day with a single glanceable notification — a time-ordered rundown of today's events, reminders, and anything overdue. Pick the delivery time; quiet days stay silent. No briefing fires when there's nothing to surface.</p>
-      </div>
-
-      <!-- 12 · EVENT DETAILS -->
-      <div class="feature-card">
-        <div class="feature-icon">📍</div>
-        <h3>Times &amp; places, captured</h3>
-        <p>Say "lunch at Dolmen Mall from 1 to 2" and Whisper Act captures the start, end, and location — writing a properly timed Apple Calendar event with the place attached. Inferred durations are clearly marked so you always know what was guessed.</p>
-      </div>
-
-      <!-- 13 · NOTIFICATION SOUNDS -->
-      <div class="feature-card">
-        <div class="feature-icon">🔔</div>
-        <h3>Pick your alert sound</h3>
-        <p>Choose from ten bundled chimes — Whisper, Bell, Marimba, Glass, Ripple, and more — or stick with the system default. Tap any sound to preview it before you set it. Free for everyone.</p>
-      </div>
-
     </div>
   </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES BENTO -->
+  <section id="features" aria-labelledby="features-heading">
+    <div class="section-wrap">
+      <p class="section-label">Features</p>
+      <h2 class="section-title" id="features-heading">Built for the way you think</h2>
+      <p class="section-sub">Every feature starts from the same question: what should happen automatically?</p>
+
+      <div class="bento">
+
+        <!-- Big card: languages -->
+        <div class="bento-card span-2">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <h3>12 recording languages</h3>
+          <p>English, Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean. Switch right on the recording screen. Tasks always come out in English regardless of what language you recorded in.</p>
+        </div>
+
+        <!-- Card: offline -->
+        <div class="bento-card">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          <h3>Fully offline capable</h3>
+          <p>Captures, transcribes, and extracts on-device for English. Items saved locally and pushed when you reconnect.</p>
+        </div>
+
+        <!-- Card: Upcoming tab -->
+        <div class="bento-card">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h3>Upcoming tab</h3>
+          <p>Every timed item across all memos in one place — Overdue, Today, Tomorrow, This Week, Later.</p>
+        </div>
+
+        <!-- Card: locations & duration -->
+        <div class="bento-card">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h3>Times &amp; places captured</h3>
+          <p>Say "lunch at Dolmen Mall from 1 to 2" — WhisperAct writes the event with location and exact duration.</p>
+        </div>
+
+        <!-- Big card: notification -->
+        <div class="bento-card span-2">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <h3>Smart notifications</h3>
+          <p>Reminders fire before the right moment — not after. Free users get one alert time per task. Pro unlocks six lead times per reminder so nothing slips. Add a Daily Digest for a morning briefing of everything on today's list.</p>
+          <div class="mini-wave" aria-hidden="true">
+            <div class="mini-bar" style="height:10px"></div>
+            <div class="mini-bar" style="height:18px"></div>
+            <div class="mini-bar" style="height:14px"></div>
+            <div class="mini-bar" style="height:22px"></div>
+            <div class="mini-bar" style="height:16px"></div>
+            <div class="mini-bar" style="height:12px"></div>
+            <div class="mini-bar" style="height:20px"></div>
+            <div class="mini-bar" style="height:10px"></div>
+          </div>
+        </div>
+
+        <!-- Pro: iCloud -->
+        <div class="bento-card">
+          <span class="bento-badge">Pro</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <h3>iCloud sync</h3>
+          <p>Your full memo library across all your iPhones and iPads. No WhisperAct account — data stays in your iCloud.</p>
+        </div>
+
+        <!-- Pro: Re-Analyze -->
+        <div class="bento-card">
+          <span class="bento-badge">Pro</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
+          <h3>Re-Analyze</h3>
+          <p>Recorded offline and got basic results? One tap re-runs cloud AI on the saved transcript — no re-recording.</p>
+        </div>
+
+        <!-- Pro: Daily Digest -->
+        <div class="bento-card">
+          <span class="bento-badge">Pro</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <h3>Daily Digest</h3>
+          <p>One notification at your chosen time — a time-ordered rundown of today's events, reminders, and overdue items.</p>
+        </div>
+
+        <!-- Export -->
+        <div class="bento-card">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <h3>Share &amp; export</h3>
+          <p>Plain text and Markdown sharing free for everyone. Pro unlocks PDF export and bulk multi-memo export.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="pricing-inner">
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="section-wrap">
       <p class="section-label">Pricing</p>
-      <h2 class="section-title">Simple, honest pricing</h2>
-      <p class="section-sub">Start free. Upgrade when you need more power.</p>
-      <div class="pricing-cards">
+      <h2 class="section-title" id="pricing-heading">Simple, honest pricing</h2>
+      <p class="section-sub">Start free. Upgrade when you hit the cap.</p>
+
+      <div class="pricing-grid">
 
         <div class="pricing-card">
-          <p class="plan-label">Free</p>
+          <p class="plan-tier">Free</p>
           <p class="plan-price">$0</p>
           <p class="plan-billing">forever</p>
+          <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> Up to 2 minutes per recording</li>
-            <li><span class="check">✓</span> AI task, reminder &amp; event extraction</li>
-            <li><span class="check">✓</span> 7 Apple syncs / month (Reminders + Calendar)</li>
-            <li><span class="check">✓</span> 7 most recent memos accessible</li>
-            <li><span class="check">✓</span> Plain text &amp; Markdown sharing</li>
-            <li><span class="check">✓</span> 12 recording languages</li>
-            <li><span class="check">✓</span> Works fully offline</li>
+            <li><span class="ck">✓</span> Up to 2 min per recording</li>
+            <li><span class="ck">✓</span> AI task, reminder &amp; event extraction</li>
+            <li><span class="ck">✓</span> <strong>7 Apple syncs / month</strong></li>
+            <li><span class="ck">✓</span> 7 most recent memos</li>
+            <li><span class="ck">✓</span> Plain text &amp; Markdown sharing</li>
+            <li><span class="ck">✓</span> 12 recording languages</li>
+            <li><span class="ck">✓</span> Works fully offline</li>
           </ul>
-          <a href="https://apps.apple.com/app/id6776684339" class="plan-cta free-cta" target="_blank" rel="noopener">Download Free</a>
+          <a href="https://apps.apple.com/app/id6776684339" class="btn-plan btn-plan-free" target="_blank" rel="noopener">Download Free</a>
         </div>
 
-        <div class="pricing-card pro">
-          <p class="plan-label">Pro</p>
+        <div class="pricing-card pro-card">
+          <div class="pro-pill">Most Popular</div>
+          <p class="plan-tier">Pro</p>
           <p class="plan-price">$2.99</p>
           <p class="plan-billing">/ month &nbsp;·&nbsp; or $19.99 / year</p>
+          <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="check">✓</span> Up to <strong>20 minutes</strong> per recording</li>
-            <li><span class="check">✓</span> <strong>Unlimited</strong> Apple syncs</li>
-            <li><span class="check">✓</span> <strong>Full</strong> memo history — unlimited</li>
-            <li><span class="check">✓</span> iCloud sync across all your devices</li>
-            <li><span class="check">✓</span> Re-Analyze with Cloud AI</li>
-            <li><span class="check">✓</span> Daily Digest morning briefing</li>
-            <li><span class="check">✓</span> Choose your Reminders list &amp; Calendar</li>
-            <li><span class="check">✓</span> PDF export + bulk export</li>
-            <li><span class="check">✓</span> Delete memos</li>
+            <li><span class="ck">✓</span> Up to <strong>20 min</strong> per recording</li>
+            <li><span class="ck">✓</span> <strong>Unlimited</strong> Apple syncs</li>
+            <li><span class="ck">✓</span> <strong>Full</strong> memo history</li>
+            <li><span class="ck">✓</span> iCloud sync across all devices</li>
+            <li><span class="ck">✓</span> Re-Analyze with Cloud AI</li>
+            <li><span class="ck">✓</span> Daily Digest morning briefing</li>
+            <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
+            <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
+            <li><span class="ck">✓</span> 6 notification lead times per task</li>
           </ul>
-          <a href="https://apps.apple.com/app/id6776684339" class="plan-cta pro-cta" target="_blank" rel="noopener">Get Pro</a>
+          <a href="https://apps.apple.com/app/id6776684339" class="btn-plan btn-plan-pro" target="_blank" rel="noopener">Get Pro</a>
         </div>
 
       </div>
-      <p class="pro-note">Prices shown in USD and are indicative only. Actual pricing is confirmed at checkout in the App Store and may vary by region. Prices are subject to change without notice. Subscriptions are managed through your Apple ID and may be cancelled at any time via Apple ID Settings.</p>
+      <p class="pricing-note">Prices shown in USD. Actual price is confirmed at checkout in the App Store and may vary by region. Subscriptions managed via Apple ID Settings and can be cancelled anytime.</p>
     </div>
   </section>
 
   <!-- PRIVACY STRIP -->
-  <section class="privacy-strip">
-    <h2>Private by design</h2>
-    <p>For English on supported iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. For non-English languages, audio is sent to Groq's Whisper API and is not retained after processing. No Whisper Act account. No analytics. No ads.</p>
-    <div class="privacy-pills">
-      <span class="privacy-pill">No account required</span>
-      <span class="privacy-pill">No tracking</span>
-      <span class="privacy-pill">No ads</span>
-      <span class="privacy-pill">On-device transcription (English)</span>
-      <span class="privacy-pill">Private iCloud storage</span>
+  <div class="privacy-strip">
+    <div class="privacy-inner">
+      <div class="privacy-copy">
+        <p class="section-label">Privacy</p>
+        <h2>Private by design, not policy</h2>
+        <p>For English on iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. Non-English audio is sent to Groq's Whisper API and not retained after processing. No WhisperAct account. No analytics. No ads. Your data lives in your iCloud, not ours.</p>
+      </div>
+      <div class="privacy-pills">
+        <div class="privacy-pill">No account required</div>
+        <div class="privacy-pill">No tracking or analytics</div>
+        <div class="privacy-pill">No ads, ever</div>
+        <div class="privacy-pill">On-device transcription (English)</div>
+        <div class="privacy-pill">Private iCloud storage (Pro)</div>
+        <div class="privacy-pill">No WhisperAct server</div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Whisper Act. All rights reserved.</p>
-    <ul class="footer-links">
-      <li><a href="/privacy">Privacy Policy</a></li>
-      <li><a href="/terms">Terms of Use</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="mailto:support@whisperact.com">Contact</a></li>
-    </ul>
-  </footer>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 WhisperAct. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="/privacy">Privacy Policy</a></li>
+    <li><a href="/terms">Terms of Use</a></li>
+    <li><a href="/support">Support</a></li>
+    <li><a href="mailto:support@whisperact.com">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  /* ── Waveform bars ── */
+  (function() {
+    var el = document.getElementById('waveform');
+    if (!el) return;
+    var heights = [18,28,45,60,72,55,80,65,48,35,55,70,58,42,68,75,50,30,62,44];
+    var bars = heights.map(function(h, i) {
+      var b = document.createElement('div');
+      b.className = 'wf-bar';
+      b.style.height = h + 'px';
+      b.style.animationDelay = (i * 0.07) + 's';
+      b.style.animationDuration = (1.2 + Math.random() * 0.6) + 's';
+      return b;
+    });
+    bars.forEach(function(b) { el.appendChild(b); });
+  })();
+
+  /* ── Scroll-reveal for bento cards ── */
+  (function() {
+    var cards = document.querySelectorAll('.bento-card');
+    if (!window.IntersectionObserver) {
+      cards.forEach(function(c) { c.classList.add('visible'); });
+      return;
+    }
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) {
+      cards.forEach(function(c) { c.classList.add('visible'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, idx) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var delay = Array.prototype.indexOf.call(cards, el) % 3 * 80;
+          setTimeout(function() { el.classList.add('visible'); }, delay);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(function(c) { obs.observe(c); });
+  })();
+</script>
 
 </body>
 </html>
