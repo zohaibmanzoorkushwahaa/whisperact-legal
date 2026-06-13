@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whisperact.com/sitemap.xml

@@ -10,15 +10,28 @@
   <meta name="keywords" content="voice task app, iOS voice memo, speech to task, Apple Reminders, voice productivity, iPhone task planner" />
   <link rel="canonical" href="https://whisperact.com/" />
 
+  <!-- Icons / PWA -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0a0a0d" />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="WhisperAct" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/" />
   <meta property="og:title" content="WhisperAct — Voice Task Planner" />
   <meta property="og:description" content="Speak a thought. WhisperAct turns your voice into tasks, reminders, and calendar events automatically." />
-  <meta property="og:image" content="https://whisperact.com/icon.png" />
+  <meta property="og:image" content="https://whisperact.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="WhisperAct — Speak. Done. Your voice becomes tasks, reminders, and calendar events." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="WhisperAct — Voice Task Planner" />
   <meta name="twitter:description" content="Speak a thought. WhisperAct turns your voice into tasks, reminders, and calendar events automatically." />
+  <meta name="twitter:image" content="https://whisperact.com/og.png" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -26,14 +39,31 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "WhisperAct",
-    "operatingSystem": "iOS",
+    "operatingSystem": "iOS 26",
     "applicationCategory": "ProductivityApplication",
-    "offers": [
-      { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      { "@type": "Offer", "price": "2.99", "priceCurrency": "USD", "billingIncrement": "P1M" }
+    "url": "https://whisperact.com/",
+    "downloadUrl": "https://apps.apple.com/app/id6776684339",
+    "description": "Voice memo app that automatically extracts tasks, reminders, and calendar events and syncs them to Apple Reminders and Calendar.",
+    "image": "https://whisperact.com/og.png",
+    "screenshot": [
+      "https://whisperact.com/screens/home.png",
+      "https://whisperact.com/screens/upcoming.png",
+      "https://whisperact.com/screens/record-poster.jpg"
     ],
-    "url": "https://apps.apple.com/app/id6776684339",
-    "description": "Voice memo app that automatically extracts tasks, reminders, and calendar events."
+    "inLanguage": ["en", "ur", "ar", "es", "fr", "pt", "de", "tr", "ru", "id", "it", "ko"],
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "lowPrice": "0",
+      "highPrice": "19.99",
+      "offerCount": "3"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "WhisperAct",
+      "url": "https://whisperact.com/",
+      "logo": "https://whisperact.com/icon.png"
+    }
   }
   </script>
 

@@ -6,6 +6,26 @@
   <title>Support · WhisperAct</title>
   <meta name="description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
   <link rel="canonical" href="https://whisperact.com/support" />
+
+  <!-- Icons / PWA -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0a0a0d" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="WhisperAct" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://whisperact.com/support" />
+  <meta property="og:title" content="Support · WhisperAct" />
+  <meta property="og:description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <meta property="og:image" content="https://whisperact.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Support · WhisperAct" />
+  <meta name="twitter:description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <meta name="twitter:image" content="https://whisperact.com/og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -353,6 +373,103 @@
       .nav-links li:not(:last-child) { display: none; }
     }
   </style>
+  <!-- FAQ structured data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I start recording?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tap the floating microphone button at the bottom of the screen. WhisperAct will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages does WhisperAct support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhisperAct supports 12 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, and Korean. Tap the language selector in the top-right corner of the recording screen to switch before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the recording language, so they work correctly in Apple Reminders and Calendar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why aren't my tasks showing up in Apple Reminders or Calendar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free users can sync up to 7 items per month to Apple Reminders and Calendar — this resets at the start of each calendar month. If you have reached your monthly limit, items will still be saved locally in WhisperAct and can be synced later. Pro subscribers get unlimited syncs every month. You also need to have granted Reminders and Calendar permissions when prompted. To check, go to Settings → Privacy & Security → Reminders (or Calendar) and confirm WhisperAct is listed and set to \"Full Access\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many free Apple syncs do I get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The free plan includes 7 Apple syncs per month . Each time a reminder or calendar event is created, updated, or synced to Apple Reminders or Apple Calendar, it counts as one sync. The counter resets at the start of each calendar month. Pro subscribers have unlimited syncs. You can check your current usage at any time in the Usage tab inside the App."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Re-Analyze and when does it appear?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you recorded a memo while offline, it was processed by the built-in offline AI. Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view. Re-Analyze is a Pro feature. Free users with non-English offline memos that failed to extract any tasks receive one complimentary Re-Analyze per qualifying memo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does WhisperAct work without an internet connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with some limitations. Recording and transcription both work offline for English — using on-device transcription on iOS 26 devices, with a 60-second cap on other devices offline. AI task extraction falls back to the built-in on-device engine when offline. Non-English recording requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my voice data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Audio recorded in English is never uploaded by WhisperAct. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us. For non-English recordings, the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our Privacy Policy for full details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I cancel my subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open your iPhone's Settings app → tap your name → Subscriptions → WhisperAct → Cancel Subscription . You can also reach this directly from within the App under Settings → Manage Subscription . Your Pro access continues until the end of the current billing period after cancellation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I lost my purchase after reinstalling. How do I restore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open WhisperAct and navigate to the upgrade screen, then tap \"Restore Purchases\" at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID used for the original purchase. If the issue persists, please contact us."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I access my older memos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I delete all my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to Settings inside WhisperAct and tap \"Delete All Data\" . This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
