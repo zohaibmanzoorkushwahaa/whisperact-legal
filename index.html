@@ -355,6 +355,48 @@
       margin: 0 auto;
     }
 
+    /* ─── SCREENS SHOWCASE ──────────────────────────────── */
+    .screens-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+    }
+    .screens-row::before {
+      content: "";
+      position: absolute;
+      inset: -12% -8%;
+      background: radial-gradient(ellipse 52% 46% at 50% 46%, rgba(216,90,48,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .phone {
+      position: relative;
+      z-index: 1;
+      width: clamp(186px, 22vw, 252px);
+      margin: 0;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 1px solid var(--line-2);
+      background: var(--ink);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+    }
+    .phone img, .phone video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .phone--feature {
+      width: clamp(208px, 25vw, 286px);
+      border-color: var(--coral-border);
+      box-shadow: 0 28px 72px rgba(0,0,0,0.6), 0 0 0 1px var(--coral-border), 0 0 54px rgba(216,90,48,0.34);
+    }
+    @media (max-width: 760px) {
+      .screens-row { flex-direction: column; gap: 36px; }
+      .phone, .phone--feature { width: min(74vw, 300px); }
+    }
+
     /* ─── HOW IT WORKS — 3 steps ──────────────────────── */
     .steps {
       display: grid;
@@ -776,6 +818,31 @@
     <div class="hero-visual" aria-hidden="true">
       <img src="/icon.png" class="hero-icon" alt="" />
       <div class="waveform-wrap" id="waveform"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SCREENS SHOWCASE -->
+  <section id="screens" aria-labelledby="screens-heading">
+    <div class="section-wrap">
+      <p class="section-label">A look inside</p>
+      <h2 class="section-title" id="screens-heading">Your day, organized by voice</h2>
+      <p class="section-sub">Speak once — watch it land as tasks, events, and reminders, then track everything on one timeline.</p>
+
+      <div class="screens-row">
+        <figure class="phone">
+          <img src="/screens/home.png" alt="WhisperAct Memos home screen showing voice memos grouped by time" loading="lazy" width="498" height="1080" />
+        </figure>
+        <figure class="phone phone--feature">
+          <video autoplay muted loop playsinline preload="metadata" poster="/screens/record-poster.jpg" aria-label="Recording a voice memo in WhisperAct">
+            <source src="/screens/record.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="phone">
+          <img src="/screens/upcoming.png" alt="WhisperAct Upcoming tab showing a timeline of scheduled items" loading="lazy" width="498" height="1080" />
+        </figure>
+      </div>
     </div>
   </section>
 
