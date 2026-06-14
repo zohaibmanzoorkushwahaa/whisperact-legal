@@ -261,6 +261,18 @@
 
     .btn-ghost:hover { color: var(--text); }
 
+    /* Pre-launch "coming soon" button state */
+    .is-soon {
+      background: var(--ink-4) !important;
+      color: var(--text-2) !important;
+      border: 1px solid var(--line-2);
+      cursor: default;
+      pointer-events: none;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+    .is-soon svg { opacity: 0.7; }
+
     .hero-meta {
       display: flex;
       gap: 28px;
@@ -807,7 +819,7 @@
     <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="/privacy">Privacy</a></li>
-    <li><a href="https://apps.apple.com/app/id6776684339" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
+    <li><a href="mailto:support@whisperact.com?subject=Notify%20me%20when%20WhisperAct%20launches" class="nav-cta">Get notified</a></li>
   </ul>
 </nav>
 
@@ -820,10 +832,11 @@
       <h1 id="hero-heading">Speak.<br><em>Done.</em></h1>
       <p class="hero-sub">WhisperAct listens to your voice and turns it into tasks, reminders, and calendar events — routed directly into Apple Reminders and Calendar. No typing. No copy-pasting.</p>
       <div class="hero-actions">
-        <a href="https://apps.apple.com/app/id6776684339" class="btn-dl" target="_blank" rel="noopener">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
-          Download on the App Store
-        </a>
+        <span class="btn-dl is-soon" role="text" aria-label="Coming soon to the App Store">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Coming soon to the App Store
+        </span>
+        <a href="mailto:support@whisperact.com?subject=Notify%20me%20when%20WhisperAct%20launches" class="btn-ghost">Get notified →</a>
         <a href="#pricing" class="btn-ghost">See plans →</a>
       </div>
       <div class="hero-meta">
@@ -1026,7 +1039,7 @@
             <li><span class="ck">✓</span> 12 recording languages</li>
             <li><span class="ck">✓</span> Works fully offline</li>
           </ul>
-          <a href="https://apps.apple.com/app/id6776684339" class="btn-plan btn-plan-free" target="_blank" rel="noopener">Download Free</a>
+          <span class="btn-plan btn-plan-free is-soon">Coming soon</span>
         </div>
 
         <div class="pricing-card pro-card">
@@ -1046,7 +1059,7 @@
             <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
             <li><span class="ck">✓</span> 6 notification lead times per task</li>
           </ul>
-          <a href="https://apps.apple.com/app/id6776684339" class="btn-plan btn-plan-pro" target="_blank" rel="noopener">Get Pro</a>
+          <span class="btn-plan btn-plan-pro is-soon">Coming soon</span>
         </div>
 
       </div>
