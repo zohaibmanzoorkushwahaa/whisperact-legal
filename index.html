@@ -576,6 +576,28 @@
     }
     .plan-save { color: var(--coral); font-weight: 700; }
 
+    /* Top-right discount badge */
+    .save-corner {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--coral);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(216,90,48,0.35);
+    }
+    .limited-note {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--coral);
+      margin-top: -18px;
+      margin-bottom: 24px;
+    }
+
     .pricing-card {
       background: var(--ink-2);
       border: 1px solid var(--line);
@@ -1076,10 +1098,12 @@
         </div>
 
         <div class="pricing-card pro-card">
-          <div class="pro-pill">Best Value · Save 44%</div>
+          <div class="pro-pill">Best Value</div>
+          <div class="save-corner">SAVE 44%</div>
           <p class="plan-tier">Pro Yearly</p>
           <p class="plan-price">$19.99</p>
           <p class="plan-billing"><span class="price-was">$35.88</span> / year &nbsp;·&nbsp; <span class="plan-save">~$1.67 / mo</span></p>
+          <p class="limited-note">Limited-time launch discount</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
             <li><span class="ck">✓</span> <strong>Everything in Pro</strong>, billed yearly</li>
@@ -1100,7 +1124,7 @@
         </div>
 
       </div>
-      <p class="pricing-note">Prices shown in USD. Actual price is confirmed at checkout in the App Store and may vary by region. Subscriptions managed via Apple ID Settings and can be cancelled anytime.</p>
+      <p class="pricing-note">The yearly plan is a <strong>limited-time discount</strong> and may end without notice. Prices shown in USD. Actual price is confirmed at checkout in the App Store and may vary by region. Subscriptions managed via Apple ID Settings and can be cancelled anytime.</p>
     </div>
   </section>
 
