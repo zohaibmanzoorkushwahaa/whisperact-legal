@@ -562,10 +562,19 @@
     /* ─── PRICING ───────────────────────────────────────── */
     .pricing-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 16px;
-      max-width: 780px;
+      max-width: 1080px;
     }
+
+    /* Annual discount accents */
+    .price-was {
+      text-decoration: line-through;
+      color: var(--text-3);
+      margin-right: 6px;
+      font-weight: 600;
+    }
+    .plan-save { color: var(--coral); font-weight: 700; }
 
     .pricing-card {
       background: var(--ink-2);
@@ -1043,11 +1052,10 @@
 </a>
         </div>
 
-        <div class="pricing-card pro-card">
-          <div class="pro-pill">Most Popular</div>
-          <p class="plan-tier">Pro</p>
+        <div class="pricing-card">
+          <p class="plan-tier">Pro Monthly</p>
           <p class="plan-price">$2.99</p>
-          <p class="plan-billing">/ month &nbsp;·&nbsp; or $19.99 / year</p>
+          <p class="plan-billing">/ month</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
             <li><span class="ck">✓</span> Up to <strong>20 min</strong> per recording</li>
@@ -1063,7 +1071,31 @@
    target="_blank"
    rel="noopener"
    class="btn-plan btn-plan-pro">
-   Get WhisperAct Pro
+   Get Pro Monthly
+</a>
+        </div>
+
+        <div class="pricing-card pro-card">
+          <div class="pro-pill">Best Value · Save 44%</div>
+          <p class="plan-tier">Pro Yearly</p>
+          <p class="plan-price">$19.99</p>
+          <p class="plan-billing"><span class="price-was">$35.88</span> / year &nbsp;·&nbsp; <span class="plan-save">~$1.67 / mo</span></p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="ck">✓</span> <strong>Everything in Pro</strong>, billed yearly</li>
+            <li><span class="ck">✓</span> Up to <strong>20 min</strong> per recording</li>
+            <li><span class="ck">✓</span> <strong>Unlimited</strong> Apple syncs</li>
+            <li><span class="ck">✓</span> <strong>Full</strong> memo history</li>
+            <li><span class="ck">✓</span> iCloud sync across all devices</li>
+            <li><span class="ck">✓</span> <strong>Unlimited</strong> Re-Analyze with Cloud AI</li>
+            <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
+            <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
+          </ul>
+          <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
+   target="_blank"
+   rel="noopener"
+   class="btn-plan btn-plan-pro">
+   Get Pro Yearly — Save 44%
 </a>
         </div>
 
