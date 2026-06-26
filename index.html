@@ -105,15 +105,51 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
       height: 60px;
       background: rgba(10,10,13,0.80);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
+    }
+
+    /* Centers the header content on the same column as the page content (max 1100). */
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    /* Hamburger — hidden on desktop, shown ≤900px. */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      margin-right: -10px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 0 auto;
+      border-radius: 2px;
+      background: var(--coral);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav-toggle:focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 2px;
+      border-radius: 8px;
     }
 
     .nav-brand {
@@ -806,8 +842,44 @@
     .footer-links a:hover { color: var(--coral); }
 
     /* ─── RESPONSIVE ────────────────────────────────────── */
+    /* Mobile + tablet nav: hamburger reveals the links as a full-width dropdown panel. */
+    @media (max-width: 900px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px 20px 18px;
+        background: rgba(10,10,13,0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav.open .nav-links { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 12px 4px;
+        font-size: 15px;
+      }
+      .nav-cta {
+        text-align: center;
+        margin-top: 6px;
+        padding: 12px 18px !important;
+      }
+      /* Hamburger → X when open. */
+      nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
     @media (max-width: 860px) {
-      nav { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
       .hero { padding: 60px 20px; min-height: auto; }
       .section-wrap { padding: 60px 20px; }
       .steps { grid-template-columns: 1fr; }
@@ -817,10 +889,6 @@
       .privacy-inner { flex-direction: column; gap: 32px; padding: 48px 20px; }
       footer { padding: 32px 20px; }
     }
-
-    @media (max-width: 500px) {
-      .nav-links { display: none; }
-    }
   </style>
 </head>
 <body>
@@ -829,24 +897,29 @@
 
 <!-- NAV -->
 <nav aria-label="Main navigation">
-  <a href="/" class="nav-brand">
-    <img src="/icon.png" alt="WhisperAct icon" />
-    WhisperAct
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/icon.png" alt="WhisperAct icon" />
+      WhisperAct
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li>
+        <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
+     target="_blank"
+     rel="noopener"
+     class="nav-cta">
+     Download App
   </a>
-  <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="/privacy">Privacy</a></li>
-    <li>
-      <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-   target="_blank"
-   rel="noopener"
-   class="nav-cta">
-   Download App
-</a>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <main>
@@ -904,7 +977,7 @@
 
       <div class="screens-row">
         <figure class="phone">
-          <img src="/screens/home.png" alt="WhisperAct Memos home screen showing voice memos grouped by time" loading="lazy" width="498" height="1080" />
+          <img src="/screens/home.png" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="498" height="1079" />
         </figure>
         <figure class="phone phone--feature">
           <video autoplay muted loop playsinline preload="metadata" poster="/screens/record-poster.jpg" aria-label="Recording a voice memo in WhisperAct">
@@ -912,7 +985,7 @@
           </video>
         </figure>
         <figure class="phone">
-          <img src="/screens/upcoming.png" alt="WhisperAct Upcoming tab showing a timeline of scheduled items" loading="lazy" width="498" height="1080" />
+          <img src="/screens/upcoming.png" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="498" height="1079" />
         </figure>
       </div>
     </div>
@@ -1201,6 +1274,8 @@
     cards.forEach(function(c) { obs.observe(c); });
   })();
 </script>
+
+<script src="/menu.js" defer></script>
 
 </body>
 </html>
