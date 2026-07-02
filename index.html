@@ -521,6 +521,7 @@
     }
 
     .bento-card {
+      position: relative;
       background: var(--ink-2);
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -554,6 +555,9 @@
     }
 
     .bento-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       display: inline-block;
       font-size: 9px;
       font-weight: 700;
@@ -564,7 +568,6 @@
       border: 1px solid var(--coral-border);
       border-radius: 4px;
       padding: 3px 8px;
-      margin-bottom: 12px;
     }
 
     .bento-card h3 {
@@ -639,6 +642,8 @@
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
     }
 
     .pricing-card.pro-card {
@@ -721,6 +726,7 @@
 
     .btn-plan {
       display: block;
+      margin-top: auto;
       text-align: center;
       padding: 14px;
       border-radius: 12px;
@@ -1140,7 +1146,7 @@
           <ul class="plan-features">
             <li><span class="ck">✓</span> Up to 2 min per recording</li>
             <li><span class="ck">✓</span> AI task, reminder &amp; event extraction</li>
-            <li><span class="ck">✓</span> <strong>7 Apple syncs / month</strong></li>
+            <li><span class="ck">✓</span> <strong>7 Reminder + 7 Calendar syncs / month</strong></li>
             <li><span class="ck">✓</span> 7 most recent memos</li>
             <li><span class="ck">✓</span> Plain text &amp; Markdown sharing</li>
             <li><span class="ck">✓</span> 13 recording languages</li>
