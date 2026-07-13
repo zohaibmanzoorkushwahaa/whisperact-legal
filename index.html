@@ -82,8 +82,8 @@
       --line:         rgba(255,255,255,0.07);
       --line-2:       rgba(255,255,255,0.12);
       --text:         #f0ede8;
-      --text-2:       rgba(240,237,232,0.60);
-      --text-3:       rgba(240,237,232,0.35);
+      --text-2:       rgba(240,237,232,0.70);
+      --text-3:       rgba(240,237,232,0.56);
     }
 
     html { scroll-behavior: smooth; }
@@ -980,21 +980,16 @@
 
       <div class="screens-row">
         <figure class="phone">
-          <picture>
-            <source type="image/avif" srcset="/screens/home-250.avif 250w" sizes="(max-width: 760px) min(74vw, 300px), 250px" />
-            <img src="/screens/home-250.png" srcset="/screens/home-250.png 250w, /screens/home.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="250" height="542" />
-          </picture>
+          <img src="/screens/home-250.png" srcset="/screens/home-250.png 250w, /screens/home.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="250" height="542" />
         </figure>
         <figure class="phone phone--feature">
-          <video autoplay muted loop playsinline preload="metadata" poster="/screens/record-poster-284.jpg" aria-label="Recording a voice memo in WhisperAct">
-            <source src="/screens/record.mp4" type="video/mp4" />
+          <video class="js-lazy-video" muted loop playsinline preload="none" poster="/screens/record-poster-284.jpg" width="284" height="615" aria-label="Recording a voice memo in WhisperAct">
+            <source data-src="/screens/record.mp4" type="video/mp4" />
+            <track kind="captions" src="/screens/record-captions.vtt" srclang="en" label="English" default />
           </video>
         </figure>
         <figure class="phone">
-          <picture>
-            <source type="image/avif" srcset="/screens/upcoming-250.avif 250w" sizes="(max-width: 760px) min(74vw, 300px), 250px" />
-            <img src="/screens/upcoming-250.png" srcset="/screens/upcoming-250.png 250w, /screens/upcoming.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="250" height="542" />
-          </picture>
+          <img src="/screens/upcoming-250.png" srcset="/screens/upcoming-250.png 250w, /screens/upcoming.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="250" height="542" />
         </figure>
       </div>
     </div>
@@ -1263,15 +1258,53 @@
     var el = document.getElementById('waveform');
     if (!el) return;
     var heights = [18,28,45,60,72,55,80,65,48,35,55,70,58,42,68,75,50,30,62,44];
-    var bars = heights.map(function(h, i) {
+    var fragment = document.createDocumentFragment();
+    heights.forEach(function(h, i) {
       var b = document.createElement('div');
       b.className = 'wf-bar';
       b.style.height = h + 'px';
       b.style.animationDelay = (i * 0.07) + 's';
-      b.style.animationDuration = (1.2 + Math.random() * 0.6) + 's';
-      return b;
+      b.style.animationDuration = (1.2 + (i % 4) * 0.12) + 's';
+      fragment.appendChild(b);
     });
-    bars.forEach(function(b) { el.appendChild(b); });
+    el.appendChild(fragment);
+  })();
+
+  /* ── Load the offscreen demo video only when it is close to view ── */
+  (function() {
+    var videos = document.querySelectorAll('.js-lazy-video');
+    if (!videos.length) return;
+
+    function loadVideo(video) {
+      if (video.dataset.loaded) return;
+      var source = video.querySelector('source[data-src]');
+      if (!source) return;
+      source.src = source.dataset.src;
+      video.dataset.loaded = 'true';
+      video.load();
+      video.play().catch(function() {});
+    }
+
+    if (!window.IntersectionObserver) {
+      window.addEventListener('load', function() {
+        window.setTimeout(function() {
+          videos.forEach(loadVideo);
+        }, 1500);
+      }, { once: true });
+      return;
+    }
+
+    var videoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        loadVideo(entry.target);
+        videoObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '300px 0px', threshold: 0.01 });
+
+    videos.forEach(function(video) {
+      videoObserver.observe(video);
+    });
   })();
 
   /* ── Scroll-reveal for bento cards ── */
