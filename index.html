@@ -6,7 +6,7 @@
 
   <!-- SEO -->
   <title>WhisperAct — Voice Task Planner for iPhone &amp; iPad</title>
-  <meta name="description" content="Turn voice notes into tasks automatically. WhisperAct extracts voice memos into tasks, reminders, and calendar events and syncs them to Apple Reminders and Calendar." />
+  <meta name="description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
   <meta name="keywords" content="voice to text, speech to text, voice notes, voice memo, dictation, transcribe audio, meeting notes, to do list, AI notes, voice recorder, voice reminder, task planner, Apple Reminders, Apple Calendar, iPhone voice productivity" />
   <link rel="canonical" href="https://whisperact.com/" />
 
@@ -24,14 +24,14 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/" />
   <meta property="og:title" content="WhisperAct — Voice Notes to Tasks" />
-  <meta property="og:description" content="Turn voice notes into tasks automatically. WhisperAct extracts tasks, reminders, and calendar events from your voice and syncs them to Apple Reminders and Calendar." />
+  <meta property="og:description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="WhisperAct — Turn voice notes into tasks automatically with Apple Reminders and Calendar." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="WhisperAct — Voice Notes to Tasks" />
-  <meta name="twitter:description" content="Turn voice notes into tasks automatically. WhisperAct extracts tasks, reminders, and calendar events from your voice and syncs them to Apple Reminders and Calendar." />
+  <meta name="twitter:description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
 
   <!-- Structured data -->
@@ -44,7 +44,7 @@
     "applicationCategory": "ProductivityApplication",
     "url": "https://whisperact.com/",
     "downloadUrl": "https://apps.apple.com/app/id6776684339",
-    "description": "Voice memo app that automatically extracts tasks, reminders, and calendar events and syncs them to Apple Reminders and Calendar.",
+    "description": "Voice task planner for iPhone that turns voice notes into tasks, reminders, and calendar events and syncs them to Apple Reminders and Calendar.",
     "image": "https://whisperact.com/og.png",
     "screenshot": [
       "https://whisperact.com/screens/home.png",
@@ -64,6 +64,32 @@
       "name": "WhisperAct",
       "url": "https://whisperact.com/",
       "logo": "https://whisperact.com/icon.png"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "WhisperAct",
+    "url": "https://whisperact.com/",
+    "logo": "https://whisperact.com/icon.png",
+    "sameAs": [
+      "https://www.instagram.com/whisperact_/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "WhisperAct",
+    "url": "https://whisperact.com/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "WhisperAct"
     }
   }
   </script>
@@ -720,6 +746,11 @@
       font-weight: 600;
     }
 
+    .feature-emphasis {
+      color: var(--text);
+      font-weight: 700;
+    }
+
     .btn-plan {
       display: block;
       margin-top: auto;
@@ -843,6 +874,20 @@
 
     .footer-links a:hover { color: var(--coral); }
 
+    .footer-social {
+      width: 100%;
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    .footer-social a {
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-social a:hover { color: var(--coral); }
+
     /* ─── RESPONSIVE ────────────────────────────────────── */
     /* Mobile + tablet nav: hamburger reveals the links as a full-width dropdown panel. */
     @media (max-width: 900px) {
@@ -964,7 +1009,7 @@
 
     <!-- Waveform visual -->
     <div class="hero-visual" aria-hidden="true">
-      <img src="/icon-128.png" class="hero-icon" width="100" height="100" alt="" />
+      <img src="/icon-128.png" class="hero-icon" width="100" height="100" alt="WhisperAct app icon" />
       <div class="waveform-wrap" id="waveform"></div>
     </div>
   </section>
@@ -1150,7 +1195,7 @@
           <ul class="plan-features">
             <li><span class="ck">✓</span> Up to 2 min per recording</li>
             <li><span class="ck">✓</span> AI task, reminder &amp; event extraction</li>
-            <li><span class="ck">✓</span> <strong>7 Reminder + 7 Calendar syncs / month</strong></li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">7 Reminder + 7 Calendar syncs / month</span></li>
             <li><span class="ck">✓</span> 7 most recent memos</li>
             <li><span class="ck">✓</span> Plain text &amp; Markdown sharing</li>
             <li><span class="ck">✓</span> 13 recording languages</li>
@@ -1172,11 +1217,11 @@
           <p class="plan-billing">/ month</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="ck">✓</span> Up to <strong>20 min</strong> per recording</li>
-            <li><span class="ck">✓</span> <strong>Unlimited</strong> Apple syncs</li>
-            <li><span class="ck">✓</span> <strong>Full</strong> memo history</li>
+            <li><span class="ck">✓</span> Up to <span class="feature-emphasis">20 min</span> per recording</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Apple syncs</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Full</span> memo history</li>
             <li><span class="ck">✓</span> iCloud sync across all devices</li>
-            <li><span class="ck">✓</span> <strong>Unlimited</strong> Re-Analyze with Cloud AI</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Re-Analyze with Cloud AI</li>
             <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
             <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
             <li><span class="ck">✓</span> Home &amp; Lock Screen widgets</li>
@@ -1198,12 +1243,12 @@
           <p class="limited-note">Limited-time launch discount</p>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li><span class="ck">✓</span> <strong>Everything in Pro</strong>, billed yearly</li>
-            <li><span class="ck">✓</span> Up to <strong>20 min</strong> per recording</li>
-            <li><span class="ck">✓</span> <strong>Unlimited</strong> Apple syncs</li>
-            <li><span class="ck">✓</span> <strong>Full</strong> memo history</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Everything in Pro</span>, billed yearly</li>
+            <li><span class="ck">✓</span> Up to <span class="feature-emphasis">20 min</span> per recording</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Apple syncs</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Full</span> memo history</li>
             <li><span class="ck">✓</span> iCloud sync across all devices</li>
-            <li><span class="ck">✓</span> <strong>Unlimited</strong> Re-Analyze with Cloud AI</li>
+            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Re-Analyze with Cloud AI</li>
             <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
             <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
             <li><span class="ck">✓</span> Home &amp; Lock Screen widgets</li>
@@ -1250,6 +1295,9 @@
     <li><a href="/support">Support</a></li>
     <li><a href="mailto:support@whisperact.com">Contact</a></li>
   </ul>
+  <p class="footer-social">
+    <a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a>
+  </p>
 </footer>
 
 <script>
