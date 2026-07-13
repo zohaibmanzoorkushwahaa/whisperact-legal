@@ -68,10 +68,6 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -93,7 +89,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
       background: var(--ink);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
@@ -905,7 +901,7 @@
 <nav aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
-      <img src="/icon.png" alt="WhisperAct icon" />
+      <img src="/icon-128.png" width="28" height="28" alt="WhisperAct icon" />
       WhisperAct
     </a>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
@@ -968,7 +964,7 @@
 
     <!-- Waveform visual -->
     <div class="hero-visual" aria-hidden="true">
-      <img src="/icon.png" class="hero-icon" alt="" />
+      <img src="/icon-128.png" class="hero-icon" width="100" height="100" alt="" />
       <div class="waveform-wrap" id="waveform"></div>
     </div>
   </section>
@@ -984,15 +980,21 @@
 
       <div class="screens-row">
         <figure class="phone">
-          <img src="/screens/home.png" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="498" height="1079" />
+          <picture>
+            <source type="image/avif" srcset="/screens/home-250.avif 250w" sizes="(max-width: 760px) min(74vw, 300px), 250px" />
+            <img src="/screens/home-250.png" srcset="/screens/home-250.png 250w, /screens/home.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="250" height="542" />
+          </picture>
         </figure>
         <figure class="phone phone--feature">
-          <video autoplay muted loop playsinline preload="metadata" poster="/screens/record-poster.jpg" aria-label="Recording a voice memo in WhisperAct">
+          <video autoplay muted loop playsinline preload="metadata" poster="/screens/record-poster-284.jpg" aria-label="Recording a voice memo in WhisperAct">
             <source src="/screens/record.mp4" type="video/mp4" />
           </video>
         </figure>
         <figure class="phone">
-          <img src="/screens/upcoming.png" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="498" height="1079" />
+          <picture>
+            <source type="image/avif" srcset="/screens/upcoming-250.avif 250w" sizes="(max-width: 760px) min(74vw, 300px), 250px" />
+            <img src="/screens/upcoming-250.png" srcset="/screens/upcoming-250.png 250w, /screens/upcoming.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="250" height="542" />
+          </picture>
         </figure>
       </div>
     </div>
