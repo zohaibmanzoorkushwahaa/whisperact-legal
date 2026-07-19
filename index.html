@@ -620,6 +620,178 @@
       opacity: 0.5;
     }
 
+    /* ─── PRODUCT HUNT REVIEWS ─────────────────────────── */
+    .reviews-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-section::before {
+      content: "";
+      position: absolute;
+      inset: 18% -12% auto auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,90,48,0.12) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .reviews-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .reviews-head .section-sub {
+      margin-bottom: 0;
+    }
+
+    .ph-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      background: rgba(216,90,48,0.08);
+      border: 1px solid var(--coral-border);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .ph-link:hover {
+      background: rgba(216,90,48,0.14);
+      border-color: rgba(216,90,48,0.48);
+      transform: translateY(-1px);
+    }
+
+    .ph-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .review-proof {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      background: rgba(255,255,255,0.045);
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .rating-stars {
+      color: var(--coral);
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .review-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+
+    .review-card:hover {
+      border-color: var(--line-2);
+      background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.024));
+      transform: translateY(-2px);
+    }
+
+    .review-card.featured {
+      border-color: var(--coral-border);
+      background: linear-gradient(145deg, rgba(216,90,48,0.12), rgba(255,255,255,0.028) 56%, rgba(255,255,255,0.018));
+      box-shadow: 0 28px 80px rgba(0,0,0,0.34), 0 0 0 1px rgba(216,90,48,0.10);
+    }
+
+    .review-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+      color: var(--text-3);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .review-quote {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      letter-spacing: -0.15px;
+    }
+
+    .review-card.featured .review-quote {
+      font-size: 18px;
+      line-height: 1.55;
+      letter-spacing: -0.2px;
+      font-weight: 700;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: auto;
+      padding-top: 26px;
+      color: var(--text-2);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .review-source {
+      color: var(--coral);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
     /* ─── PRICING ───────────────────────────────────────── */
     .pricing-grid {
       display: grid;
@@ -932,6 +1104,10 @@
       .steps { grid-template-columns: 1fr; }
       .bento { grid-template-columns: 1fr; }
       .bento-card.span-2 { grid-column: span 1; }
+      .reviews-head { grid-template-columns: 1fr; align-items: start; }
+      .review-proof { justify-content: flex-start; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card { padding: 24px; }
       .pricing-grid { grid-template-columns: 1fr; }
       .privacy-inner { flex-direction: column; gap: 32px; padding: 48px 20px; }
       footer { padding: 32px 20px; }
@@ -955,6 +1131,7 @@
     <ul class="nav-links" id="navMenu">
       <li><a href="#how">How it works</a></li>
       <li><a href="#features">Features</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="/privacy">Privacy</a></li>
       <li><a href="/blog">Blog</a></li>
@@ -1030,7 +1207,6 @@
         <figure class="phone phone--feature">
           <video class="js-lazy-video" muted loop playsinline preload="none" poster="/screens/record-poster-284.jpg" width="284" height="615" aria-label="Recording a voice memo in WhisperAct">
             <source data-src="/screens/record.mp4" type="video/mp4" />
-            <track kind="captions" src="/screens/record-captions.vtt" srclang="en" label="English" default />
           </video>
         </figure>
         <figure class="phone">
@@ -1172,6 +1348,81 @@
           <p>Plain text and Markdown sharing free for everyone. Pro unlocks PDF export and bulk multi-memo export.</p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCT HUNT REVIEWS -->
+  <section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
+    <div class="section-wrap">
+      <div class="reviews-head">
+        <div>
+          <p class="section-label">Product Hunt launch feedback</p>
+          <h2 class="section-title" id="reviews-heading">Real users are already turning messy thoughts into action</h2>
+          <p class="section-sub">Early launch comments from people trying WhisperAct in the moments where typing gets in the way.</p>
+        </div>
+        <div class="review-proof" aria-label="WhisperAct reviews and rating">
+          <a class="rating-pill" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">
+            <span class="rating-stars" aria-hidden="true">★★★★★</span>
+            5-star App Store rating
+          </a>
+          <a class="ph-link" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
+            <span class="ph-mark" aria-hidden="true">P</span>
+            Read on Product Hunt
+          </a>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <a class="review-card featured" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
+          <div class="review-kicker">
+            <span>Voice to tasks</span>
+            <span>Product Hunt</span>
+          </div>
+          <p class="review-quote">"Spoke a messy brain dump on a walk and it pulled out actual tasks with dates, not just a transcript. The Apple Calendar sync sealed it for me."</p>
+          <div class="review-author">
+            <span>Kevser Tekuğur</span>
+            <span class="review-source">View launch</span>
+          </div>
+        </a>
+
+        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
+          <div class="review-kicker">
+            <span>Apple-native workflow</span>
+            <span>Product Hunt</span>
+          </div>
+          <p class="review-quote">"The automatic task extraction from natural speech feels genuinely thoughtful, not just a gimmick bolted on. Love that it actually pushes to Apple Reminders and Calendar instead of trapping everything in yet another app."</p>
+          <div class="review-author">
+            <span>Azad</span>
+            <span class="review-source">View launch</span>
+          </div>
+        </a>
+
+        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
+          <div class="review-kicker">
+            <span>Fast capture</span>
+            <span>Product Hunt</span>
+          </div>
+          <p class="review-quote">"Would love a widget on the home screen so I can tap once and start recording hands free, especially when I'm already mid thought and don't want to fumble opening the app first."</p>
+          <div class="review-author">
+            <span>Melek Tavan</span>
+            <span class="review-source">View launch</span>
+          </div>
+        </a>
+
+        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
+          <div class="review-kicker">
+            <span>Voice to todos</span>
+            <span>Product Hunt</span>
+          </div>
+          <p class="review-quote">"Loving the voice to todos flow, it actually saves me from typing. One thing that would take it further for me is letting me set a location based reminder so when I arrive somewhere the task pops up automatically, kind of like geo fenced todos."</p>
+          <div class="review-author">
+            <span>Fahri Reyhanlı</span>
+            <span class="review-source">View launch</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
