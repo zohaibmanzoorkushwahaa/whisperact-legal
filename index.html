@@ -766,6 +766,29 @@
       letter-spacing: -0.15px;
     }
 
+    /* "Shipped" reply under a review that asked for a feature we've since built. */
+    .review-shipped {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 5px 11px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      background: var(--ink-3);
+      color: var(--text-2);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .review-shipped svg {
+      width: 13px;
+      height: 13px;
+      flex: none;
+    }
+
     .review-card.featured .review-quote {
       font-size: 18px;
       line-height: 1.55;
@@ -1262,8 +1285,8 @@
         <!-- Big card: languages -->
         <div class="bento-card span-2">
           <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <h3>13 recording languages</h3>
-          <p>English, Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean, Japanese. Switch right on the recording screen. Tasks always come out in English regardless of what language you recorded in.</p>
+          <h3>15 recording languages</h3>
+          <p>English, Urdu, Arabic, Spanish, French, Portuguese, German, Greek, Turkish, Russian, Indonesian, Italian, Polish, Korean, Japanese. Switch right on the recording screen. Tasks come out in the language you spoke, with any English words you mixed in kept exactly as you said them.</p>
         </div>
 
         <!-- Card: offline -->
@@ -1292,6 +1315,21 @@
           <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <h3>Times &amp; places captured</h3>
           <p>Say "lunch at Dolmen Mall from 1 to 2" — WhisperAct writes the event with location and exact duration.</p>
+        </div>
+
+        <!-- Pro: location-triggered reminders -->
+        <div class="bento-card span-2">
+          <span class="bento-badge">Pro</span>
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h3>Reminders that find you</h3>
+          <p>Say "remind me to grab my prescription when I get to the pharmacy" — WhisperAct sets a place instead of a time and nudges you on arrival, or on the way out. Delivered through Apple Reminders, so it works even with WhisperAct closed.</p>
+        </div>
+
+        <!-- Card: recurring -->
+        <div class="bento-card">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <h3>Repeats, understood</h3>
+          <p>"Take my vitamins every morning at eight" becomes a real daily reminder — WhisperAct reads the schedule and rolls it forward each time.</p>
         </div>
 
         <!-- Big card: notification -->
@@ -1406,6 +1444,7 @@
             <span>Product Hunt</span>
           </div>
           <p class="review-quote">"Would love a widget on the home screen so I can tap once and start recording hands free, especially when I'm already mid thought and don't want to fumble opening the app first."</p>
+          <span class="review-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped — one-tap record widget</span>
           <div class="review-author">
             <span>Melek Tavan</span>
             <span class="review-source">View launch</span>
@@ -1418,6 +1457,7 @@
             <span>Product Hunt</span>
           </div>
           <p class="review-quote">"Loving the voice to todos flow, it actually saves me from typing. One thing that would take it further for me is letting me set a location based reminder so when I arrive somewhere the task pops up automatically, kind of like geo fenced todos."</p>
+          <span class="review-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped — location reminders</span>
           <div class="review-author">
             <span>Fahri Reyhanlı</span>
             <span class="review-source">View launch</span>
@@ -1449,7 +1489,7 @@
             <li><span class="ck">✓</span> <span class="feature-emphasis">7 Reminder + 7 Calendar syncs / month</span></li>
             <li><span class="ck">✓</span> 7 most recent memos</li>
             <li><span class="ck">✓</span> Plain text &amp; Markdown sharing</li>
-            <li><span class="ck">✓</span> 13 recording languages</li>
+            <li><span class="ck">✓</span> 15 recording languages</li>
             <li><span class="ck">✓</span> Daily Digest briefing</li>
             <li><span class="ck">✓</span> 7 Re-Analyses / month</li>
             <li><span class="ck">✓</span> Works fully offline</li>
@@ -1633,7 +1673,6 @@
 </script>
 
 <script src="/menu.js" defer></script>
-<script src="/userjot.js" defer></script>
 
 </body>
 </html>

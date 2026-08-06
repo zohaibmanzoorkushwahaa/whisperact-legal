@@ -458,7 +458,7 @@
       "name": "What languages does WhisperAct support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "WhisperAct supports 13 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the recording language, so they work correctly in Apple Reminders and Calendar."
+        "text": "WhisperAct supports 15 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Greek (Ελληνικά), Turkish, Russian, Indonesian, Italian, Polish, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles come back in the language you spoke, with any English words you mixed in kept exactly as you said them."
       }
     },
     {
@@ -535,6 +535,22 @@
     },
     {
       "@type": "Question",
+      "name": "How do I set a location-based reminder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Say something like \"remind me to grab my prescription when I get to the pharmacy\" and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose \"When I arrive or leave\", search for the place and set how close you need to be. Location reminders are a Pro feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed, and the alert may not appear the instant you arrive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can WhisperAct create repeating reminders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it is available on the free plan. Say \"take my vitamins every morning at eight\" or \"submit my timesheet every Friday\" and WhisperAct reads the schedule from your words, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item. Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How do I delete all my data?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -597,8 +613,8 @@
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="faq-answer">
-          <p>WhisperAct supports 13 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record.</p>
-          <p>English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles are always extracted in English regardless of the recording language, so they work correctly in Apple Reminders and Calendar.</p>
+          <p>WhisperAct supports 15 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Greek (Ελληνικά), Turkish, Russian, Indonesian, Italian, Polish, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record.</p>
+          <p>English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles come back in the language you spoke, with any English words you mixed in kept exactly as you said them.</p>
         </div>
       </details>
 
@@ -700,6 +716,28 @@
 
       <details>
         <summary>
+          How do I set a location-based reminder?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Say something like <strong>"remind me to grab my prescription when I get to the pharmacy"</strong> and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose <strong>"When I arrive or leave"</strong>, search for the place and set how close you need to be.</p>
+          <p>Location reminders are a <strong>Pro</strong> feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed. The alert may not appear the instant you arrive.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Can WhisperAct create repeating reminders?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes, and it is available on the <strong>free</strong> plan. Say <strong>"take my vitamins every morning at eight"</strong> or <strong>"submit my timesheet every Friday"</strong> and WhisperAct reads the schedule from your words, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item.</p>
+          <p>Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar, so it stays in sync there too.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
           How do I delete all my data?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
@@ -737,7 +775,6 @@
 </footer>
 
 <script src="/menu.js" defer></script>
-<script src="/userjot.js" defer></script>
 
 </body>
 </html>
