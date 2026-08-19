@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy · WhisperAct</title>
-  <meta name="description" content="WhisperAct Privacy Policy. No accounts, no tracking, no ads. Your memos live on your device and in your private iCloud — not ours." />
+  <meta name="description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
   <link rel="canonical" href="https://whisperact.com/privacy" />
 
   <!-- Icons / PWA -->
@@ -21,11 +21,11 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/privacy" />
   <meta property="og:title" content="Privacy Policy · WhisperAct" />
-  <meta property="og:description" content="WhisperAct Privacy Policy. No accounts, no tracking, no ads. Your memos live on your device and in your private iCloud — not ours." />
+  <meta property="og:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy Policy · WhisperAct" />
-  <meta name="twitter:description" content="WhisperAct Privacy Policy. No accounts, no tracking, no ads. Your memos live on your device and in your private iCloud — not ours." />
+  <meta name="twitter:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -414,9 +414,9 @@
   <div class="page-hero">
     <p class="page-badge">Privacy Policy</p>
     <h1>Your privacy,<br>protected.</h1>
-    <p class="page-meta">Last updated: June 23, 2026 &nbsp;·&nbsp; Effective: June 23, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <p class="page-meta">Last updated: August 18, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
     <div class="lead-box">
-      <p>No accounts. No tracking. No ads. WhisperAct has no servers of its own. Your memos live on your device and in your private iCloud account — not ours.</p>
+      <p>No accounts. No ads. No cross-app tracking. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours.</p>
     </div>
   </div>
 
@@ -425,19 +425,19 @@
 
       <h2>1. Overview</h2>
       <p>This Privacy Policy describes how WhisperAct ("we", "us", or "the App") handles information when you use the WhisperAct iOS application. By using the App, you agree to the practices described in this policy.</p>
-      <p>WhisperAct is designed with a minimal data footprint. The App does not create user accounts, does not operate proprietary servers for your data, and does not collect analytics, advertising identifiers, or behavioral tracking data of any kind.</p>
+      <p>WhisperAct is designed with a minimal data footprint. The App does not create user accounts or operate proprietary servers for your content. It uses Firebase Analytics for limited product metrics and Firebase Crashlytics for crash diagnostics. Those services never receive your memo content through WhisperAct's custom events, and they are not used for advertising or cross-app tracking.</p>
       <p><strong>Who we are.</strong> WhisperAct is operated by Zohaib Manzoor Kushwaha, Lahore, Punjab, Pakistan. For the purposes of the EU and UK General Data Protection Regulation (GDPR), we act as the data controller for the limited processing described in this policy. You can reach us at any time at <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
 
-      <h2>2. Information We Do Not Collect</h2>
-      <p>We do not collect, store, or transmit:</p>
+      <h2>2. Information Kept Out of Analytics</h2>
+      <p>WhisperAct does not deliberately send or attach the following to Firebase Analytics or Crashlytics:</p>
       <ul>
         <li>Your name, email address, or any contact information</li>
-        <li>Device identifiers, advertising IDs (IDFA), or IP addresses</li>
-        <li>Analytics, usage statistics, or crash reports via any SDK</li>
-        <li>Location data</li>
+        <li>Memo audio, transcripts, titles, notes, task text, or calendar content</li>
+        <li>Place names, saved-place coordinates, or exact reminder and event times</li>
+        <li>Advertising IDs (IDFA) or Apple's vendor identifier (IDFV)</li>
         <li>Contacts, photos, or any data outside the App's scope</li>
       </ul>
-      <p>The App contains no analytics SDK, no advertising SDK, and no third-party tracking framework.</p>
+      <p>The App contains no advertising SDK and does not use analytics data to track you across other companies' apps or websites.</p>
 
       <h2>3. Voice Recordings</h2>
       <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. WhisperAct does not upload, retain, or transmit your raw audio to any server operated by WhisperAct.</p>
@@ -448,7 +448,7 @@
       <ul>
         <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
         <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. WhisperAct does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
-        <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Turkish, Russian, Indonesian, Italian, Korean):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
+        <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Greek, Turkish, Russian, Indonesian, Italian, Polish, Korean, Japanese):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
       </ul>
 
       <h2>5. Task and Event Extraction (AI)</h2>
@@ -459,13 +459,19 @@
       <p>All memos and tasks are stored locally on your device using SwiftData. If you subscribe to WhisperAct Pro, your data is synced to your private iCloud database via Apple's CloudKit framework. This data is stored in your personal Apple account and is not accessible to us. WhisperAct has no access to your iCloud content.</p>
       <p>Reminders and calendar events are written directly to your device via Apple's EventKit framework and remain fully under your control within Apple's Reminders and Calendar applications.</p>
 
-      <h2>7. Subscriptions and Purchases</h2>
-      <p>All subscription purchases are processed entirely by Apple through the App Store. WhisperAct does not receive, store, or have access to any payment card information, billing details, or purchase history beyond what Apple exposes to the App (your current subscription status).</p>
+      <h2>7. Analytics and Crash Diagnostics</h2>
+      <p><strong>Firebase Analytics.</strong> On physical devices in release builds, the App records a small set of product events using bounded labels, such as capture input type and AI engine, manual-item type and screen, Apple-sync failure category, review outcome, and paywall context. Custom events never include free text or memo content. Firebase also automatically processes app lifecycle and product-interaction events, an app-instance identifier, device/OS/app metadata, a broad geographic region derived from a masked IP address, and App Store purchase or subscription events.</p>
+      <p>IDFV collection and advertising-personalisation signals are disabled. The App does not link AdSupport, does not access IDFA, and does not use Firebase data for advertising or cross-app tracking. Analytics collection is disabled in Debug builds and in the iOS Simulator.</p>
+      <p><strong>Firebase Crashlytics.</strong> Crashlytics sends crash stack traces, app and device state, OS/app versions, a Firebase installation identifier, and related diagnostic data to help us find and fix crashes. We do not set a user ID or deliberately attach memo, transcript, task, note, place, or schedule content to crash reports.</p>
+      <p>Firebase is operated by Google. See <a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Firebase Privacy and Security</a> for its processing and retention information.</p>
+
+      <h2>8. Subscriptions and Purchases</h2>
+      <p>All subscription purchases are processed by Apple through the App Store. WhisperAct does not receive payment card information or billing details. The App receives subscription transaction and product status needed to unlock Pro, and Firebase Analytics may automatically record purchase or subscription events as described above.</p>
 
       <hr />
 
       <span class="section-anchor">Third-party services</span>
-      <h2>8. Third-Party Services Summary</h2>
+      <h2>9. Third-Party Services Summary</h2>
 
       <div class="table-wrap">
         <table>
@@ -508,18 +514,30 @@
               <td>Handled entirely by Apple</td>
               <td>Apple's policy</td>
             </tr>
+            <tr>
+              <td>Firebase Analytics (Google)</td>
+              <td>Limited product analytics</td>
+              <td>Bounded product events, app-instance/device/app metadata, coarse region, purchase events — no memo content</td>
+              <td>Google's policy and configured controls</td>
+            </tr>
+            <tr>
+              <td>Firebase Crashlytics (Google)</td>
+              <td>Crash detection and diagnosis</td>
+              <td>Crash traces, diagnostic/app/device state, Firebase installation identifier — no deliberately attached memo content</td>
+              <td>Google's policy and configured controls</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>9. Data Retention and Deletion</h2>
-      <p>WhisperAct stores your data only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of your data on any proprietary server.</p>
+      <h2>10. Data Retention and Deletion</h2>
+      <p>WhisperAct stores your memo and task content only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of that content on any proprietary server. Limited analytics and crash-diagnostic data is retained by Google under Firebase's policies and configured retention controls.</p>
       <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data.</p>
 
-      <h2>10. Children's Privacy</h2>
+      <h2>11. Children's Privacy</h2>
       <p>WhisperAct is not directed at children under the age of 13 (or under 16 in the EU/EEA, or the minimum age required in your country), and we do not knowingly collect personal information from children. If you believe a child below the applicable age has used the App, please contact us and we will take appropriate steps.</p>
 
-      <h2>11. Your Rights &amp; EU / EEA / UK Data Protection (GDPR)</h2>
+      <h2>12. Your Rights &amp; EU / EEA / UK Data Protection (GDPR)</h2>
       <p>WhisperAct keeps data on your device and in your private iCloud account, and does not store your memos, transcripts, or audio on any server we operate. The limited online processing described in this policy is covered below for users in the EU, EEA, and UK.</p>
 
       <p><strong>Legal bases for processing.</strong> Where the GDPR applies, we rely on:</p>
@@ -528,16 +546,16 @@
         <li><strong>Legitimate interests</strong> — to operate, secure, and maintain the App. We use no advertising, profiling, or behavioral tracking.</li>
       </ul>
 
-      <p><strong>International data transfers.</strong> When transcription (non-English) or AI task extraction is performed online, the relevant audio or transcript text is processed by <strong>Groq, Inc. in the United States</strong>. This is a transfer of data outside the EU/EEA/UK. The transfer is governed by Groq's data-processing terms, which include the <strong>EU Standard Contractual Clauses</strong>; the data is processed only to return a result, is not retained by Groq after processing, and is not used to train Groq's models. See Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> for details.</p>
+      <p><strong>International data transfers.</strong> When transcription (non-English) or AI task extraction is performed online, the relevant audio or transcript text is processed by <strong>Groq, Inc. in the United States</strong>. Firebase Analytics and Crashlytics data is processed by <strong>Google</strong>. These services may process data outside the EU/EEA/UK under their applicable data-transfer terms. See Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Firebase Privacy and Security</a> for details.</p>
 
-      <p><strong>Your rights.</strong> You have the right to access, rectify, erase, restrict, object to, and port your personal data. Because your data lives on your device and in your own iCloud account, you can exercise most of these rights directly in the App — edit or delete any item, or use <strong>Settings → Delete All Data</strong> (see Section 9). For anything we can otherwise help with, email <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
+      <p><strong>Your rights.</strong> You have the right to access, rectify, erase, restrict, object to, and port your personal data. Because your memo and task content lives on your device and in your own iCloud account, you can exercise most of these rights directly in the App — edit or delete any item, or use <strong>Settings → Delete All Data</strong> (see Section 10). For analytics/diagnostic requests or anything else we can help with, email <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
 
       <p><strong>Right to complain.</strong> You also have the right to lodge a complaint with your local data protection supervisory authority in the EU, EEA, or UK.</p>
 
-      <h2>12. Changes to This Policy</h2>
+      <h2>13. Changes to This Policy</h2>
       <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this page. Your continued use of the App after any such changes constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
 
-      <h2>13. Contact</h2>
+      <h2>14. Contact</h2>
       <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
 
       <hr />
