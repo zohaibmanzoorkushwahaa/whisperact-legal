@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy · WhisperAct</title>
-  <meta name="description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
+  <meta name="description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content is stored on your device and in your private iCloud." />
   <link rel="canonical" href="https://whisperact.com/privacy" />
 
   <!-- Icons / PWA -->
@@ -21,11 +21,11 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/privacy" />
   <meta property="og:title" content="Privacy Policy · WhisperAct" />
-  <meta property="og:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
+  <meta property="og:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content is stored on your device and in your private iCloud." />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy Policy · WhisperAct" />
-  <meta name="twitter:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content stays on your device and in your private iCloud." />
+  <meta name="twitter:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content is stored on your device and in your private iCloud." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -414,9 +414,9 @@
   <div class="page-hero">
     <p class="page-badge">Privacy Policy</p>
     <h1>Your privacy,<br>protected.</h1>
-    <p class="page-meta">Last updated: August 18, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <p class="page-meta">Last updated: October 19, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
     <div class="lead-box">
-      <p>No accounts. No ads. No cross-app tracking. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours.</p>
+      <p>No accounts. No ads. No cross-app tracking. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours. Online transcription and AI extraction send content to the processing providers described below.</p>
     </div>
   </div>
 
@@ -441,18 +441,22 @@
 
       <h2>3. Voice Recordings</h2>
       <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. WhisperAct does not upload, retain, or transmit your raw audio to any server operated by WhisperAct.</p>
-      <p>For non-English recordings (any of the supported languages other than English), the audio file is transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. The audio is not retained by Groq after processing. Please refer to Groq's Privacy Policy at <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">groq.com/privacy-policy</a> for details on their data handling.</p>
+      <p>For non-English recordings (any of the supported languages other than English), the audio file and the selected language are transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. Groq's <a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">published data policy</a> states that it does not retain inference data by default, but may log inputs and outputs for up to 30 days to troubleshoot reliability errors or investigate suspected abuse, or longer if legally required. See also Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 
       <h2>4. Transcription</h2>
       <p>Transcription is handled differently depending on your language selection and device:</p>
       <ul>
         <li><strong>English on supported iOS 26 devices:</strong> Transcription runs entirely on-device using Apple's on-device speech engine (SpeechTranscriber). Your audio never leaves your device in this path.</li>
         <li><strong>English on other devices or as a fallback:</strong> Transcription may use Apple's speech recognition servers — the same infrastructure that powers Siri and Dictation — governed by Apple's Privacy Policy. WhisperAct does not receive, store, or process the audio in this path; it is handled end-to-end by Apple.</li>
-        <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Greek, Turkish, Russian, Indonesian, Italian, Polish, Korean, Japanese):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. The audio is not retained by Groq after processing. Transcription is unavailable for these languages when offline.</li>
+        <li><strong>Non-English languages (Urdu, Arabic, Spanish, French, Portuguese, German, Greek, Turkish, Russian, Indonesian, Italian, Polish, Korean, Japanese):</strong> The audio file is sent to Groq's Whisper API for transcription when an internet connection is available. Groq's data handling is described in Section 3. Transcription is unavailable for these languages when offline.</li>
       </ul>
 
       <h2>5. Task and Event Extraction (AI)</h2>
-      <p>When you are online, the text transcript — not the audio — is sent to Groq's language model API (api.groq.com) to identify tasks, reminders, and calendar events. The request contains only the transcript text and the current date and time. It is not linked to your name, Apple ID, device identifier, or any personally identifiable information. Groq does not retain transcript data after processing.</p>
+      <p>When you are online, the text you submit or the transcript — not the audio — is sent to AI processing providers to identify tasks, reminders, and calendar events. In version 4.0.0 and later, WhisperAct uses OpenAI and Cerebras to turn submitted text or transcripts into tasks, reminders, and events. Cerebras may process a request when OpenAI cannot complete it.</p>
+      <p>In these versions, an extraction request contains the submitted text or transcript, processing instructions and a response format, the current date and time, your time zone, language information, and your configured time preferences. For some requests, WhisperAct also asks OpenAI to verify the result; that request contains the original transcript, candidate titles, and schedule summaries. WhisperAct has no user accounts and does not add your name or Apple ID to these requests. However, memo content can include personal information you choose to say or type, such as names, places, or appointment details, and that content is sent as part of the request. As with any internet request, providers also receive technical connection data such as your IP address.</p>
+      <p><strong>OpenAI.</strong> In WhisperAct's OpenAI organization, sharing data with OpenAI for model training is disabled, and the App sends extraction requests with response storage turned off (store: false), so OpenAI does not keep the response as stored application state. These settings do not mean zero retention. OpenAI's standard abuse-monitoring retention applies: under its <a href="https://developers.openai.com/api/docs/guides/your-data" target="_blank" rel="noopener">API data policy</a>, OpenAI keeps abuse-monitoring logs, which can include prompts and responses, for up to 30 days, unless longer retention is required by law or reasonably necessary to protect its services or others from harm.</p>
+      <p><strong>Cerebras.</strong> Cerebras <a href="https://support.cerebras.net/articles/1811589793-does-cerebras-retain-my-data" target="_blank" rel="noopener">states</a> that it does not retain prompts, API requests, or responses, and keeps only account and usage information needed to operate its service. See also the <a href="https://www.cerebras.ai/privacy-policy" target="_blank" rel="noopener">Cerebras Privacy Policy</a>.</p>
+      <p><strong>Earlier versions.</strong> In versions earlier than 4.0.0, online extraction sent the transcript and date and time context to Groq's language model API, and some requests were processed by <a href="https://docs.fireworks.ai/guides/security_compliance/data_handling" target="_blank" rel="noopener">Fireworks AI</a> instead. Groq's data handling is described in Section 3.</p>
       <p>When you are offline, or as a fallback, AI extraction runs entirely on-device using Apple Intelligence or a built-in keyword analysis engine. No data leaves your device in this path.</p>
 
       <h2>6. Memos, Tasks, and Calendar Data</h2>
@@ -497,16 +501,28 @@
               <td>Apple's policy</td>
             </tr>
             <tr>
-              <td>Groq Whisper API</td>
-              <td>Non-English transcription (14 languages)</td>
-              <td>Audio file — not retained after processing</td>
-              <td>Not retained</td>
+              <td>OpenAI</td>
+              <td>AI task &amp; event extraction and conditional verification (version 4.0.0 and later)</td>
+              <td>Submitted text or transcript, instructions and response format, date, time, time zone, language, and time preferences; for verification, the transcript, candidate titles, and schedule summaries</td>
+              <td>WhisperAct settings: training sharing disabled; store: false. <a href="https://developers.openai.com/api/docs/guides/your-data" target="_blank" rel="noopener">OpenAI policy</a>: abuse-monitoring logs up to 30 days, longer if required by law or to prevent harm</td>
             </tr>
             <tr>
-              <td>Groq LLM API</td>
-              <td>AI task &amp; event extraction</td>
-              <td>Transcript text only — no identifier attached</td>
-              <td>Not retained</td>
+              <td>Cerebras</td>
+              <td>AI task &amp; event extraction when OpenAI cannot complete a request (version 4.0.0 and later)</td>
+              <td>The same extraction request sent to OpenAI</td>
+              <td><a href="https://support.cerebras.net/articles/1811589793-does-cerebras-retain-my-data" target="_blank" rel="noopener">Cerebras published policy</a>: prompts and responses not retained</td>
+            </tr>
+            <tr>
+              <td>Groq</td>
+              <td>Non-English audio transcription; AI extraction in versions earlier than 4.0.0</td>
+              <td>Audio and selected language; for earlier-version extraction, the transcript and date and time context</td>
+              <td><a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">Groq published policy</a>: not retained by default; reliability and abuse logs up to 30 days, longer if legally required</td>
+            </tr>
+            <tr>
+              <td>Fireworks AI</td>
+              <td>Some AI extraction requests in versions earlier than 4.0.0</td>
+              <td>The transcript and date and time context</td>
+              <td><a href="https://docs.fireworks.ai/guides/security_compliance/data_handling" target="_blank" rel="noopener">Fireworks published policy</a>: prompts and outputs not stored by default</td>
             </tr>
             <tr>
               <td>Apple App Store</td>
@@ -531,8 +547,8 @@
       </div>
 
       <h2>10. Data Retention and Deletion</h2>
-      <p>WhisperAct stores your memo and task content only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of that content on any proprietary server. Limited analytics and crash-diagnostic data is retained by Google under Firebase's policies and configured retention controls.</p>
-      <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data.</p>
+      <p>WhisperAct stores your memo and task content only on your device and, for Pro users, in your private iCloud account. We do not maintain copies of that content on any proprietary server. Limited analytics and crash-diagnostic data is retained by Google under Firebase's policies and configured retention controls. Content sent for online transcription or AI extraction is handled by those providers under the retention terms described in Sections 3, 5, and 9.</p>
+      <p>To delete all your data, go to <strong>Settings → Delete All Data</strong> within the App. This permanently removes all memos and tasks from your device and iCloud. Deleting or reinstalling the App from your device also removes all locally stored data. Deleting content in WhisperAct does not automatically delete records that a processing provider may hold under its own retention terms.</p>
 
       <h2>11. Children's Privacy</h2>
       <p>WhisperAct is not directed at children under the age of 13 (or under 16 in the EU/EEA, or the minimum age required in your country), and we do not knowingly collect personal information from children. If you believe a child below the applicable age has used the App, please contact us and we will take appropriate steps.</p>
@@ -546,9 +562,9 @@
         <li><strong>Legitimate interests</strong> — to operate, secure, and maintain the App. We use no advertising, profiling, or behavioral tracking.</li>
       </ul>
 
-      <p><strong>International data transfers.</strong> When transcription (non-English) or AI task extraction is performed online, the relevant audio or transcript text is processed by <strong>Groq, Inc. in the United States</strong>. Firebase Analytics and Crashlytics data is processed by <strong>Google</strong>. These services may process data outside the EU/EEA/UK under their applicable data-transfer terms. See Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Firebase Privacy and Security</a> for details.</p>
+      <p><strong>International data transfers.</strong> When transcription (non-English) or AI task extraction is performed online, the relevant audio, text, or transcript is processed by the providers described in Sections 3, 5, and 9: <strong>Groq</strong> for transcription, and <strong>OpenAI</strong> and <strong>Cerebras</strong> for extraction in version 4.0.0 and later (Groq and Fireworks AI in earlier versions). Firebase Analytics and Crashlytics data is processed by <strong>Google</strong>. These services may process data outside the EU/EEA/UK, including in the United States, under their applicable data-transfer terms. See the provider links in Section 9 and <a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Firebase Privacy and Security</a> for details.</p>
 
-      <p><strong>Your rights.</strong> You have the right to access, rectify, erase, restrict, object to, and port your personal data. Because your memo and task content lives on your device and in your own iCloud account, you can exercise most of these rights directly in the App — edit or delete any item, or use <strong>Settings → Delete All Data</strong> (see Section 10). For analytics/diagnostic requests or anything else we can help with, email <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
+      <p><strong>Your rights.</strong> You have the right to access, rectify, erase, restrict, object to, and port your personal data. Because your memo and task content lives on your device and in your own iCloud account, you can exercise most of these rights directly in the App — edit or delete any item, or use <strong>Settings → Delete All Data</strong> (see Section 10). This does not delete records a processing provider may hold under its own retention terms. For analytics/diagnostic requests or anything else we can help with, email <a href="mailto:support@whisperact.com">support@whisperact.com</a>.</p>
 
       <p><strong>Right to complain.</strong> You also have the right to lodge a complaint with your local data protection supervisory authority in the EU, EEA, or UK.</p>
 
