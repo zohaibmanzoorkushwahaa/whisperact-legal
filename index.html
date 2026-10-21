@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO -->
   <title>WhisperAct — Voice Task Planner for iPhone &amp; iPad</title>
-  <meta name="description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
-  <meta name="keywords" content="voice to text, speech to text, voice notes, voice memo, dictation, transcribe audio, meeting notes, to do list, AI notes, voice recorder, voice reminder, task planner, Apple Reminders, Apple Calendar, iPhone voice productivity" />
+  <meta name="description" content="Talk or type a memo. WhisperAct turns it into reminders, events and to-dos you review, then saves them to Apple Reminders and Calendar. Free to start." />
+  <meta name="keywords" content="voice to text, speech to text, voice notes, voice memo, dictation, meeting notes, to do list, AI notes, voice reminder, task planner, Apple Reminders, Apple Calendar, iPhone voice productivity" />
   <link rel="canonical" href="https://whisperact.com/" />
 
   <!-- Icons / PWA -->
@@ -16,22 +16,45 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0a0a0d" />
+
+  <!-- Appearance: follows the system unless the visitor picked one (stored by /menu.js) -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbf6ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      r.className = r.className.replace(/\bno-js\b/, "js");
+      try {
+        var t = localStorage.getItem("wa-theme");
+        if (t === "light" || t === "dark") {
+          r.setAttribute("data-theme", t);
+          r.style.colorScheme = t;
+          var m = d.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#1f1c1a" : "#fbf6ef");
+        }
+      } catch (e) {}
+    })(document);
+  </script>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/menu.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="/motion.js" defer></script>
+  <link rel="preload" href="/screens/iphone-frame.svg" as="image" type="image/svg+xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="WhisperAct" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/" />
-  <meta property="og:title" content="WhisperAct — Voice Notes to Tasks" />
-  <meta property="og:description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
+  <meta property="og:title" content="WhisperAct — Voice notes to reminders, events and to-dos" />
+  <meta property="og:description" content="Talk or type a memo. WhisperAct turns it into reminders, events and to-dos you review, then saves them to Apple Reminders and Calendar. Free to start." />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="WhisperAct — Turn voice notes into tasks automatically with Apple Reminders and Calendar." />
+  <meta property="og:image:alt" content="WhisperAct: Whisper it. We'll handle the rest. The Plan and Review memo screens on iPhone." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="WhisperAct — Voice Notes to Tasks" />
-  <meta name="twitter:description" content="Turn voice notes into tasks, reminders, and calendar events on iPhone. WhisperAct syncs them to Apple Reminders and Calendar." />
+  <meta name="twitter:title" content="WhisperAct — Voice notes to reminders, events and to-dos" />
+  <meta name="twitter:description" content="Talk or type a memo. WhisperAct turns it into reminders, events and to-dos you review, then saves them to Apple Reminders and Calendar. Free to start." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
 
   <!-- Structured data -->
@@ -40,24 +63,33 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "WhisperAct",
-    "operatingSystem": "iOS 26",
+    "operatingSystem": "iOS 26.0 or later, iPadOS 26.0 or later",
     "applicationCategory": "ProductivityApplication",
     "url": "https://whisperact.com/",
     "downloadUrl": "https://apps.apple.com/app/id6776684339",
-    "description": "Voice task planner for iPhone that turns voice notes into tasks, reminders, and calendar events and syncs them to Apple Reminders and Calendar.",
+    "description": "Voice task planner for iPhone and iPad. Talk or type a memo and WhisperAct turns it into reminders, calendar events and to-dos that you review before they are saved to Apple Reminders and Apple Calendar.",
     "image": "https://whisperact.com/og.png",
     "screenshot": [
-      "https://whisperact.com/screens/home.png",
-      "https://whisperact.com/screens/upcoming.png",
-      "https://whisperact.com/screens/record-poster.jpg"
+      "https://whisperact.com/screens/review-hero-800.webp",
+      "https://whisperact.com/screens/plan-upcoming-800.webp",
+      "https://whisperact.com/screens/record-idle-800.webp",
+      "https://whisperact.com/screens/review-decision-800.webp"
     ],
-    "inLanguage": ["en", "ur", "ar", "es", "fr", "pt", "de", "tr", "ru", "id", "it", "ko", "ja"],
+    "inLanguage": ["en", "es"],
+    "featureList": [
+      "Turn a spoken or typed memo into reminders, calendar events and to-dos",
+      "Review items before they are saved",
+      "Save reminders to Apple Reminders and events to Apple Calendar",
+      "Record in 15 languages",
+      "Plan view with Today, Upcoming and Inbox",
+      "Daily Review and Daily Digest"
+    ],
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
       "lowPrice": "0",
-      "highPrice": "24.99",
-      "offerCount": "3"
+      "highPrice": "99.99",
+      "offerCount": "4"
     },
     "publisher": {
       "@type": "Organization",
@@ -93,1586 +125,536 @@
     }
   }
   </script>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --coral:        #D85A30;
-      --coral-dim:    rgba(216,90,48,0.15);
-      --coral-border: rgba(216,90,48,0.30);
-      --ink:          #0a0a0d;
-      --ink-2:        #111116;
-      --ink-3:        #18181f;
-      --ink-4:        #222229;
-      --line:         rgba(255,255,255,0.07);
-      --line-2:       rgba(255,255,255,0.12);
-      --text:         #f0ede8;
-      --text-2:       rgba(240,237,232,0.70);
-      --text-3:       rgba(240,237,232,0.56);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
-      background: var(--ink);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ──────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 60px;
-      background: rgba(10,10,13,0.80);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    /* Centers the header content on the same column as the page content (max 1100). */
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-    }
-
-    /* Hamburger — hidden on desktop, shown ≤900px. */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      margin-right: -10px;
-      background: none;
-      border: 0;
-      cursor: pointer;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      margin: 0 auto;
-      border-radius: 2px;
-      background: var(--coral);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-    .nav-toggle:focus-visible {
-      outline: 2px solid var(--coral);
-      outline-offset: 2px;
-      border-radius: 8px;
-    }
-
-    .nav-brand {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      background: var(--coral) !important;
-      color: #fff !important;
-      padding: 8px 18px !important;
-      border-radius: 8px !important;
-      font-weight: 600 !important;
-    }
-
-    /* ─── HERO ─────────────────────────────────────────── */
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 80px 40px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .hero-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background: radial-gradient(ellipse 60% 50% at 60% 40%, rgba(216,90,48,0.06) 0%, transparent 70%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--coral);
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
-      color: var(--text);
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--coral);
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 19px);
-      line-height: 1.65;
-      color: var(--text-2);
-      max-width: 480px;
-      margin-bottom: 36px;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-
-    .btn-dl {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: var(--coral);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 26px;
-      border-radius: 12px;
-      text-decoration: none;
-      letter-spacing: -0.2px;
-      transition: opacity 0.15s, transform 0.15s;
-    }
-
-    .btn-dl:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .btn-ghost {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .btn-ghost:hover { color: var(--text); }
-
-    .hero-meta {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .hero-meta-num {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    .hero-meta-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-3);
-    }
-
-    /* Waveform */
-    .hero-visual {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 440px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    @media (max-width: 860px) { .hero-visual { display: none; } }
-
-    .waveform-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      height: 200px;
-    }
-
-    .wf-bar {
-      width: 4px;
-      border-radius: 3px;
-      background: var(--coral);
-      animation: wave 1.4s ease-in-out infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: scaleY(0.25); opacity: 0.35; }
-      50%       { transform: scaleY(1);    opacity: 0.85; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .wf-bar { animation: none; opacity: 0.4; transform: scaleY(0.5); }
-    }
-
-    /* App icon float */
-    .hero-icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 22px;
-      margin: 0 auto 32px;
-      display: block;
-      box-shadow: 0 0 0 1px rgba(216,90,48,0.25), 0 20px 60px rgba(216,90,48,0.20);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-8px); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-icon { animation: none; }
-    }
-
-    /* ─── SECTION BASE ──────────────────────────────────── */
-    .section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 40px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: clamp(26px, 4vw, 42px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .section-sub {
-      font-size: 16px;
-      color: var(--text-2);
-      line-height: 1.65;
-      max-width: 520px;
-      margin-bottom: 56px;
-    }
-
-    /* ─── DIVIDER ───────────────────────────────────────── */
-    .divider {
-      height: 1px;
-      background: var(--line);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ─── SCREENS SHOWCASE ──────────────────────────────── */
-    .screens-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      position: relative;
-    }
-    .screens-row::before {
-      content: "";
-      position: absolute;
-      inset: -12% -8%;
-      background: radial-gradient(ellipse 52% 46% at 50% 46%, rgba(216,90,48,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .phone {
-      position: relative;
-      z-index: 1;
-      width: clamp(186px, 22vw, 252px);
-      margin: 0;
-      border-radius: 40px;
-      overflow: hidden;
-      border: 1px solid var(--line-2);
-      background: var(--ink);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
-    }
-    .phone img, .phone video {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    .phone--feature {
-      width: clamp(208px, 25vw, 286px);
-      border-color: var(--coral-border);
-      box-shadow: 0 28px 72px rgba(0,0,0,0.6), 0 0 0 1px var(--coral-border), 0 0 54px rgba(216,90,48,0.34);
-    }
-    @media (max-width: 760px) {
-      .screens-row { flex-direction: column; gap: 36px; }
-      .phone, .phone--feature { width: min(74vw, 300px); }
-    }
-
-    /* ─── HOW IT WORKS — 3 steps ──────────────────────── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .step {
-      background: var(--ink-2);
-      padding: 40px 36px;
-      transition: background 0.2s;
-    }
-
-    .step:hover { background: var(--ink-3); }
-
-    .step-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--coral);
-      margin-bottom: 20px;
-    }
-
-    .step-icon {
-      width: 42px;
-      height: 42px;
-      margin-bottom: 20px;
-      color: var(--text-2);
-    }
-
-    .step h3 {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      margin-bottom: 10px;
-    }
-
-    .step p {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-
-    /* ─── BENTO FEATURES ────────────────────────────────── */
-    .bento {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
-      gap: 12px;
-    }
-
-    .bento-card {
-      position: relative;
-      background: var(--ink-2);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 32px 28px;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-      opacity: 0;
-      transform: translateY(16px);
-    }
-
-    .bento-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, background 0.2s;
-    }
-
-    .bento-card:hover {
-      border-color: var(--line-2);
-      background: var(--ink-3);
-      transform: translateY(-2px) !important;
-    }
-
-    .bento-card.span-2 { grid-column: span 2; }
-    .bento-card.span-full { grid-column: 1 / -1; }
-
-    .bento-icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 18px;
-      color: var(--coral);
-      opacity: 0.85;
-    }
-
-    .bento-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: inline-block;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--coral);
-      background: var(--coral-dim);
-      border: 1px solid var(--coral-border);
-      border-radius: 4px;
-      padding: 3px 8px;
-    }
-
-    .bento-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      margin-bottom: 10px;
-    }
-
-    .bento-card p {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-
-    /* Inline waveform accent inside feature card */
-    .mini-wave {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      margin-top: 20px;
-    }
-
-    .mini-bar {
-      width: 3px;
-      border-radius: 2px;
-      background: var(--coral);
-      opacity: 0.5;
-    }
-
-    /* ─── PRODUCT HUNT REVIEWS ─────────────────────────── */
-    .reviews-section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .reviews-section::before {
-      content: "";
-      position: absolute;
-      inset: 18% -12% auto auto;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(216,90,48,0.12) 0%, transparent 68%);
-      pointer-events: none;
-    }
-
-    .reviews-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 32px;
-      align-items: end;
-      margin-bottom: 34px;
-    }
-
-    .reviews-head .section-sub {
-      margin-bottom: 0;
-    }
-
-    .ph-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-      background: rgba(216,90,48,0.08);
-      border: 1px solid var(--coral-border);
-      border-radius: 999px;
-      padding: 10px 15px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background 0.15s, border-color 0.15s, transform 0.15s;
-    }
-
-    .ph-link:hover {
-      background: rgba(216,90,48,0.14);
-      border-color: rgba(216,90,48,0.48);
-      transform: translateY(-1px);
-    }
-
-    .ph-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--coral);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .review-proof {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .rating-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-      background: rgba(255,255,255,0.045);
-      border: 1px solid var(--line-2);
-      border-radius: 999px;
-      padding: 10px 15px;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .rating-stars {
-      color: var(--coral);
-      letter-spacing: 0.08em;
-      font-size: 12px;
-      line-height: 1;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-items: start;
-    }
-
-    .review-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.18s, background 0.18s, transform 0.18s;
-    }
-
-    .review-card:hover {
-      border-color: var(--line-2);
-      background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.024));
-      transform: translateY(-2px);
-    }
-
-    .review-card.featured {
-      border-color: var(--coral-border);
-      background: linear-gradient(145deg, rgba(216,90,48,0.12), rgba(255,255,255,0.028) 56%, rgba(255,255,255,0.018));
-      box-shadow: 0 28px 80px rgba(0,0,0,0.34), 0 0 0 1px rgba(216,90,48,0.10);
-    }
-
-    .review-kicker {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 22px;
-      color: var(--text-3);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .review-quote {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text);
-      letter-spacing: -0.15px;
-    }
-
-    /* "Shipped" reply under a review that asked for a feature we've since built. */
-    .review-shipped {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      padding: 5px 11px;
-      border: 1px solid var(--line-2);
-      border-radius: 999px;
-      background: var(--ink-3);
-      color: var(--text-2);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .review-shipped svg {
-      width: 13px;
-      height: 13px;
-      flex: none;
-    }
-
-    .review-card.featured .review-quote {
-      font-size: 18px;
-      line-height: 1.55;
-      letter-spacing: -0.2px;
-      font-weight: 700;
-    }
-
-    .review-author {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: auto;
-      padding-top: 26px;
-      color: var(--text-2);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .review-source {
-      color: var(--coral);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    /* ─── PRICING ───────────────────────────────────────── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      max-width: 1080px;
-    }
-
-    /* Annual discount accents */
-    .price-was {
-      text-decoration: line-through;
-      color: var(--text-3);
-      margin-right: 6px;
-      font-weight: 600;
-    }
-    .plan-save { color: var(--coral); font-weight: 700; }
-
-    /* Top-right discount badge */
-    .save-corner {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--coral);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      padding: 5px 11px;
-      border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(216,90,48,0.35);
-    }
-    .limited-note {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--coral);
-      margin-top: -18px;
-      margin-bottom: 24px;
-    }
-
-    .pricing-card {
-      background: var(--ink-2);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pricing-card.pro-card {
-      border-color: var(--coral-border);
-      background: rgba(216,90,48,0.04);
-      position: relative;
-    }
-
-    .pro-pill {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--coral);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 0 0 10px 10px;
-    }
-
-    .plan-tier {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 10px;
-    }
-
-    .pro-card .plan-tier { color: var(--coral); }
-
-    .plan-price {
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      margin-bottom: 4px;
-    }
-
-    .plan-billing {
-      font-size: 13px;
-      color: var(--text-3);
-      margin-bottom: 28px;
-    }
-
-    .plan-divider {
-      height: 1px;
-      background: var(--line);
-      margin-bottom: 24px;
-    }
-
-    .plan-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .plan-features li {
-      font-size: 14px;
-      color: var(--text-2);
-      display: flex;
-      gap: 10px;
-      line-height: 1.4;
-    }
-
-    .plan-features li .ck {
-      color: var(--coral);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .plan-features li strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .feature-emphasis {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .btn-plan {
-      display: block;
-      margin-top: auto;
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
-    }
-
-    .btn-plan:hover { opacity: 0.85; transform: translateY(-1px); }
-
-    .btn-plan-free {
-      background: var(--ink-4);
-      border: 1px solid var(--line-2);
-      color: var(--text);
-    }
-
-    .btn-plan-pro {
-      background: var(--coral);
-      color: #fff;
-    }
-
-    .pricing-note {
-      font-size: 12px;
-      color: var(--text-3);
-      margin-top: 20px;
-      line-height: 1.6;
-      max-width: 780px;
-    }
-
-    /* ─── PRIVACY STRIP ─────────────────────────────────── */
-    .privacy-strip {
-      background: var(--ink-2);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .privacy-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 40px;
-      display: flex;
-      align-items: flex-start;
-      gap: 60px;
-    }
-
-    .privacy-copy { flex: 1; }
-
-    .privacy-copy h2 {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 14px;
-    }
-
-    .privacy-copy p {
-      font-size: 15px;
-      color: var(--text-2);
-      line-height: 1.7;
-      max-width: 480px;
-    }
-
-    .privacy-pills {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .privacy-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-2);
-      font-weight: 500;
-    }
-
-    .privacy-pill::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--coral);
-      flex-shrink: 0;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────── */
-    footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-copy {
-      font-size: 13px;
-      color: var(--text-3);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text-3);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-links a:hover { color: var(--coral); }
-
-    .footer-social {
-      width: 100%;
-      font-size: 13px;
-      color: var(--text-3);
-    }
-
-    .footer-social a {
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-social a:hover { color: var(--coral); }
-
-    /* ─── RESPONSIVE ────────────────────────────────────── */
-    /* Mobile + tablet nav: hamburger reveals the links as a full-width dropdown panel. */
-    @media (max-width: 900px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 12px 20px 18px;
-        background: rgba(10,10,13,0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--line);
-      }
-      nav.open .nav-links { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block;
-        padding: 12px 4px;
-        font-size: 15px;
-      }
-      .nav-cta {
-        text-align: center;
-        margin-top: 6px;
-        padding: 12px 18px !important;
-      }
-      /* Hamburger → X when open. */
-      nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    }
-
-    @media (max-width: 860px) {
-      .nav-inner { padding: 0 20px; }
-      .hero { padding: 60px 20px; min-height: auto; }
-      .section-wrap { padding: 60px 20px; }
-      .steps { grid-template-columns: 1fr; }
-      .bento { grid-template-columns: 1fr; }
-      .bento-card.span-2 { grid-column: span 1; }
-      .reviews-head { grid-template-columns: 1fr; align-items: start; }
-      .review-proof { justify-content: flex-start; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .review-card { padding: 24px; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .privacy-inner { flex-direction: column; gap: 32px; padding: 48px 20px; }
-      footer { padding: 32px 20px; }
-    }
-  </style>
 </head>
 <body>
 
-<div class="hero-bg" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NAV -->
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">
-      <img src="/icon-128.png" width="28" height="28" alt="WhisperAct icon" />
-      WhisperAct
+<header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/">
+      <img src="/icon-128.png" width="32" height="32" alt="" />
+      <span>WhisperAct</span>
     </a>
-    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
     </button>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li>
-        <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-     target="_blank"
-     rel="noopener"
-     class="nav-cta">
-     Download App
-  </a>
-      </li>
-    </ul>
+    <div class="site-menu" id="site-menu">
+      <nav class="primary-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <fieldset class="theme-switch">
+          <legend class="sr-only">Appearance</legend>
+          <label class="theme-option" title="Match system appearance">
+            <input type="radio" name="theme" value="system" checked />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-label">System</span></span>
+          </label>
+          <label class="theme-option" title="Light appearance">
+            <input type="radio" name="theme" value="light" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="theme-label">Light</span></span>
+          </label>
+          <label class="theme-option" title="Dark appearance">
+            <input type="radio" name="theme" value="dark" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-label">Dark</span></span>
+          </label>
+        </fieldset>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download<span class="sr-only"> WhisperAct on the App Store</span></a>
+      </div>
+    </div>
   </div>
-</nav>
+</header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Voice Task Planner for iPhone &amp; iPad</p>
-      <h1 id="hero-heading">Turn voice notes<br><em>into tasks automatically</em></h1>
-      <p class="hero-sub">WhisperAct listens to your voice and turns it into tasks, reminders, and calendar events — routed directly into Apple Reminders and Calendar. No typing. No copy-pasting.</p>
-      <div class="hero-actions">
-      <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-   target="_blank"
-   rel="noopener"
-   class="btn-dl">
-   Download on the App Store
-</a>
-        <a href="#pricing" class="btn-ghost">See plans →</a>
+  <section class="hero" aria-labelledby="hero-title" data-scroll="exit">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Voice task planner for iPhone &amp; iPad</p>
+        <h1 class="hero-title" id="hero-title">Turn voice notes into <span class="em">reminders, events and to&#8209;dos.</span></h1>
+        <p class="hero-lead">Say or type what’s on your mind. WhisperAct sorts it into the right kind of item, asks when a date is vague, and saves reminders to Apple Reminders and events to Apple Calendar once you’ve reviewed them.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+          <a class="btn btn-secondary btn-lg" href="#how">See how it works</a>
+        </div>
+        <ul class="hero-facts" aria-label="At a glance">
+          <li>Free to start</li>
+          <li>Talk or type</li>
+          <li>15 recording languages</li>
+          <li>No account needed</li>
+        </ul>
       </div>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <span class="hero-meta-num">13</span>
-          <span class="hero-meta-label">Languages</span>
+      <div class="hero-media">
+        <div class="hero-phones">
+          <div class="iphone hero-phone hero-phone--back">
+            <div class="iphone-screen">
+              <picture>
+                <source type="image/avif" srcset="/screens/home-widget-400.avif 400w, /screens/home-widget-800.avif 800w" sizes="(min-width: 56em) 250px, 42vw" />
+                <img src="/screens/home-widget-400.webp" srcset="/screens/home-widget-400.webp 400w, /screens/home-widget-800.webp 800w" sizes="(min-width: 56em) 250px, 42vw" width="400" height="869" decoding="async" alt="The WhisperAct Today widget on an iPhone Home Screen, listing upcoming items with a microphone button." />
+              </picture>
+            </div>
+          </div>
+          <div class="iphone hero-phone hero-phone--front">
+            <div class="iphone-screen">
+              <picture>
+                <source type="image/avif" srcset="/screens/review-hero-400.avif 400w, /screens/review-hero-800.avif 800w" sizes="(min-width: 56em) 290px, 48vw" />
+                <img src="/screens/review-hero-400.webp" srcset="/screens/review-hero-400.webp 400w, /screens/review-hero-800.webp 800w" sizes="(min-width: 56em) 290px, 48vw" width="400" height="869" fetchpriority="high" alt="The Review memo screen: one memo split into an Apple Reminder, an Apple Calendar event and two WhisperAct to-dos, with the destination set to Apple apps." />
+              </picture>
+            </div>
+          </div>
         </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-num">No account</span>
-          <span class="hero-meta-label">Nothing to sign up</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-num">Apple-native</span>
-          <span class="hero-meta-label">Reminders &amp; Calendar</span>
-        </div>
-        <div class="hero-meta-item">
-          <span class="hero-meta-num">Free</span>
-          <span class="hero-meta-label">To start</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Waveform visual -->
-    <div class="hero-visual" aria-hidden="true">
-      <img src="/icon-128.png" class="hero-icon" width="100" height="100" alt="WhisperAct app icon" />
-      <div class="waveform-wrap" id="waveform"></div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- SCREENS SHOWCASE -->
-  <section id="screens" aria-labelledby="screens-heading">
-    <div class="section-wrap">
-      <p class="section-label">A look inside</p>
-      <h2 class="section-title" id="screens-heading">Your day, organized by voice</h2>
-      <p class="section-sub">Speak once — watch it land as tasks, events, and reminders, then track everything on one timeline.</p>
-
-      <div class="screens-row">
-        <figure class="phone">
-          <img src="/screens/home-250.png" srcset="/screens/home-250.png 250w, /screens/home.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Today) — overdue and due-today reminders on a timeline" loading="lazy" width="250" height="542" />
-        </figure>
-        <figure class="phone phone--feature">
-          <video class="js-lazy-video" muted loop playsinline preload="none" poster="/screens/record-poster-284.jpg" width="284" height="615" aria-label="Recording a voice memo in WhisperAct">
-            <source data-src="/screens/record.mp4" type="video/mp4" />
-          </video>
-        </figure>
-        <figure class="phone">
-          <img src="/screens/upcoming-250.png" srcset="/screens/upcoming-250.png 250w, /screens/upcoming.png 498w" sizes="(max-width: 760px) min(74vw, 300px), 250px" alt="WhisperAct Plan tab (Upcoming) — scheduled reminders and events grouped by day" loading="lazy" width="250" height="542" />
-        </figure>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- HOW IT WORKS -->
-  <section id="how" aria-labelledby="how-heading">
-    <div class="section-wrap">
-      <p class="section-label">How it works</p>
-      <h2 class="section-title" id="how-heading">Three steps, zero effort</h2>
-      <p class="section-sub">From spoken thought to structured action in seconds.</p>
+  <section class="section story" id="how" aria-labelledby="how-title" data-active="1">
+    <div class="shell">
+      <div class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">From one memo to a plan you approve</h2>
+        <p>Follow one capture from the first word to your day.</p>
+      </div>
 
-      <div class="steps">
-        <div class="step">
-          <p class="step-num">01</p>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-          <h3>Tap and speak</h3>
-          <p>Hit the mic. Talk freely — tasks, reminders, events, or just notes. A live transcript streams as you speak.</p>
+      <div class="story-grid">
+        <div class="story-stage" data-scroll="enter">
+          <div class="story-sticky">
+            <div class="story-glow" aria-hidden="true">
+              <span data-tone="capture"></span>
+              <span data-tone="review"></span>
+              <span data-tone="plan"></span>
+              <span data-tone="day"></span>
+            </div>
+            <div class="story-device">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture class="story-screen is-active" data-step="1">
+                    <source type="image/avif" srcset="/screens/record-idle-400.avif 400w, /screens/record-idle-800.avif 800w" sizes="330px" />
+                    <img src="/screens/record-idle-400.webp" srcset="/screens/record-idle-400.webp 400w, /screens/record-idle-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="The recording screen with a Tap to record button, the EN language button, and a Type a memo instead option." />
+                  </picture>
+                  <picture class="story-screen" data-step="2">
+                    <source type="image/avif" srcset="/screens/typed-input-400.avif 400w, /screens/typed-input-800.avif 800w" sizes="330px" />
+                    <img src="/screens/typed-input-400.webp" srcset="/screens/typed-input-400.webp 400w, /screens/typed-input-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Typing a memo: remind me tomorrow at 9am to pick up the birthday cake, Maya’s party is tomorrow at 3pm at Dolores Park, buy a gift card and wrap the present." />
+                  </picture>
+                  <picture class="story-screen" data-step="3">
+                    <source type="image/avif" srcset="/screens/review-decision-400.avif 400w, /screens/review-decision-800.avif 800w" sizes="330px" />
+                    <img src="/screens/review-decision-400.webp" srcset="/screens/review-decision-400.webp 400w, /screens/review-decision-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Review screen asking which day “this month” means, with three suggested dates and options for another day, no date or a place." />
+                  </picture>
+                  <picture class="story-screen" data-step="4">
+                    <source type="image/avif" srcset="/screens/plan-upcoming-400.avif 400w, /screens/plan-upcoming-800.avif 800w" sizes="330px" />
+                    <img src="/screens/plan-upcoming-400.webp" srcset="/screens/plan-upcoming-400.webp 400w, /screens/plan-upcoming-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="WhisperAct’s Plan tab, Upcoming view: a Next Up countdown, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
+                  </picture>
+                  <picture class="story-screen" data-step="5">
+                    <source type="image/avif" srcset="/screens/daily-review-400.avif 400w, /screens/daily-review-800.avif 800w" sizes="330px" />
+                    <img src="/screens/daily-review-400.webp" srcset="/screens/daily-review-400.webp 400w, /screens/daily-review-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Daily Review: counts of overdue, due today and unscheduled items, and a button to review today." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <ol class="story-dots" aria-hidden="true">
+              <li class="is-active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ol>
+          </div>
         </div>
-        <div class="step">
-          <p class="step-num">02</p>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          <h3>AI extracts structure</h3>
-          <p>Cloud AI, Apple Intelligence, and a local smart parser work in cascade — so you always get results, even offline.</p>
-        </div>
-        <div class="step">
-          <p class="step-num">03</p>
-          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>You confirm — then it syncs</h3>
-          <p>See exactly what was captured and tweak anything, then confirm. Tasks land in Apple Reminders and events in Apple Calendar — nothing syncs without your OK.</p>
-        </div>
+
+        <ol class="story-steps">
+          <li class="story-step" data-step="1" data-tone="capture">
+            <div class="story-step-media" data-scroll="enter">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture>
+                    <source type="image/avif" srcset="/screens/record-idle-400.avif 400w, /screens/record-idle-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/record-idle-400.webp" srcset="/screens/record-idle-400.webp 400w, /screens/record-idle-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="The recording screen with a Tap to record button, the EN language button, and a Type a memo instead option." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p class="step-label"><span class="step-num" aria-hidden="true">1</span> Talk</p>
+              <h3>Talk it out.</h3>
+              <p>Tap the mic and speak the way you think — “Pick up the cake tomorrow at 9, Maya’s party is at 3 at Dolores Park, and buy a gift card.”</p>
+              <ul class="checklist">
+                <li>Record up to 2 minutes free, or up to 20 minutes with Pro.</li>
+                <li>Start a memo from the Home Screen widget, Control Center, Siri or the Action Button.</li>
+                <li>Record in 15 languages. English recordings show a live transcript as you talk.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="story-step" data-step="2" data-tone="capture">
+            <div class="story-step-media" data-scroll="enter">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture>
+                    <source type="image/avif" srcset="/screens/typed-input-400.avif 400w, /screens/typed-input-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/typed-input-400.webp" srcset="/screens/typed-input-400.webp 400w, /screens/typed-input-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="Typing a memo: remind me tomorrow at 9am to pick up the birthday cake, Maya’s party is tomorrow at 3pm at Dolores Park, buy a gift card and wrap the present." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p class="step-label"><span class="step-num" aria-hidden="true">2</span> Type</p>
+              <h3>Or type it.</h3>
+              <p>When talking isn’t an option, type the same memo. WhisperAct sorts typed memos the same way and shows you what it found.</p>
+            </div>
+          </li>
+          <li class="story-step" data-step="3" data-tone="review">
+            <div class="story-step-media" data-scroll="enter">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture>
+                    <source type="image/avif" srcset="/screens/review-decision-400.avif 400w, /screens/review-decision-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/review-decision-400.webp" srcset="/screens/review-decision-400.webp 400w, /screens/review-decision-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="Review screen asking which day “this month” means, with three suggested dates and options for another day, no date or a place." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p class="step-label"><span class="step-num" aria-hidden="true">3</span> Review</p>
+              <h3>It asks when it’s not sure.</h3>
+              <p>WhisperAct splits your memo into reminders, events and to-dos. When a date is vague, like “this month”, it asks which day instead of guessing — and a phrase like “every morning” is confirmed before a repeat is set.</p>
+              <ul class="checklist">
+                <li>Switch any item between to-do, reminder and event in one tap.</li>
+                <li>Fix the wording, date or place, add what it missed, or leave an item out.</li>
+                <li>Every capture opens for review by default. You can turn on auto-save for clear items later; anything unclear still asks.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="story-step" data-step="4" data-tone="plan">
+            <div class="story-step-media" data-scroll="enter">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture>
+                    <source type="image/avif" srcset="/screens/plan-upcoming-400.avif 400w, /screens/plan-upcoming-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/plan-upcoming-400.webp" srcset="/screens/plan-upcoming-400.webp 400w, /screens/plan-upcoming-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="WhisperAct’s Plan tab, Upcoming view: a Next Up countdown, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p class="step-label"><span class="step-num" aria-hidden="true">4</span> Plan</p>
+              <h3>See what’s ahead.</h3>
+              <p>The Plan tab keeps to-dos, reminders and events together in Today, Upcoming and Inbox, with a countdown to what’s next. Memos keeps every capture with its transcript and items.</p>
+              <ul class="checklist">
+                <li>Long-press an item in Plan for quick date choices.</li>
+                <li>Filter by Personal and Work categories.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="story-step" data-step="5" data-tone="day">
+            <div class="story-step-media" data-scroll="enter">
+              <div class="iphone">
+                <div class="iphone-screen">
+                  <picture>
+                    <source type="image/avif" srcset="/screens/daily-review-400.avif 400w, /screens/daily-review-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/daily-review-400.webp" srcset="/screens/daily-review-400.webp 400w, /screens/daily-review-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="Daily Review: counts of overdue, due today and unscheduled items, and a button to review today." />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="story-copy">
+              <p class="step-label"><span class="step-num" aria-hidden="true">5</span> Day</p>
+              <h3>A calm daily rhythm.</h3>
+              <p>The Day tab holds Daily Review — a quick pass over what’s due and what still needs a decision — plus an evening wrap-up and the times your words mean, like when your “morning” starts.</p>
+              <ul class="checklist">
+                <li>A Today widget for your Home Screen, with a mic to start a memo, or your Lock Screen.</li>
+                <li>Daily Review, the Daily Digest notification and widgets are free for everyone.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <!-- WHERE ITEMS GO -->
+  <section class="section section--alt" id="apple" aria-labelledby="apple-title">
+    <div class="shell split">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Apple Reminders &amp; Calendar</p>
+          <h2 id="apple-title">Saved in Apple’s apps, or kept in WhisperAct.</h2>
+          <p>Every capture has a destination, shown at the top of the review. With Apple apps selected, reminders go to Apple Reminders and events to Apple Calendar, so they show up wherever those apps do. Choose WhisperAct and items stay in the app until you send them from the item’s menu.</p>
+        </div>
+        <ul class="checklist split-notes">
+          <li><strong>Free:</strong> 7 Apple Reminders and 7 Apple Calendar saves each month. If you reach a limit, items stay in WhisperAct and can be synced later.</li>
+          <li><strong>Pro:</strong> unlimited saves, plus a specific Reminders list or calendar of your choice.</li>
+        </ul>
+      </div>
+      <dl class="routes" aria-label="Where each kind of item is saved when Apple apps is the destination" data-reveal="stagger">
+        <div class="route route--reminder">
+          <dt>Reminder</dt>
+          <svg class="route-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <dd><span class="route-dest">Apple Reminders</span><span class="route-note">With an alert at the due time, plus an optional earlier heads-up</span></dd>
+        </div>
+        <div class="route route--event">
+          <dt>Event</dt>
+          <svg class="route-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <dd><span class="route-dest">Apple Calendar</span><span class="route-note">With the time, length and place you mentioned</span></dd>
+        </div>
+        <div class="route route--todo">
+          <dt>To-do</dt>
+          <svg class="route-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <dd><span class="route-dest">WhisperAct</span><span class="route-note">Or Apple Reminders too, with “Sync todos to Apple Reminders” in Settings</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
 
-  <!-- FEATURES BENTO -->
-  <section id="features" aria-labelledby="features-heading">
-    <div class="section-wrap">
-      <p class="section-label">Features</p>
-      <h2 class="section-title" id="features-heading">Built for the way you think</h2>
-      <p class="section-sub">Every feature starts from the same question: what should happen automatically?</p>
-
-      <div class="bento">
-
-        <!-- Big card: languages -->
-        <div class="bento-card span-2">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  <!-- FEATURES -->
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Features</p>
+        <h2 id="features-title">Built around how you actually talk</h2>
+        <p>The details that keep a quick memo from turning into cleanup later.</p>
+      </div>
+      <ul class="feature-grid" data-reveal="stagger">
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
           <h3>15 recording languages</h3>
-          <p>English, Spanish, French, Portuguese, German, Greek, Turkish, Russian, Indonesian, Italian, Polish, Korean, Urdu, Arabic, Japanese. Switch right on the recording screen. Tasks come out in the language you spoke, with any English words you mixed in kept exactly as you said them.</p>
-        </div>
-
-        <!-- Card: offline -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-          <h3>Fully offline capable</h3>
-          <p>Captures, transcribes, and extracts on-device for English. Items saved locally and pushed when you reconnect.</p>
-        </div>
-
-        <!-- Card: review / you're in control -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          <h3>You confirm before it saves</h3>
-          <p>Every task, reminder, and event opens in a quick review first — fix the wording, switch the type, adjust the date, add anything missed, or remove it. Nothing is written to Apple Reminders or Calendar until you say so. Trust it? Turn on auto-save for the clear ones in Settings — and switch it back off anytime.</p>
-        </div>
-
-        <!-- Card: Upcoming tab -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <h3>Upcoming tab</h3>
-          <p>Every timed item across all memos in one place — Overdue, Today, Tomorrow, This Week, Later.</p>
-        </div>
-
-        <!-- Card: locations & duration -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <h3>Times &amp; places captured</h3>
-          <p>Say "lunch at Dolmen Mall from 1 to 2" — WhisperAct writes the event with location and exact duration.</p>
-        </div>
-
-        <!-- Pro: location-triggered reminders -->
-        <div class="bento-card span-2">
-          <span class="bento-badge">Pro</span>
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <h3>Reminders that find you</h3>
-          <p>Say "remind me to grab my prescription when I get to the pharmacy" — WhisperAct sets a place instead of a time and nudges you on arrival, or on the way out. Delivered through Apple Reminders, so it works even with WhisperAct closed.</p>
-        </div>
-
-        <!-- Card: recurring -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <p>English, Español, Français, Português, Deutsch, Italiano, Polski, Türkçe, Русский, Ελληνικά, <bdi lang="ar">العربية</bdi>, <bdi lang="ur">اردو</bdi>, Bahasa Indonesia, 한국어 and 日本語. Items come back in the language you spoke.</p>
+          <p class="fine">Recording in a language other than English needs an internet connection. The app itself is in English and Spanish.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
           <h3>Repeats, understood</h3>
-          <p>"Take my vitamins every morning at eight" becomes a real daily reminder — WhisperAct reads the schedule and rolls it forward each time.</p>
-        </div>
-
-        <!-- Big card: notification -->
-        <div class="bento-card span-2">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <h3>Smart notifications</h3>
-          <p>Every reminder alerts you right at its due time, with an optional earlier heads-up so nothing slips — free for everyone. Events carry their own lead-time alert. Add a Daily Digest for a morning briefing, or Daily Review to triage what still needs a date.</p>
-          <div class="mini-wave" aria-hidden="true">
-            <div class="mini-bar" style="height:10px"></div>
-            <div class="mini-bar" style="height:18px"></div>
-            <div class="mini-bar" style="height:14px"></div>
-            <div class="mini-bar" style="height:22px"></div>
-            <div class="mini-bar" style="height:16px"></div>
-            <div class="mini-bar" style="height:12px"></div>
-            <div class="mini-bar" style="height:20px"></div>
-            <div class="mini-bar" style="height:10px"></div>
-          </div>
-        </div>
-
-        <!-- Pro: iCloud -->
-        <div class="bento-card">
-          <span class="bento-badge">Pro</span>
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          <h3>iCloud sync</h3>
-          <p>Your full memo library across all your iPhones and iPads. No WhisperAct account — data stays in your iCloud.</p>
-        </div>
-
-        <!-- Pro: widgets -->
-        <div class="bento-card">
-          <span class="bento-badge">Pro</span>
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-          <h3>Home &amp; Lock Screen widgets</h3>
-          <p>See today's agenda, what's due, and your overdue count at a glance — right on your Home Screen and Lock Screen, updated through the day.</p>
-        </div>
-
-        <!-- Re-Analyze (free 7/mo · Pro unlimited) -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
-          <h3>Re-Analyze</h3>
-          <p>Recorded offline and got basic results? One tap re-runs cloud AI on the saved transcript — no re-recording. Free includes 7 a month; Pro is unlimited.</p>
-        </div>
-
-        <!-- Daily Digest (free for everyone) -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          <h3>Daily Digest</h3>
-          <p>One notification at your chosen time — a time-ordered rundown of today's events, reminders, and overdue items. Free for everyone.</p>
-        </div>
-
-        <!-- Export -->
-        <div class="bento-card">
-          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          <h3>Share &amp; export</h3>
-          <p>Plain text and Markdown sharing free for everyone. Pro unlocks PDF export and bulk multi-memo export.</p>
-        </div>
-
-      </div>
+          <p>Say “take vitamins every morning at 8” and WhisperAct suggests a daily repeat for you to confirm, then rolls the date forward each time you’re done.</p>
+          <p class="fine">Free for everyone. With Pro, repeats on items synced to Apple also become native recurring series.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <h3>Reminders at a place <span class="badge">Pro</span></h3>
+          <p>“Remind me when I get to the pharmacy” sets a place instead of a time. Apple Reminders delivers it when you arrive or leave, even with WhisperAct closed.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></span>
+          <h3>Share it your way</h3>
+          <p>Share any memo as plain text or Markdown, free. With Pro, export a polished PDF or several memos at once.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h3>Your words, your times</h3>
+          <p>In the Day tab, tell WhisperAct when your day starts and ends and what “morning” or “evening” means to you, so spoken times land where you expect.</p>
+        </li>
+        <li class="feature-card">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+          <h3>Offline now, smarter later</h3>
+          <p>No connection? English recording still works on devices with Apple’s on-device speech recognition, and items are found on your device. Re-Analyze with Cloud AI when you’re back online.</p>
+          <p class="fine">Re-Analyze: 7 a month free, unlimited with Pro.</p>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- PRODUCT HUNT REVIEWS -->
-  <section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
-    <div class="section-wrap">
-      <div class="reviews-head">
+  <!-- REVIEWS -->
+  <section class="section section--alt" id="reviews" aria-labelledby="reviews-title">
+    <div class="shell">
+      <div class="section-head section-head--split">
         <div>
-          <p class="section-label">Product Hunt launch feedback</p>
-          <h2 class="section-title" id="reviews-heading">Real users are already turning messy thoughts into action</h2>
-          <p class="section-sub">Early launch comments from people trying WhisperAct in the moments where typing gets in the way.</p>
+          <p class="eyebrow">Product Hunt launch feedback</p>
+          <h2 id="reviews-title">What early users said</h2>
+          <p>Comments from people trying WhisperAct in the moments where typing gets in the way.</p>
         </div>
-        <div class="review-proof" aria-label="WhisperAct reviews and rating">
-          <a class="rating-pill" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">
-            <span class="rating-stars" aria-hidden="true">★★★★★</span>
-            5-star App Store rating
-          </a>
-          <a class="ph-link" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
-            <span class="ph-mark" aria-hidden="true">P</span>
-            Read on Product Hunt
-          </a>
-        </div>
+        <a class="btn btn-secondary btn-sm" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">Read the launch on Product Hunt</a>
       </div>
 
-      <div class="reviews-grid">
-        <a class="review-card featured" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
-          <div class="review-kicker">
-            <span>Voice to tasks</span>
-            <span>Product Hunt</span>
-          </div>
-          <p class="review-quote">"Spoke a messy brain dump on a walk and it pulled out actual tasks with dates, not just a transcript. The Apple Calendar sync sealed it for me."</p>
-          <div class="review-author">
-            <span>Kevser Tekuğur</span>
-            <span class="review-source">View launch</span>
-          </div>
-        </a>
+      <div class="quotes" data-reveal="stagger">
+        <figure class="quote quote--featured">
+          <blockquote cite="https://www.producthunt.com/products/whisperact?launch=whisperact">
+            <p>"Spoke a messy brain dump on a walk and it pulled out actual tasks with dates, not just a transcript. The Apple Calendar sync sealed it for me."</p>
+          </blockquote>
+          <figcaption><span>Kevser Tekuğur</span><span class="quote-source">Product Hunt</span></figcaption>
+        </figure>
 
-        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
-          <div class="review-kicker">
-            <span>Apple-native workflow</span>
-            <span>Product Hunt</span>
-          </div>
-          <p class="review-quote">"The automatic task extraction from natural speech feels genuinely thoughtful, not just a gimmick bolted on. Love that it actually pushes to Apple Reminders and Calendar instead of trapping everything in yet another app."</p>
-          <div class="review-author">
-            <span>Azad</span>
-            <span class="review-source">View launch</span>
-          </div>
-        </a>
+        <figure class="quote">
+          <blockquote cite="https://www.producthunt.com/products/whisperact?launch=whisperact">
+            <p>"The automatic task extraction from natural speech feels genuinely thoughtful, not just a gimmick bolted on. Love that it actually pushes to Apple Reminders and Calendar instead of trapping everything in yet another app."</p>
+          </blockquote>
+          <figcaption><span>Azad</span><span class="quote-source">Product Hunt</span></figcaption>
+        </figure>
 
-        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
-          <div class="review-kicker">
-            <span>Fast capture</span>
-            <span>Product Hunt</span>
-          </div>
-          <p class="review-quote">"Would love a widget on the home screen so I can tap once and start recording hands free, especially when I'm already mid thought and don't want to fumble opening the app first."</p>
-          <span class="review-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped — one-tap record widget</span>
-          <div class="review-author">
-            <span>Melek Tavan</span>
-            <span class="review-source">View launch</span>
-          </div>
-        </a>
+        <figure class="quote">
+          <blockquote cite="https://www.producthunt.com/products/whisperact?launch=whisperact">
+            <p>"Would love a widget on the home screen so I can tap once and start recording hands free, especially when I'm already mid thought and don't want to fumble opening the app first."</p>
+          </blockquote>
+          <span class="quote-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped: Today widget with one-tap recording</span>
+          <figcaption><span>Melek Tavan</span><span class="quote-source">Product Hunt</span></figcaption>
+        </figure>
 
-        <a class="review-card" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">
-          <div class="review-kicker">
-            <span>Voice to todos</span>
-            <span>Product Hunt</span>
-          </div>
-          <p class="review-quote">"Loving the voice to todos flow, it actually saves me from typing. One thing that would take it further for me is letting me set a location based reminder so when I arrive somewhere the task pops up automatically, kind of like geo fenced todos."</p>
-          <span class="review-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped — location reminders</span>
-          <div class="review-author">
-            <span>Fahri Reyhanlı</span>
-            <span class="review-source">View launch</span>
-          </div>
-        </a>
+        <figure class="quote">
+          <blockquote cite="https://www.producthunt.com/products/whisperact?launch=whisperact">
+            <p>"Loving the voice to todos flow, it actually saves me from typing. One thing that would take it further for me is letting me set a location based reminder so when I arrive somewhere the task pops up automatically, kind of like geo fenced todos."</p>
+          </blockquote>
+          <span class="quote-shipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Shipped: location reminders (Pro)</span>
+          <figcaption><span>Fahri Reyhanlı</span><span class="quote-source">Product Hunt</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <!-- PRICING -->
-  <section id="pricing" aria-labelledby="pricing-heading">
-    <div class="section-wrap">
-      <p class="section-label">Pricing</p>
-      <h2 class="section-title" id="pricing-heading">Simple, honest pricing</h2>
-      <p class="section-sub">Start free. Upgrade when you hit the cap.</p>
-
-      <div class="pricing-grid">
-
-        <div class="pricing-card">
-          <p class="plan-tier">Free</p>
-          <p class="plan-price">$0</p>
-          <p class="plan-billing">forever</p>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li><span class="ck">✓</span> Up to 2 min per recording</li>
-            <li><span class="ck">✓</span> AI task, reminder &amp; event extraction</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">7 Reminder + 7 Calendar syncs / month</span></li>
-            <li><span class="ck">✓</span> 7 most recent memos</li>
-            <li><span class="ck">✓</span> Plain text &amp; Markdown sharing</li>
-            <li><span class="ck">✓</span> 15 recording languages</li>
-            <li><span class="ck">✓</span> Daily Digest briefing</li>
-            <li><span class="ck">✓</span> 7 Re-Analyses / month</li>
-            <li><span class="ck">✓</span> Works fully offline</li>
-          </ul>
-<a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-   target="_blank"
-   rel="noopener"
-   class="btn-plan btn-plan-free">
-   Download Free
-</a>
-        </div>
-
-        <div class="pricing-card">
-          <p class="plan-tier">Pro Monthly</p>
-          <p class="plan-price">$2.99</p>
-          <p class="plan-billing">/ month</p>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li><span class="ck">✓</span> Up to <span class="feature-emphasis">20 min</span> per recording</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Apple syncs</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Full</span> memo history</li>
-            <li><span class="ck">✓</span> iCloud sync across all devices</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Re-Analyze with Cloud AI</li>
-            <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
-            <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
-            <li><span class="ck">✓</span> Home &amp; Lock Screen widgets</li>
-          </ul>
-          <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-   target="_blank"
-   rel="noopener"
-   class="btn-plan btn-plan-pro">
-   Get Pro Monthly
-</a>
-        </div>
-
-        <div class="pricing-card pro-card">
-          <div class="pro-pill">Best Value</div>
-          <div class="save-corner">SAVE 30%</div>
-          <p class="plan-tier">Pro Yearly</p>
-          <p class="plan-price">$24.99</p>
-          <p class="plan-billing"><span class="price-was">$35.88</span> / year &nbsp;·&nbsp; <span class="plan-save">~$2.08 / mo</span></p>
-          <p class="limited-note">Limited-time launch discount</p>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Everything in Pro</span>, billed yearly</li>
-            <li><span class="ck">✓</span> Up to <span class="feature-emphasis">20 min</span> per recording</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Apple syncs</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Full</span> memo history</li>
-            <li><span class="ck">✓</span> iCloud sync across all devices</li>
-            <li><span class="ck">✓</span> <span class="feature-emphasis">Unlimited</span> Re-Analyze with Cloud AI</li>
-            <li><span class="ck">✓</span> Choose Reminders list &amp; Calendar</li>
-            <li><span class="ck">✓</span> PDF export &amp; bulk export</li>
-            <li><span class="ck">✓</span> Home &amp; Lock Screen widgets</li>
-          </ul>
-          <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-   target="_blank"
-   rel="noopener"
-   class="btn-plan btn-plan-pro">
-   Get Pro Yearly — Save 30%
-</a>
-        </div>
-
+  <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <div class="shell">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Pricing</p>
+        <h2 id="pricing-title">Free to start. Pro when you want more.</h2>
+        <p>Capturing, reviewing and planning are free. Pro removes the limits and adds a few power features.</p>
       </div>
-      <p class="pricing-note">The yearly plan is a <strong>limited-time discount</strong> and may end without notice. Prices shown in USD. Actual price is confirmed at checkout in the App Store and may vary by region. Subscriptions managed via Apple ID Settings and can be cancelled anytime.</p>
+
+      <div class="plans" data-reveal="stagger">
+        <article class="plan" aria-labelledby="plan-free-title">
+          <h3 id="plan-free-title">Free</h3>
+          <p class="plan-price"><span class="amount">$0</span></p>
+          <p class="plan-note">Free download</p>
+          <ul class="checklist">
+            <li>Recordings up to 2 minutes</li>
+            <li>7 Apple Reminders and 7 Apple Calendar saves a month</li>
+            <li>Your 7 most recent memos</li>
+            <li>Re-Analyze with Cloud AI 7 times a month</li>
+            <li>Talk or type, in 15 recording languages</li>
+            <li>Repeats, Daily Review, Daily Digest and widgets</li>
+            <li>Categories, search and Time Preferences</li>
+            <li>Plain text and Markdown sharing</li>
+          </ul>
+          <a class="btn btn-secondary" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download free</a>
+        </article>
+
+        <article class="plan plan--pro" aria-labelledby="plan-pro-title">
+          <h3 id="plan-pro-title">Pro</h3>
+          <p class="plan-note">Everything in Free, plus:</p>
+          <ul class="checklist plan-list--two">
+            <li>Recordings up to 20 minutes</li>
+            <li>Unlimited Apple Reminders and Calendar saves</li>
+            <li>Your full memo history</li>
+            <li>iCloud sync across iPhone and iPad</li>
+            <li>Location reminders</li>
+            <li>Choose your Reminders list and calendar</li>
+            <li>Import from Apple Reminders</li>
+            <li>Unlimited Re-Analyze</li>
+            <li>PDF and bulk export</li>
+            <li>Premium themes</li>
+          </ul>
+          <ul class="billing" aria-label="Ways to pay for Pro">
+            <li><span class="billing-name">Monthly</span><span class="billing-price">$2.99<small>/ month</small></span></li>
+            <li><span class="billing-name">Yearly <span class="badge">Save 30% vs monthly</span></span><span class="billing-price">$24.99<small>/ year</small></span></li>
+            <li><span class="billing-name">Lifetime</span><span class="billing-price">$99.99<small>once</small></span><span class="billing-detail">One-time purchase. Never renews.</span></li>
+          </ul>
+          <p class="plan-cta-note">Choose a plan inside the app after you download it.</p>
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download WhisperAct</a>
+        </article>
+      </div>
+      <p class="fine-print">Prices are the US App Store prices as of October 21, 2026. Your price may differ by country or region; the App Store shows it before you buy. Monthly and Yearly renew automatically until you cancel in your Apple Account settings. All three Pro options unlock the same features.</p>
     </div>
   </section>
 
-  <!-- PRIVACY STRIP -->
-  <div class="privacy-strip">
-    <div class="privacy-inner">
-      <div class="privacy-copy">
-        <p class="section-label">Privacy</p>
-        <h2>Private by design, not policy</h2>
-        <p>For English on iOS 26 devices, transcription runs entirely on-device — your audio never leaves your phone. Non-English audio is sent to Groq's Whisper API and not retained after processing. No WhisperAct account. No ads or cross-app tracking. Limited analytics and crash diagnostics never include your memo content.</p>
+  <!-- PRIVACY -->
+  <section class="section section--alt" id="privacy" aria-labelledby="privacy-title">
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow">Privacy</p>
+        <h2 id="privacy-title">No account. No ads. Clear answers about your data.</h2>
+        <p>WhisperAct has no servers of its own for your memos. Here’s where your words go.</p>
       </div>
-      <div class="privacy-pills">
-        <div class="privacy-pill">No account required</div>
-        <div class="privacy-pill">No ads or cross-app tracking</div>
-        <div class="privacy-pill">No ads, ever</div>
-        <div class="privacy-pill">On-device transcription (English)</div>
-        <div class="privacy-pill">Private iCloud storage (Pro)</div>
-        <div class="privacy-pill">No WhisperAct server</div>
+      <div class="privacy-grid" data-reveal="stagger">
+        <article class="privacy-card">
+          <h3>On your device</h3>
+          <ul>
+            <li>Memos and items are stored on your iPhone or iPad, and in your private iCloud database if you have Pro.</li>
+            <li>English recordings are transcribed by Apple’s speech recognition, on-device on supported devices.</li>
+          </ul>
+        </article>
+        <article class="privacy-card">
+          <h3>Sent for processing</h3>
+          <ul>
+            <li>Recordings in other languages are transcribed by Groq.</li>
+            <li>When you’re online, the text of your memo — not the audio — is sent to OpenAI, with Cerebras as a backup, to find tasks and dates.</li>
+            <li>Requests carry no name or Apple ID, but they include whatever you said or typed.</li>
+          </ul>
+        </article>
+        <article class="privacy-card">
+          <h3>Never for advertising</h3>
+          <ul>
+            <li>No ads and no cross-app tracking.</li>
+            <li>Analytics and crash reports are limited, and WhisperAct doesn’t add your memo content to them.</li>
+            <li>We never sell your personal data.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="privacy-more"><a class="text-link" href="/privacy">Read the Privacy Policy, including how long each provider keeps data <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="section" aria-labelledby="cta-title">
+    <div class="shell">
+      <div class="cta-panel" data-reveal>
+        <img src="/icon-128.png" width="72" height="72" alt="" loading="lazy" decoding="async" />
+        <h2 id="cta-title">Whisper it. We’ll handle the rest.</h2>
+        <p>Free on the App Store for iPhone and iPad with iOS 26 or later.</p>
+        <a class="btn btn-primary btn-lg" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
       </div>
     </div>
-  </div>
+  </section>
 
 </main>
 
-<footer>
-  <p class="footer-copy">© 2026 WhisperAct. All rights reserved.</p>
-  <ul class="footer-links">
-    <li><a href="/privacy">Privacy Policy</a></li>
-    <li><a href="/terms">Terms of Use</a></li>
-    <li><a href="/support">Support</a></li>
-    <li><a href="mailto:support@whisperact.com">Contact</a></li>
-  </ul>
-  <p class="footer-social">
-    <a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a>
-  </p>
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/icon-128.png" width="32" height="32" alt="" loading="lazy" decoding="async" />
+          <span>WhisperAct</span>
+        </a>
+        <p>Whisper it. We’ll handle the rest. Voice notes into reminders, events and to-dos on iPhone and iPad.</p>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="/support">Support &amp; FAQ</a></li>
+            <li><a href="mailto:support@whisperact.com">Email support</a></li>
+            <li><a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 WhisperAct. All rights reserved.</p>
+      <p>Made for iPhone and iPad.</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-  /* ── Waveform bars ── */
-  (function() {
-    var el = document.getElementById('waveform');
-    if (!el) return;
-    var heights = [18,28,45,60,72,55,80,65,48,35,55,70,58,42,68,75,50,30,62,44];
-    var fragment = document.createDocumentFragment();
-    heights.forEach(function(h, i) {
-      var b = document.createElement('div');
-      b.className = 'wf-bar';
-      b.style.height = h + 'px';
-      b.style.animationDelay = (i * 0.07) + 's';
-      b.style.animationDuration = (1.2 + (i % 4) * 0.12) + 's';
-      fragment.appendChild(b);
-    });
-    el.appendChild(fragment);
-  })();
-
-  /* ── Load the offscreen demo video only when it is close to view ── */
-  (function() {
-    var videos = document.querySelectorAll('.js-lazy-video');
-    if (!videos.length) return;
-
-    function loadVideo(video) {
-      if (video.dataset.loaded) return;
-      var source = video.querySelector('source[data-src]');
-      if (!source) return;
-      source.src = source.dataset.src;
-      video.dataset.loaded = 'true';
-      video.load();
-      video.play().catch(function() {});
-    }
-
-    if (!window.IntersectionObserver) {
-      window.addEventListener('load', function() {
-        window.setTimeout(function() {
-          videos.forEach(loadVideo);
-        }, 1500);
-      }, { once: true });
-      return;
-    }
-
-    var videoObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) return;
-        loadVideo(entry.target);
-        videoObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: '300px 0px', threshold: 0.01 });
-
-    videos.forEach(function(video) {
-      videoObserver.observe(video);
-    });
-  })();
-
-  /* ── Scroll-reveal for bento cards ── */
-  (function() {
-    var cards = document.querySelectorAll('.bento-card');
-    if (!window.IntersectionObserver) {
-      cards.forEach(function(c) { c.classList.add('visible'); });
-      return;
-    }
-    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq && mq.matches) {
-      cards.forEach(function(c) { c.classList.add('visible'); });
-      return;
-    }
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, idx) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var delay = Array.prototype.indexOf.call(cards, el) % 3 * 80;
-          setTimeout(function() { el.classList.add('visible'); }, delay);
-          obs.unobserve(el);
-        }
-      });
-    }, { threshold: 0.12 });
-    cards.forEach(function(c) { obs.observe(c); });
-  })();
-</script>
-
-<script src="/menu.js" defer></script>
 
 </body>
 </html>

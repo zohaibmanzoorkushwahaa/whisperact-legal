@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Support · WhisperAct</title>
-  <meta name="description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <meta name="description" content="WhisperAct support and FAQ: recording and typing, languages, Apple Reminders and Calendar, plans and Lifetime, privacy, and your data." />
   <link rel="canonical" href="https://whisperact.com/support" />
 
   <!-- Icons / PWA -->
@@ -13,7 +13,28 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0a0a0d" />
+
+  <!-- Appearance: follows the system unless the visitor picked one (stored by /menu.js) -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbf6ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      r.className = r.className.replace(/\bno-js\b/, "js");
+      try {
+        var t = localStorage.getItem("wa-theme");
+        if (t === "light" || t === "dark") {
+          r.setAttribute("data-theme", t);
+          r.style.colorScheme = t;
+          var m = d.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#1f1c1a" : "#fbf6ef");
+        }
+      } catch (e) {}
+    })(document);
+  </script>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/menu.js" defer onerror="document.documentElement.classList.remove('js')"></script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -21,760 +42,418 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://whisperact.com/support" />
   <meta property="og:title" content="Support · WhisperAct" />
-  <meta property="og:description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <meta property="og:description" content="WhisperAct support and FAQ: recording and typing, languages, Apple Reminders and Calendar, plans and Lifetime, privacy, and your data." />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Support · WhisperAct" />
-  <meta name="twitter:description" content="WhisperAct support and frequently asked questions. Find answers about recording, languages, syncing, subscriptions, and privacy." />
+  <meta name="twitter:description" content="WhisperAct support and FAQ: recording and typing, languages, Apple Reminders and Calendar, plans and Lifetime, privacy, and your data." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --coral:        #D85A30;
-      --coral-dim:    rgba(216,90,48,0.12);
-      --coral-border: rgba(216,90,48,0.28);
-      --ink:          #0a0a0d;
-      --ink-2:        #111116;
-      --ink-3:        #18181f;
-      --line:         rgba(255,255,255,0.07);
-      --line-2:       rgba(255,255,255,0.12);
-      --text:         #f0ede8;
-      --text-2:       rgba(240,237,232,0.60);
-      --text-3:       rgba(240,237,232,0.35);
-      --text-body:    rgba(240,237,232,0.78);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--ink);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      padding-bottom: 80px;
-    }
-
-    /* ── NAV ─────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 60px;
-      background: rgba(10,10,13,0.80);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    /* Centers header content on the same column as the page content (max 760). */
-    .nav-inner {
-      max-width: 760px;
-      margin: 0 auto;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      margin-right: -10px;
-      background: none;
-      border: 0;
-      cursor: pointer;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      margin: 0 auto;
-      border-radius: 2px;
-      background: var(--coral);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-    .nav-toggle:focus-visible {
-      outline: 2px solid var(--coral);
-      outline-offset: 2px;
-      border-radius: 8px;
-    }
-
-    .nav-brand {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      background: var(--coral) !important;
-      color: #fff !important;
-      padding: 8px 18px !important;
-      border-radius: 8px !important;
-      font-weight: 600 !important;
-    }
-
-    /* ── PAGE HERO ───────────────────────────────────── */
-    .page-hero {
-      padding: 80px 24px 64px;
-      max-width: 760px;
-      margin: 0 auto;
-      border-bottom: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 20px;
-      justify-content: center;
-    }
-
-    .page-badge::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--coral);
-    }
-
-    .page-badge::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--coral);
-    }
-
-    .page-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.08;
-      margin-bottom: 16px;
-    }
-
-    .page-hero p {
-      font-size: 17px;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-
-    /* ── CONTENT ─────────────────────────────────────── */
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 14px;
-      display: block;
-      margin-top: 56px;
-    }
-
-    .section-title {
-      font-size: clamp(20px, 3vw, 28px);
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 28px;
-    }
-
-    /* ── FAQ ─────────────────────────────────────────── */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: 64px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    details {
-      background: var(--ink-2);
-      border-bottom: 1px solid var(--line);
-    }
-
-    details:last-child { border-bottom: none; }
-
-    summary {
-      padding: 20px 24px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      transition: background 0.15s;
-      user-select: none;
-    }
-
-    summary::-webkit-details-marker { display: none; }
-
-    summary:hover { background: var(--ink-3); }
-
-    .faq-chevron {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      color: var(--coral);
-      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    details[open] .faq-chevron { transform: rotate(180deg); }
-
-    details[open] summary {
-      background: var(--ink-3);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .faq-answer {
-      padding: 20px 24px 24px;
-      font-size: 15px;
-      color: var(--text-body);
-      line-height: 1.75;
-      background: var(--ink-2);
-    }
-
-    .faq-answer p { margin-bottom: 12px; }
-    .faq-answer p:last-child { margin-bottom: 0; }
-
-    .faq-answer a { color: var(--coral); text-decoration: none; }
-    .faq-answer a:hover { text-decoration: underline; }
-
-    .faq-answer strong { color: var(--text); font-weight: 600; }
-
-    /* ── CONTACT CARD ────────────────────────────────── */
-    .contact-card {
-      background: var(--ink-2);
-      border: 1px solid var(--coral-border);
-      border-radius: 20px;
-      padding: 52px 40px;
-      text-align: center;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(216,90,48,0.10) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-card h2 {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 12px;
-      position: relative;
-    }
-
-    .contact-card p {
-      font-size: 15px;
-      color: var(--text-2);
-      margin-bottom: 32px;
-      max-width: 360px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.65;
-      position: relative;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: var(--coral);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 30px;
-      border-radius: 12px;
-      text-decoration: none;
-      letter-spacing: -0.2px;
-      transition: opacity 0.15s, transform 0.15s;
-      position: relative;
-    }
-
-    .contact-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .response-note {
-      font-size: 13px;
-      color: var(--text-3);
-      margin-top: 16px;
-      margin-bottom: 0;
-      position: relative;
-    }
-
-    /* ── FOOTER ──────────────────────────────────────── */
-    .page-footer {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 32px 24px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .page-footer p {
-      font-size: 13px;
-      color: var(--text-3);
-      margin: 0;
-    }
-
-    .page-footer-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .page-footer-links a {
-      font-size: 13px;
-      color: var(--text-3);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .page-footer-links a:hover { color: var(--coral); }
-
-    /* Mobile + tablet nav: hamburger reveals the links as a full-width dropdown panel. */
-    @media (max-width: 900px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 12px 20px 18px;
-        background: rgba(10,10,13,0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--line);
-      }
-      nav.open .nav-links { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block;
-        padding: 12px 4px;
-        font-size: 15px;
-      }
-      .nav-cta {
-        text-align: center;
-        margin-top: 6px;
-        padding: 12px 18px !important;
-      }
-      nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    }
-
-    @media (max-width: 600px) {
-      .nav-inner { padding: 0 20px; }
-      .page-hero { padding: 56px 20px 44px; }
-      .container { padding: 0 20px; }
-      .contact-card { padding: 36px 24px; }
-      summary { padding: 18px 20px; }
-      .faq-answer { padding: 16px 20px 20px; }
-    }
-  </style>
-  <!-- FAQ structured data -->
+  <!-- FAQ structured data: keep in step with the visible answers below -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How do I start recording?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tap the floating microphone button at the bottom of the screen. WhisperAct will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically."
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I start recording?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tap the microphone button at the bottom of the screen to open the recorder, then tap the mic and speak naturally. The first time, WhisperAct asks for access to the microphone and, for English, speech recognition. Tap stop when you’re done: free recordings can be up to 2 minutes, and Pro recordings up to 20 minutes. WhisperAct then shows the items it found so you can review them. Prefer typing? Tap Type a memo instead on the recording screen. You can also start a memo from the WhisperAct Today widget, Control Center, Siri or the Action Button."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages does WhisperAct support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can record in 15 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Greek (Ελληνικά), Turkish, Russian, Indonesian, Italian, Polish, Korean and Japanese (日本語). Choose the language with the language button (for example EN) at the top of the recording screen before you record. English is transcribed by Apple’s speech recognition, on-device on supported devices. The other languages are transcribed online by Groq, so they need an internet connection. Tasks, reminders and event titles come back in the language you spoke, with any English words you mixed in kept as you said them. The app’s own screens are in English and Spanish."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does WhisperAct work without an internet connection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Partly. Recording in English works offline on iPhones and iPads that support Apple’s on-device speech recognition; on other devices, English recording needs a connection. Recording in any other language always needs a connection. Typed memos work offline. Offline, items are found on your device — by Apple Intelligence for English where it’s available, otherwise by a built-in basic engine — so results can be simpler. You can Re-Analyze the memo with Cloud AI once you’re back online. With Pro, iCloud sync catches up when you reconnect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do my items go — WhisperAct or Apple’s apps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each capture has a destination, shown at the top of the review screen. With Apple apps selected — the default — reminders are saved to Apple Reminders and events to Apple Calendar. To-dos stay in WhisperAct unless you turn on Sync todos to Apple Reminders in Settings. Choose WhisperAct instead and the items stay in the app; you can send any of them to Apple later from the item’s menu. You can change the default destination in Settings → Apple apps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why aren't my tasks showing up in Apple Reminders or Calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First, check the destination: items saved to WhisperAct stay in the app until you sync them, and to-dos stay in WhisperAct unless Sync todos to Apple Reminders is on. On the free plan you can sync 7 items to Apple Reminders and 7 to Apple Calendar each month — two separate allowances that reset on the 1st. When one runs out, items of that type are kept in WhisperAct and you can sync them later from the item’s menu. Pro has no limit. WhisperAct also needs Full Access to Reminders and Calendars: in the iPhone Settings app, go to Privacy & Security → Reminders (or Calendars) and check that WhisperAct is set to Full Access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I review items before they're saved to Apple Reminders or Calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — by default every capture opens for review first. You can edit the title, switch an item between to-do, reminder and event, change the date, add an item it missed, or leave one out. If a date is vague, WhisperAct asks which day you meant. Nothing is written to Apple Reminders or Apple Calendar until you confirm. After you’ve reviewed several captures, WhisperAct offers auto-save for clear items, so confident captures save straight away while anything unclear still opens for review. You can turn it on or off any time in Settings → Apple apps → Auto-save clear items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many free Apple syncs do I get?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The free plan includes 7 syncs to Apple Reminders and 7 syncs to Apple Calendar every month — tracked separately, so up to 14 Apple items in total. Each new reminder or event created in Apple uses one sync from its own allowance; editing an item that’s already in Apple doesn’t. Both reset at the start of each month. Pro has unlimited syncs. You can check your usage any time in Settings → Sync & Usage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I set a location-based reminder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Say something like “remind me to grab my prescription when I get to the pharmacy” and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose “When I arrive or leave”, search for the place and set how close you need to be. Location reminders are a Pro feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed. The alert may not appear the instant you arrive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can WhisperAct create repeating reminders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, and it is available on the free plan. Say “take my vitamins every morning at eight” or “submit my timesheet every Friday” and WhisperAct asks you to confirm the repeat, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item. For items synced to Apple, Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar, so it stays in sync there too."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Pro include, and what is Lifetime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pro removes the free limits — recordings up to 20 minutes, unlimited Apple syncs and Re-Analyze, and your full memo history — and adds iCloud sync across your iPhone and iPad, location reminders, a specific Reminders list or calendar of your choice, import from Apple Reminders, PDF and bulk export, and premium themes. Pro Monthly, Pro Yearly and Pro Lifetime all unlock the same features; Lifetime is a one-time purchase that never renews. On the US App Store they cost $2.99 a month, $24.99 a year or $99.99 once, as of October 21, 2026. The App Store shows the price for your country or region before you buy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Re-Analyze and when does it appear?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Re-Analyze runs a memo’s saved transcript through Cloud AI again, without re-recording — useful when a memo was processed offline or on your device. Open the memo: when Re-Analyze is available, it appears at the top. It needs an internet connection. The free plan includes 7 Re-Analyses a month and Pro is unlimited. If a typed memo, or one recorded in a language other than English, came back with no items, a recovery Re-Analyze is offered that doesn’t count toward the monthly limit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I access my older memos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The free plan shows your 7 most recent memos. Older memos stay on your device but appear locked, and upgrading to Pro unlocks your full history without any data loss. On the free plan, memos are stored only on this device, so deleting the app removes them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I cancel my subscription?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the Settings app on your iPhone → tap your name → Subscriptions → WhisperAct → Cancel Subscription. In WhisperAct you can also open Settings and tap Manage Subscription on your plan. Pro stays active until the end of the period you’ve paid for. Pro Lifetime is a one-time purchase, so there’s nothing to cancel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I lost my purchase after reinstalling. How do I restore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open WhisperAct, go to Settings and tap Restore Purchases (it’s also on the upgrade screen). Your purchase is restored as long as you’re signed in with the same Apple Account you used to buy it. If that doesn’t work, please contact us."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my voice data private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WhisperAct has no account system and no servers of its own for your memos. English recordings are transcribed by Apple’s speech recognition — on-device on supported iOS 26 devices, otherwise by Apple’s speech servers, which WhisperAct doesn’t see. Recordings in other languages are sent to Groq for transcription; WhisperAct has turned on Groq’s Zero Data Retention setting. The recording itself is deleted once it has been transcribed. When you’re online, the text of your memo — not the audio — is sent to OpenAI to find tasks, reminders and events, with Cerebras as a backup. These requests don’t include your name or Apple ID, but they do include what you said or typed. OpenAI may keep abuse-monitoring logs for up to 30 days; Cerebras states that it doesn’t retain requests. See our Privacy Policy for full details."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I delete all my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Go to Settings inside WhisperAct and tap “Delete All Data”. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What languages does WhisperAct support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "WhisperAct supports 15 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Greek (Ελληνικά), Turkish, Russian, Indonesian, Italian, Polish, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record. English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles come back in the language you spoke, with any English words you mixed in kept exactly as you said them."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why aren't my tasks showing up in Apple Reminders or Calendar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Free users get 7 syncs to Apple Reminders and 7 syncs to Apple Calendar each month — two separate buckets that each reset at the start of the calendar month. If you have used up one type, items of that type are still saved locally in WhisperAct and can be synced later. Pro subscribers get unlimited syncs every month. You also need to have granted Reminders and Calendar permissions when prompted. To check, go to Settings → Privacy & Security → Reminders (or Calendar) and confirm WhisperAct is listed and set to \"Full Access\"."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I review items before they're saved to Apple Reminders or Calendar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — and by default you always do. Every task, reminder, and event WhisperAct extracts opens in a review screen first, where you can edit the title, change the type (task, reminder, or event), adjust the date, add an item it missed, or remove one. Nothing is written to Apple Reminders or Apple Calendar until you confirm. Once you've reviewed a few memos, WhisperAct offers to turn on auto-save so confident, clearly-understood captures save instantly — anything unclear still opens for review. You can turn auto-save on or off anytime in Settings → How WhisperAct Saves → Auto-save clear items."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many free Apple syncs do I get?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The free plan includes 7 syncs to Apple Reminders and 7 syncs to Apple Calendar every month — tracked as two separate buckets, so up to 14 Apple items in total. Each reminder or event you send to Apple Reminders or Apple Calendar uses one sync from its own bucket. Both counters reset at the start of each calendar month. Pro subscribers have unlimited syncs. You can check your current usage at any time in the Usage tab inside the App."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Re-Analyze and when does it appear?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If you recorded a memo while offline, or it was processed by the basic on-device engine, Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view. Free users get 7 Re-Analyses per month and Pro subscribers get unlimited. Non-English offline memos that failed to extract any tasks also get one complimentary recovery Re-Analyze that does not count toward the monthly limit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does WhisperAct work without an internet connection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, with some limitations. Recording and transcription both work offline for English — using on-device transcription on iOS 26 devices, with a 60-second cap on other devices offline. AI task extraction falls back to the built-in on-device engine when offline. Non-English recording requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my voice data private?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Audio recorded in English is never uploaded by WhisperAct. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us. For non-English recordings, the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our Privacy Policy for full details."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I cancel my subscription?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Open your iPhone's Settings app → tap your name → Subscriptions → WhisperAct → Cancel Subscription . You can also reach this directly from within the App under Settings → Manage Subscription . Your Pro access continues until the end of the current billing period after cancellation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "I lost my purchase after reinstalling. How do I restore?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Open WhisperAct and navigate to the upgrade screen, then tap \"Restore Purchases\" at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID used for the original purchase. If the issue persists, please contact us."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I access my older memos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I set a location-based reminder?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Say something like \"remind me to grab my prescription when I get to the pharmacy\" and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose \"When I arrive or leave\", search for the place and set how close you need to be. Location reminders are a Pro feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed, and the alert may not appear the instant you arrive."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can WhisperAct create repeating reminders?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, and it is available on the free plan. Say \"take my vitamins every morning at eight\" or \"submit my timesheet every Friday\" and WhisperAct reads the schedule from your words, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item. Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I delete all my data?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Go to Settings inside WhisperAct and tap \"Delete All Data\" . This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone."
-      }
-    }
-  ]
-}
+    ]
+  }
   </script>
 </head>
 <body>
 
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">
-      <img src="/icon.png" alt="WhisperAct icon" />
-      WhisperAct
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/">
+      <img src="/icon-128.png" width="32" height="32" alt="" />
+      <span>WhisperAct</span>
     </a>
-    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
     </button>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-      <li><a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener" class="nav-cta">Download App</a></li>
-    </ul>
+    <div class="site-menu" id="site-menu">
+      <nav class="primary-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/support" aria-current="page">Support</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <fieldset class="theme-switch">
+          <legend class="sr-only">Appearance</legend>
+          <label class="theme-option" title="Match system appearance">
+            <input type="radio" name="theme" value="system" checked />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-label">System</span></span>
+          </label>
+          <label class="theme-option" title="Light appearance">
+            <input type="radio" name="theme" value="light" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="theme-label">Light</span></span>
+          </label>
+          <label class="theme-option" title="Dark appearance">
+            <input type="radio" name="theme" value="dark" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-label">Dark</span></span>
+          </label>
+        </fieldset>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download<span class="sr-only"> WhisperAct on the App Store</span></a>
+      </div>
+    </div>
   </div>
-</nav>
+</header>
 
-<main>
+<main id="main" tabindex="-1">
 
-  <div class="page-hero">
-    <p class="page-badge">Support</p>
-    <h1>How can we help?</h1>
-    <p>Find answers below, or reach out directly — we read every email.</p>
-  </div>
+  <header class="page-header page-header--center">
+    <div class="shell">
+      <p class="eyebrow">Support</p>
+      <h1>How can we help?</h1>
+      <p class="page-lead">Find answers below, or reach out directly — we read every email.</p>
+      <div class="support-actions">
+        <a class="btn btn-primary" href="mailto:support@whisperact.com">Email support</a>
+        <a class="btn btn-secondary" href="/#pricing">Compare Free and Pro</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="container">
+  <div class="shell section section--tight-top">
+    <div class="support-layout">
 
-    <span class="section-label">Common questions</span>
-    <h2 class="section-title">Frequently asked</h2>
+      <section class="faq-group" aria-labelledby="faq-start">
+        <h2 id="faq-start">Getting started</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How do I start recording?</summary>
+            <div class="faq-answer">
+              <p>Tap the microphone button at the bottom of the screen to open the recorder, then tap the mic and speak naturally. The first time, WhisperAct asks for access to the microphone and, for English, speech recognition. Tap stop when you’re done: free recordings can be up to 2 minutes, and Pro recordings up to 20 minutes. WhisperAct then shows the items it found so you can review them.</p>
+              <p>Prefer typing? Tap <strong>Type a memo instead</strong> on the recording screen. You can also start a memo from the WhisperAct Today widget, Control Center, Siri or the Action Button.</p>
+            </div>
+          </details>
 
-    <div class="faq-list">
+          <details class="faq-item">
+            <summary>What languages does WhisperAct support?</summary>
+            <div class="faq-answer">
+              <p>You can record in 15 languages: English, Urdu (<bdi lang="ur">اردو</bdi>), Arabic (<bdi lang="ar">العربية</bdi>), Spanish, French, Portuguese, German, Greek (<span lang="el">Ελληνικά</span>), Turkish, Russian, Indonesian, Italian, Polish, Korean and Japanese (<span lang="ja">日本語</span>). Choose the language with the language button (for example <strong>EN</strong>) at the top of the recording screen before you record.</p>
+              <p>English is transcribed by Apple’s speech recognition, on-device on supported devices. The other languages are transcribed online by Groq, so they need an internet connection. Tasks, reminders and event titles come back in the language you spoke, with any English words you mixed in kept as you said them. The app’s own screens are in English and Spanish.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How do I start recording?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Tap the floating microphone button at the bottom of the screen. WhisperAct will ask for microphone and speech recognition permissions on your first recording — allow both for full functionality. Speak naturally, then tap the stop button when you are done. Your memo is saved automatically.</p>
+          <details class="faq-item">
+            <summary>Does WhisperAct work without an internet connection?</summary>
+            <div class="faq-answer">
+              <p>Partly. Recording in English works offline on iPhones and iPads that support Apple’s on-device speech recognition; on other devices, English recording needs a connection. Recording in any other language always needs a connection. Typed memos work offline.</p>
+              <p>Offline, items are found on your device — by Apple Intelligence for English where it’s available, otherwise by a built-in basic engine — so results can be simpler. You can Re-Analyze the memo with Cloud AI once you’re back online. With Pro, iCloud sync catches up when you reconnect.</p>
+            </div>
+          </details>
         </div>
-      </details>
+      </section>
 
-      <details>
-        <summary>
-          What languages does WhisperAct support?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>WhisperAct supports 15 languages: English, Urdu (اردو), Arabic (العربية), Spanish, French, Portuguese, German, Greek (Ελληνικά), Turkish, Russian, Indonesian, Italian, Polish, Korean, and Japanese (日本語). Tap the language selector in the top-right corner of the recording screen to switch before you record.</p>
-          <p>English transcribes on-device; the other languages use Groq's Whisper API and require an internet connection. Tasks, reminders, and event titles come back in the language you spoke, with any English words you mixed in kept exactly as you said them.</p>
-        </div>
-      </details>
+      <section class="faq-group" aria-labelledby="faq-apple">
+        <h2 id="faq-apple">Apple Reminders &amp; Calendar</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Where do my items go — WhisperAct or Apple’s apps?</summary>
+            <div class="faq-answer">
+              <p>Each capture has a destination, shown at the top of the review screen. With <strong>Apple apps</strong> selected — the default — reminders are saved to Apple Reminders and events to Apple Calendar. To-dos stay in WhisperAct unless you turn on <strong>Sync todos to Apple Reminders</strong> in Settings.</p>
+              <p>Choose <strong>WhisperAct</strong> instead and the items stay in the app; you can send any of them to Apple later from the item’s menu. You can change the default destination in <strong>Settings → Apple apps</strong>.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          Why aren't my tasks showing up in Apple Reminders or Calendar?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Free users get <strong>7 syncs to Apple Reminders</strong> and <strong>7 syncs to Apple Calendar</strong> each month — two separate buckets that each reset at the start of the calendar month. If you have used up one type, items of that type are still saved locally in WhisperAct and can be synced later. Pro subscribers get unlimited syncs every month.</p>
-          <p>You also need to have granted Reminders and Calendar permissions when prompted. To check, go to <strong>Settings → Privacy &amp; Security → Reminders</strong> (or Calendar) and confirm WhisperAct is listed and set to "Full Access".</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>Why aren't my tasks showing up in Apple Reminders or Calendar?</summary>
+            <div class="faq-answer">
+              <p>First, check the destination: items saved to WhisperAct stay in the app until you sync them, and to-dos stay in WhisperAct unless <strong>Sync todos to Apple Reminders</strong> is on.</p>
+              <p>On the free plan you can sync <strong>7 items to Apple Reminders</strong> and <strong>7 to Apple Calendar</strong> each month — two separate allowances that reset on the 1st. When one runs out, items of that type are kept in WhisperAct and you can sync them later from the item’s menu. Pro has no limit.</p>
+              <p>WhisperAct also needs Full Access to Reminders and Calendars: in the iPhone Settings app, go to <strong>Privacy &amp; Security → Reminders</strong> (or Calendars) and check that WhisperAct is set to <strong>Full Access</strong>.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          Can I review items before they're saved to Apple Reminders or Calendar?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Yes — and by default you always do. Every task, reminder, and event WhisperAct extracts opens in a review screen first, where you can edit the title, change the type (task, reminder, or event), adjust the date, add an item it missed, or remove one. <strong>Nothing is written to Apple Reminders or Apple Calendar until you confirm.</strong></p>
-          <p>Once you've reviewed a few memos, WhisperAct offers to turn on auto-save so confident, clearly-understood captures save instantly — anything unclear still opens for review. You can turn auto-save on or off anytime in <strong>Settings → How WhisperAct Saves → Auto-save clear items</strong>.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>Can I review items before they're saved to Apple Reminders or Calendar?</summary>
+            <div class="faq-answer">
+              <p>Yes — by default every capture opens for review first. You can edit the title, switch an item between to-do, reminder and event, change the date, add an item it missed, or leave one out. If a date is vague, WhisperAct asks which day you meant. <strong>Nothing is written to Apple Reminders or Apple Calendar until you confirm.</strong></p>
+              <p>After you’ve reviewed several captures, WhisperAct offers auto-save for clear items, so confident captures save straight away while anything unclear still opens for review. You can turn it on or off any time in <strong>Settings → Apple apps → Auto-save clear items</strong>.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How many free Apple syncs do I get?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>The free plan includes <strong>7 syncs to Apple Reminders</strong> and <strong>7 syncs to Apple Calendar</strong> every month — tracked as two separate buckets, so up to <strong>14 Apple items</strong> in total. Each reminder or event you send to Apple uses one sync from its own bucket. Both counters reset at the start of each calendar month.</p>
-          <p>Pro subscribers have unlimited syncs. You can check your current usage at any time in the <strong>Usage</strong> tab inside the App.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>How many free Apple syncs do I get?</summary>
+            <div class="faq-answer">
+              <p>The free plan includes <strong>7 syncs to Apple Reminders</strong> and <strong>7 syncs to Apple Calendar</strong> every month — tracked separately, so up to <strong>14 Apple items</strong> in total. Each new reminder or event created in Apple uses one sync from its own allowance; editing an item that’s already in Apple doesn’t. Both reset at the start of each month.</p>
+              <p>Pro has unlimited syncs. You can check your usage any time in <strong>Settings → Sync &amp; Usage</strong>.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          What is Re-Analyze and when does it appear?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>If you recorded a memo while offline, it was processed by the built-in offline AI. Re-Analyze lets you re-process that memo with advanced cloud AI for higher accuracy — without re-recording. It appears as a pulsing indicator on the AI engine badge in the memo detail view.</p>
-          <p>Free users get <strong>7 Re-Analyses per month</strong>; Pro subscribers get unlimited. Non-English offline memos that failed to extract any tasks also get one complimentary recovery Re-Analyze that doesn't count toward the monthly limit.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>How do I set a location-based reminder?</summary>
+            <div class="faq-answer">
+              <p>Say something like <strong>“remind me to grab my prescription when I get to the pharmacy”</strong> and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose <strong>“When I arrive or leave”</strong>, search for the place and set how close you need to be.</p>
+              <p>Location reminders are a <strong>Pro</strong> feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed. The alert may not appear the instant you arrive.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          Does WhisperAct work without an internet connection?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Yes, with some limitations. Recording and transcription both work offline for English — using on-device transcription on iOS 26 devices, with a 60-second cap on other devices offline. AI task extraction falls back to the built-in on-device engine when offline.</p>
-          <p>Non-English recording requires an internet connection because transcription relies on an external speech API. iCloud sync will resume automatically when connectivity is restored.</p>
+          <details class="faq-item">
+            <summary>Can WhisperAct create repeating reminders?</summary>
+            <div class="faq-answer">
+              <p>Yes, and it is available on the <strong>free</strong> plan. Say <strong>“take my vitamins every morning at eight”</strong> or <strong>“submit my timesheet every Friday”</strong> and WhisperAct asks you to confirm the repeat, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item.</p>
+              <p>For items synced to Apple, Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar, so it stays in sync there too.</p>
+            </div>
+          </details>
         </div>
-      </details>
+      </section>
 
-      <details>
-        <summary>
-          Is my voice data private?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Yes. Audio recorded in English is never uploaded by WhisperAct. On supported iOS 26 devices, transcription runs entirely on-device. On other devices, transcription may use Apple's speech servers (the same pipeline as Siri), but the audio is handled solely by Apple and not seen by us.</p>
-          <p>For non-English recordings, the audio is sent to Groq's Whisper API for transcription. Groq processes the audio and returns the text transcript — the audio is not retained by Groq after processing. Only the resulting text transcript is then sent for AI task extraction, with no personal identifier attached. See our <a href="/privacy">Privacy Policy</a> for full details.</p>
-        </div>
-      </details>
+      <section class="faq-group" aria-labelledby="faq-plans">
+        <h2 id="faq-plans">Plans &amp; purchases</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What does Pro include, and what is Lifetime?</summary>
+            <div class="faq-answer">
+              <p>Pro removes the free limits — recordings up to 20 minutes, unlimited Apple syncs and Re-Analyze, and your full memo history — and adds iCloud sync across your iPhone and iPad, location reminders, a specific Reminders list or calendar of your choice, import from Apple Reminders, PDF and bulk export, and premium themes.</p>
+              <p>Pro Monthly, Pro Yearly and Pro Lifetime all unlock the same features; Lifetime is a one-time purchase that never renews. On the US App Store they cost $2.99 a month, $24.99 a year or $99.99 once, as of October 21, 2026. The App Store shows the price for your country or region before you buy.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How do I cancel my subscription?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Open your iPhone's <strong>Settings app → tap your name → Subscriptions → WhisperAct → Cancel Subscription</strong>. You can also reach this directly from within the App under <strong>Settings → Manage Subscription</strong>. Your Pro access continues until the end of the current billing period after cancellation.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>What is Re-Analyze and when does it appear?</summary>
+            <div class="faq-answer">
+              <p>Re-Analyze runs a memo’s saved transcript through Cloud AI again, without re-recording — useful when a memo was processed offline or on your device. Open the memo: when Re-Analyze is available, it appears at the top. It needs an internet connection.</p>
+              <p>The free plan includes <strong>7 Re-Analyses a month</strong> and Pro is unlimited. If a typed memo, or one recorded in a language other than English, came back with no items, a recovery Re-Analyze is offered that doesn’t count toward the monthly limit.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          I lost my purchase after reinstalling. How do I restore?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Open WhisperAct and navigate to the upgrade screen, then tap <strong>"Restore Purchases"</strong> at the bottom. Your subscription will be restored automatically as long as you are signed in with the same Apple ID used for the original purchase. If the issue persists, please contact us.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>How do I access my older memos?</summary>
+            <div class="faq-answer">
+              <p>The free plan shows your 7 most recent memos. Older memos stay on your device but appear locked, and upgrading to Pro unlocks your full history without any data loss. On the free plan, memos are stored only on this device, so deleting the app removes them.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How do I access my older memos?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Free users have access to the 7 most recent memos. Older memos are preserved on your device but appear as locked — upgrading to Pro instantly unlocks your full history without any data loss.</p>
-        </div>
-      </details>
+          <details class="faq-item">
+            <summary>How do I cancel my subscription?</summary>
+            <div class="faq-answer">
+              <p>Open the <strong>Settings app on your iPhone → tap your name → Subscriptions → WhisperAct → Cancel Subscription</strong>. In WhisperAct you can also open Settings and tap <strong>Manage Subscription</strong> on your plan. Pro stays active until the end of the period you’ve paid for. Pro Lifetime is a one-time purchase, so there’s nothing to cancel.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How do I set a location-based reminder?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Say something like <strong>"remind me to grab my prescription when I get to the pharmacy"</strong> and WhisperAct will offer a place instead of a time. You can also tap any reminder, choose <strong>"When I arrive or leave"</strong>, search for the place and set how close you need to be.</p>
-          <p>Location reminders are a <strong>Pro</strong> feature. They are delivered through Apple Reminders, so they fire even when WhisperAct is closed. The alert may not appear the instant you arrive.</p>
+          <details class="faq-item">
+            <summary>I lost my purchase after reinstalling. How do I restore?</summary>
+            <div class="faq-answer">
+              <p>Open WhisperAct, go to Settings and tap <strong>Restore Purchases</strong> (it’s also on the upgrade screen). Your purchase is restored as long as you’re signed in with the same Apple Account you used to buy it. If that doesn’t work, please contact us.</p>
+            </div>
+          </details>
         </div>
-      </details>
+      </section>
 
-      <details>
-        <summary>
-          Can WhisperAct create repeating reminders?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Yes, and it is available on the <strong>free</strong> plan. Say <strong>"take my vitamins every morning at eight"</strong> or <strong>"submit my timesheet every Friday"</strong> and WhisperAct reads the schedule from your words, sets the first occurrence and rolls it forward each time you complete it. You can also add or edit a repeat manually on any dated item.</p>
-          <p>Pro additionally writes the repeat as a native recurring rule in Apple Reminders and Calendar, so it stays in sync there too.</p>
-        </div>
-      </details>
+      <section class="faq-group" aria-labelledby="faq-privacy">
+        <h2 id="faq-privacy">Privacy &amp; your data</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is my voice data private?</summary>
+            <div class="faq-answer">
+              <p>WhisperAct has no account system and no servers of its own for your memos. English recordings are transcribed by Apple’s speech recognition — on-device on supported iOS 26 devices, otherwise by Apple’s speech servers, which WhisperAct doesn’t see. Recordings in other languages are sent to Groq for transcription; WhisperAct has turned on Groq’s Zero Data Retention setting. The recording itself is deleted once it has been transcribed.</p>
+              <p>When you’re online, the text of your memo — not the audio — is sent to OpenAI to find tasks, reminders and events, with Cerebras as a backup. These requests don’t include your name or Apple ID, but they do include what you said or typed. OpenAI may keep abuse-monitoring logs for up to 30 days; Cerebras states that it doesn’t retain requests. See our <a href="/privacy">Privacy Policy</a> for full details.</p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          How do I delete all my data?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </summary>
-        <div class="faq-answer">
-          <p>Go to <strong>Settings</strong> inside WhisperAct and tap <strong>"Delete All Data"</strong>. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.</p>
+          <details class="faq-item">
+            <summary>How do I delete all my data?</summary>
+            <div class="faq-answer">
+              <p>Go to <strong>Settings</strong> inside WhisperAct and tap <strong>“Delete All Data”</strong>. This permanently removes all memos and tasks from your device and iCloud. This action cannot be undone.</p>
+            </div>
+          </details>
         </div>
-      </details>
+      </section>
+
+      <section class="contact-card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Still need help?</h2>
+        <p>Send us an email and we’ll get back to you as soon as possible.</p>
+        <a class="btn btn-primary" href="mailto:support@whisperact.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email support@whisperact.com
+        </a>
+        <p class="response-note">We typically respond within 24 hours.</p>
+      </section>
 
     </div>
-
-    <!-- Contact -->
-    <div class="contact-card">
-      <h2>Still need help?</h2>
-      <p>Send us an email and we'll get back to you as soon as possible.</p>
-      <a href="mailto:support@whisperact.com" class="contact-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email Support
-      </a>
-      <p class="response-note">We typically respond within 24 hours.</p>
-    </div>
-
   </div>
 
 </main>
 
-<footer>
-  <div class="page-footer">
-    <p>© 2026 WhisperAct. All rights reserved.</p>
-    <ul class="page-footer-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/privacy">Privacy Policy</a></li>
-      <li><a href="/terms">Terms of Use</a></li>
-    </ul>
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/icon-128.png" width="32" height="32" alt="" loading="lazy" decoding="async" />
+          <span>WhisperAct</span>
+        </a>
+        <p>Whisper it. We’ll handle the rest. Voice notes into reminders, events and to-dos on iPhone and iPad.</p>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="/support" aria-current="page">Support &amp; FAQ</a></li>
+            <li><a href="mailto:support@whisperact.com">Email support</a></li>
+            <li><a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 WhisperAct. All rights reserved.</p>
+      <p>Made for iPhone and iPad.</p>
+    </div>
   </div>
 </footer>
-
-<script src="/menu.js" defer></script>
 
 </body>
 </html>

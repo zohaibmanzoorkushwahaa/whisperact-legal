@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog — WhisperAct</title>
   <meta name="description" content="Guides, tips, and insights from the WhisperAct team — on voice capture, AI productivity, and getting things out of your head." />
   <link rel="canonical" href="https://whisperact.com/blog" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Icons / PWA -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Appearance: follows the system unless the visitor picked one (stored by /menu.js) -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbf6ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      r.className = r.className.replace(/\bno-js\b/, "js");
+      try {
+        var t = localStorage.getItem("wa-theme");
+        if (t === "light" || t === "dark") {
+          r.setAttribute("data-theme", t);
+          r.style.colorScheme = t;
+          var m = d.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#1f1c1a" : "#fbf6ef");
+        }
+      } catch (e) {}
+    })(document);
+  </script>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/menu.js" defer onerror="document.documentElement.classList.remove('js')"></script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -18,274 +43,138 @@
   <meta property="og:url" content="https://whisperact.com/blog" />
   <meta property="og:image" content="https://whisperact.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --coral:  #D85A30;
-      --coral-dark: #A83820;
-      --coral-hover: #B84520;
-      --coral-light: #FFF5F0;
-      --coral-border: #FFDDD0;
-      --coral-text-dark: #8B2A10;
-      --dark:   #0f0f12;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
-      --paper:  #F4F1EB;
-      --bg-alt: #EDE9E1;
-      --border: #E7E1D7;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,13,.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner {
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-    .nav-brand {
-      font-size: 18px; font-weight: 700; color: var(--coral);
-      letter-spacing: -0.3px; text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
-    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-    .nav-links a { font-size: 14px; color: rgba(255,255,255,.6); text-decoration: none; transition: color .15s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-links a.nav-cta {
-      background: var(--coral); color: #fff; padding: 8px 18px;
-      border-radius: 10px; font-weight: 600; transition: opacity .15s;
-    }
-    .nav-links a.nav-cta:hover { opacity: .88; color: #fff; }
-    .nav-links a.active { color: #fff; }
-
-    /* Hamburger toggle */
-    .nav-toggle {
-      display: none;
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px; width: 44px; height: 44px;
-      background: none; border: none; cursor: pointer; padding: 0;
-    }
-    .nav-toggle span {
-      display: block; width: 22px; height: 2px;
-      background: rgba(255,255,255,.75); border-radius: 2px;
-      transition: transform .25s, opacity .2s;
-    }
-    .nav-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; border-radius: 4px; }
-
-    /* ── PAGE HERO ── */
-    .page-hero {
-      background: radial-gradient(ellipse at 50% 0%, #1e0d08 0%, #0f0f12 60%);
-      color: #fff;
-      padding: 64px 24px 56px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-    .page-hero .eyebrow {
-      font-size: 12px; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--coral); margin-bottom: 14px;
-    }
-    .page-hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 14px;
-    }
-    .page-hero p {
-      font-size: 17px; color: rgba(255,255,255,.55); max-width: 480px; margin: 0 auto;
-    }
-
-    /* ── POST LIST ── */
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    .post-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .post-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 32px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: box-shadow .2s, border-color .2s;
-      text-decoration: none;
-      color: inherit;
-    }
-    .post-card:hover {
-      box-shadow: 0 4px 24px rgba(0,0,0,.08);
-      border-color: #d4cec6;
-    }
-
-    .post-label {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--coral);
-    }
-
-    .post-title {
-      font-size: clamp(20px, 3vw, 24px);
-      font-weight: 800; letter-spacing: -0.4px; line-height: 1.2;
-      color: var(--text);
-    }
-
-    .post-dek {
-      font-size: 15px; color: var(--muted); line-height: 1.55;
-    }
-
-    .post-cta {
-      margin-top: 6px;
-      font-size: 14px; font-weight: 600; color: var(--coral);
-      display: inline-flex; align-items: center; gap: 5px;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 24px; text-align: center;
-      color: var(--muted); font-size: 14px;
-    }
-    footer a { color: var(--muted); text-decoration: none; margin: 0 10px; }
-    footer a:hover { color: var(--text); }
-
-    /* ── MOBILE NAV (≤900px) ── */
-    @media (max-width: 900px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px; left: 0; right: 0;
-        flex-direction: column;
-        background: rgba(10,10,13,.95);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(255,255,255,.08);
-        padding: 12px 0 20px;
-        gap: 0;
-        align-items: stretch;
-      }
-      nav.open .nav-links { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block; padding: 13px 24px;
-        font-size: 15px; color: rgba(255,255,255,.75);
-        border-bottom: 1px solid rgba(255,255,255,.05);
-      }
-      .nav-links li:last-child a { border-bottom: none; }
-      .nav-links a.nav-cta {
-        margin: 12px 24px 0;
-        text-align: center; border-radius: 12px;
-        padding: 14px 24px; background: var(--coral);
-        border-bottom: none;
-      }
-      nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-      .nav-inner { padding: 0 20px; }
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 40px 20px 60px; }
-      .post-card { padding: 24px 22px 20px; }
-    }
-  </style>
 </head>
 <body>
 
-  <nav aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="/icon-128.png" width="26" height="26" alt="WhisperAct icon" />
-        WhisperAct
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navMenu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/#features">Features</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/blog" class="active">Blog</a></li>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/">
+      <img src="/icon-128.png" width="32" height="32" alt="" />
+      <span>WhisperAct</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <div class="site-menu" id="site-menu">
+      <nav class="primary-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/blog" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <fieldset class="theme-switch">
+          <legend class="sr-only">Appearance</legend>
+          <label class="theme-option" title="Match system appearance">
+            <input type="radio" name="theme" value="system" checked />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-label">System</span></span>
+          </label>
+          <label class="theme-option" title="Light appearance">
+            <input type="radio" name="theme" value="light" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="theme-label">Light</span></span>
+          </label>
+          <label class="theme-option" title="Dark appearance">
+            <input type="radio" name="theme" value="dark" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-label">Dark</span></span>
+          </label>
+        </fieldset>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download<span class="sr-only"> WhisperAct on the App Store</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <header class="page-header page-header--center">
+    <div class="shell">
+      <p class="eyebrow">From the WhisperAct team</p>
+      <h1>Blog</h1>
+      <p class="page-lead">Guides, tips, and thinking on voice capture, AI productivity, and getting things out of your head.</p>
+    </div>
+  </header>
+
+  <div class="shell section section--tight-top">
+    <ul class="post-grid">
         <li>
-          <a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339"
-             target="_blank" rel="noopener" class="nav-cta">Download App</a>
+          <article class="post-card">
+            <p class="post-label">Guide · July 2026</p>
+            <h2><a href="/blog/voice-notes-to-tasks-iphone">How to Turn Voice Notes Into Tasks on iPhone</a></h2>
+            <p>Compare Siri, Apple Reminders, Shortcuts, and WhisperAct for turning spoken thoughts into tasks, reminders, and calendar events.</p>
+            <p class="post-cta" aria-hidden="true">Read article →</p>
+          </article>
         </li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="page-hero">
-    <div class="eyebrow">From the WhisperAct team</div>
-    <h1>Blog</h1>
-    <p>Guides, tips, and thinking on voice capture, AI productivity, and getting things out of your head.</p>
+        <li>
+          <article class="post-card">
+            <p class="post-label">Guide · June 2026</p>
+            <h2><a href="/blog/voice-memo-to-apple-reminders-calendar">Turn a Voice Memo Into Apple Reminders &amp; Calendar Events Automatically</a></h2>
+            <p>Stop copying voice notes into your to-do list by hand. One voice note becomes tasks, reminders, and events — written straight into the Apple apps you already use.</p>
+            <p class="post-cta" aria-hidden="true">Read article →</p>
+          </article>
+        </li>
+        <li>
+          <article class="post-card">
+            <p class="post-label">Buyer's Guide · June 2026</p>
+            <h2><a href="/blog/best-ai-transcription-apps-2026">Best AI Transcription Apps in 2026: 9 Tools Tested</a></h2>
+            <p>We tested the most popular tools — for meetings, podcasts, research, and the question almost nobody answers: what happens after the words are on screen?</p>
+            <p class="post-cta" aria-hidden="true">Read article →</p>
+          </article>
+        </li>
+    </ul>
   </div>
 
-  <div class="container">
-    <div class="post-grid">
+</main>
 
-      <a class="post-card" href="/blog/voice-notes-to-tasks-iphone">
-        <div class="post-label">Guide · July 2026</div>
-        <div class="post-title">How to Turn Voice Notes Into Tasks on iPhone</div>
-        <div class="post-dek">Compare Siri, Apple Reminders, Shortcuts, and WhisperAct for turning spoken thoughts into tasks, reminders, and calendar events.</div>
-        <div class="post-cta">Read article →</div>
-      </a>
-
-      <a class="post-card" href="/blog/voice-memo-to-apple-reminders-calendar">
-        <div class="post-label">Guide · June 2026</div>
-        <div class="post-title">Turn a Voice Memo Into Apple Reminders &amp; Calendar Events Automatically</div>
-        <div class="post-dek">Stop copying voice notes into your to-do list by hand. One voice note becomes tasks, reminders, and events — written straight into the Apple apps you already use.</div>
-        <div class="post-cta">Read article →</div>
-      </a>
-
-      <a class="post-card" href="/blog/best-ai-transcription-apps-2026">
-        <div class="post-label">Buyer's Guide · June 2026</div>
-        <div class="post-title">Best AI Transcription Apps in 2026: 9 Tools Tested</div>
-        <div class="post-dek">We tested the most popular tools — for meetings, podcasts, research, and the question almost nobody answers: what happens after the words are on screen?</div>
-        <div class="post-cta">Read article →</div>
-      </a>
-
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/icon-128.png" width="32" height="32" alt="" loading="lazy" decoding="async" />
+          <span>WhisperAct</span>
+        </a>
+        <p>Whisper it. We’ll handle the rest. Voice notes into reminders, events and to-dos on iPhone and iPad.</p>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog" aria-current="page">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="/support">Support &amp; FAQ</a></li>
+            <li><a href="mailto:support@whisperact.com">Email support</a></li>
+            <li><a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 WhisperAct. All rights reserved.</p>
+      <p>Made for iPhone and iPad.</p>
     </div>
   </div>
+</footer>
 
-  <footer>
-    <div>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/support">Support</a>
-    </div>
-    <p style="margin-top:16px;">© 2026 WhisperAct. Speak freely. We'll handle the rest.</p>
-  </footer>
-
-  <script src="/menu.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1428 2956" preserveAspectRatio="none">
+  <!-- WhisperAct site iPhone frame. Original vector drawing, laid over the 1320×2868 screen captures.
+       Screen opening: x 54, y 44, 1320×2868, corner radius 186. Dynamic Island matches the captures (284×110 at 518,42).
+       Side buttons extend into the 10-unit margins on the left and right. -->
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e6e1db"/>
+      <stop offset="0.12" stop-color="#a49d96"/>
+      <stop offset="0.3" stop-color="#d4cec7"/>
+      <stop offset="0.55" stop-color="#8f8983"/>
+      <stop offset="0.78" stop-color="#cfc9c2"/>
+      <stop offset="1" stop-color="#7f7974"/>
+    </linearGradient>
+    <linearGradient id="rimShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="btnL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6f6a65"/>
+      <stop offset="0.45" stop-color="#d9d3cc"/>
+      <stop offset="1" stop-color="#9a948e"/>
+    </linearGradient>
+    <linearGradient id="btnR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#6f6a65"/>
+      <stop offset="0.45" stop-color="#d9d3cc"/>
+      <stop offset="1" stop-color="#9a948e"/>
+    </linearGradient>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121212"/>
+      <stop offset="1" stop-color="#060606"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Side buttons: Action, volume up, volume down (left); side button, Camera Control (right) -->
+  <rect x="1" y="548" width="16" height="122" rx="7" fill="url(#btnL)"/>
+  <rect x="1" y="786" width="16" height="222" rx="7" fill="url(#btnL)"/>
+  <rect x="1" y="1040" width="16" height="222" rx="7" fill="url(#btnL)"/>
+  <rect x="1411" y="800" width="16" height="338" rx="7" fill="url(#btnR)"/>
+  <rect x="1411" y="1566" width="13" height="182" rx="6.5" fill="#2e2c2a"/>
+  <rect x="1413" y="1572" width="7" height="170" rx="3.5" fill="#4a4744"/>
+
+  <!-- Metal rim -->
+  <path fill="url(#rim)" fill-rule="evenodd" d="M240 0H1188A230 230 0 0 1 1418 230V2726A230 230 0 0 1 1188 2956H240A230 230 0 0 1 10 2726V230A230 230 0 0 1 240 0ZM240 20A210 210 0 0 0 30 230V2726A210 210 0 0 0 240 2936H1188A210 210 0 0 0 1398 2726V230A210 210 0 0 0 1188 20Z"/>
+  <path fill="url(#rimShade)" fill-rule="evenodd" d="M240 0H1188A230 230 0 0 1 1418 230V2726A230 230 0 0 1 1188 2956H240A230 230 0 0 1 10 2726V230A230 230 0 0 1 240 0ZM240 20A210 210 0 0 0 30 230V2726A210 210 0 0 0 240 2936H1188A210 210 0 0 0 1398 2726V230A210 210 0 0 0 1188 20Z"/>
+  <path fill="none" stroke="#000000" stroke-opacity="0.32" stroke-width="2" d="M240 1H1188A229 229 0 0 1 1417 230V2726A229 229 0 0 1 1188 2955H240A229 229 0 0 1 11 2726V230A229 229 0 0 1 240 1Z"/>
+  <path fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2.5" d="M240 18.5A211.5 211.5 0 0 0 28.5 230V2726A211.5 211.5 0 0 0 240 2937.5H1188A211.5 211.5 0 0 0 1399.5 2726V230A211.5 211.5 0 0 0 1188 18.5Z"/>
+
+  <!-- Black bezel; it overlaps the screen opening by 2 units to hide edge seams -->
+  <path fill="url(#bezel)" fill-rule="evenodd" d="M240 20H1188A210 210 0 0 1 1398 230V2726A210 210 0 0 1 1188 2936H240A210 210 0 0 1 30 2726V230A210 210 0 0 1 240 20ZM240 46A184 184 0 0 0 56 230V2726A184 184 0 0 0 240 2910H1188A184 184 0 0 0 1372 2726V230A184 184 0 0 0 1188 46Z"/>
+
+  <!-- Dynamic Island -->
+  <rect x="572" y="86" width="284" height="110" rx="55" fill="#000000"/>
+  <circle cx="808" cy="141" r="15" fill="#0c0d12"/>
+  <circle cx="808" cy="141" r="7" fill="#151a2a" fill-opacity="0.9"/>
+</svg>

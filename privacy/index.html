@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy · WhisperAct</title>
   <meta name="description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content is stored on your device and in your private iCloud." />
   <link rel="canonical" href="https://whisperact.com/privacy" />
@@ -13,7 +13,28 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0a0a0d" />
+
+  <!-- Appearance: follows the system unless the visitor picked one (stored by /menu.js) -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbf6ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      r.className = r.className.replace(/\bno-js\b/, "js");
+      try {
+        var t = localStorage.getItem("wa-theme");
+        if (t === "light" || t === "dark") {
+          r.setAttribute("data-theme", t);
+          r.style.colorScheme = t;
+          var m = d.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#1f1c1a" : "#fbf6ef");
+        }
+      } catch (e) {}
+    })(document);
+  </script>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/menu.js" defer onerror="document.documentElement.classList.remove('js')"></script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -27,401 +48,70 @@
   <meta name="twitter:title" content="Privacy Policy · WhisperAct" />
   <meta name="twitter:description" content="WhisperAct Privacy Policy. No accounts, no ads, and no cross-app tracking. Memo content is stored on your device and in your private iCloud." />
   <meta name="twitter:image" content="https://whisperact.com/og.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --coral:        #D85A30;
-      --coral-dim:    rgba(216,90,48,0.12);
-      --coral-border: rgba(216,90,48,0.28);
-      --ink:          #0a0a0d;
-      --ink-2:        #111116;
-      --ink-3:        #18181f;
-      --line:         rgba(255,255,255,0.07);
-      --line-2:       rgba(255,255,255,0.12);
-      --text:         #f0ede8;
-      --text-2:       rgba(240,237,232,0.60);
-      --text-3:       rgba(240,237,232,0.35);
-      --text-body:    rgba(240,237,232,0.78);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--ink);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
-      padding-bottom: 80px;
-    }
-
-    /* ── NAV ─────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 60px;
-      background: rgba(10,10,13,0.80);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    /* Centers header content on the same column as the page content (max 760). */
-    .nav-inner {
-      max-width: 760px;
-      margin: 0 auto;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      margin-right: -10px;
-      background: none;
-      border: 0;
-      cursor: pointer;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      margin: 0 auto;
-      border-radius: 2px;
-      background: var(--coral);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-    .nav-toggle:focus-visible {
-      outline: 2px solid var(--coral);
-      outline-offset: 2px;
-      border-radius: 8px;
-    }
-
-    .nav-brand {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      background: var(--coral) !important;
-      color: #fff !important;
-      padding: 8px 18px !important;
-      border-radius: 8px !important;
-      font-weight: 600 !important;
-    }
-
-    /* ── PAGE HERO ───────────────────────────────────── */
-    .page-hero {
-      padding: 64px 24px 48px;
-      max-width: 760px;
-      margin: 0 auto;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 20px;
-    }
-
-    .page-badge::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--coral);
-    }
-
-    .page-hero h1 {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.08;
-      margin-bottom: 16px;
-    }
-
-    .page-meta {
-      font-size: 13px;
-      color: var(--text-3);
-      margin-bottom: 28px;
-    }
-
-    .page-meta a { color: var(--coral); text-decoration: none; }
-
-    /* Lead callout */
-    .lead-box {
-      background: var(--coral-dim);
-      border: 1px solid var(--coral-border);
-      border-radius: 12px;
-      padding: 18px 22px;
-    }
-
-    .lead-box p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    /* ── CONTENT ─────────────────────────────────────── */
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    article {
-      padding: 48px 0;
-    }
-
-    h2 {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      margin-top: 44px;
-      margin-bottom: 12px;
-    }
-
-    h2:first-child { margin-top: 0; }
-
-    p {
-      font-size: 15px;
-      color: var(--text-body);
-      margin-bottom: 14px;
-      line-height: 1.75;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-bottom: 14px;
-    }
-
-    ul li {
-      font-size: 15px;
-      color: var(--text-body);
-      margin-bottom: 7px;
-      line-height: 1.65;
-    }
-
-    a { color: var(--coral); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    strong { color: var(--text); font-weight: 600; }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--line);
-      margin: 44px 0;
-    }
-
-    /* Data table */
-    .table-wrap {
-      overflow-x: auto;
-      margin: 20px 0 28px;
-      border-radius: 12px;
-      border: 1px solid var(--line-2);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      min-width: 540px;
-    }
-
-    th {
-      text-align: left;
-      padding: 12px 16px;
-      background: var(--ink-3);
-      font-weight: 600;
-      color: var(--text);
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      border-bottom: 1px solid var(--line-2);
-    }
-
-    td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--line);
-      color: var(--text-body);
-      vertical-align: top;
-    }
-
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* Section divider label */
-    .section-anchor {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 20px;
-      display: block;
-      margin-top: 56px;
-    }
-
-    /* ── FOOTER ──────────────────────────────────────── */
-    .page-footer {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 32px 24px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .page-footer p {
-      font-size: 13px;
-      color: var(--text-3);
-      margin: 0;
-    }
-
-    .page-footer-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .page-footer-links a {
-      font-size: 13px;
-      color: var(--text-3);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .page-footer-links a:hover { color: var(--coral); }
-
-    /* Mobile + tablet nav: hamburger reveals the links as a full-width dropdown panel. */
-    @media (max-width: 900px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 12px 20px 18px;
-        background: rgba(10,10,13,0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--line);
-      }
-      nav.open .nav-links { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a {
-        display: block;
-        padding: 12px 4px;
-        font-size: 15px;
-      }
-      .nav-cta {
-        text-align: center;
-        margin-top: 6px;
-        padding: 12px 18px !important;
-      }
-      nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
-      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    }
-
-    @media (max-width: 600px) {
-      .nav-inner { padding: 0 20px; }
-      .page-hero { padding: 48px 20px 36px; }
-      .container { padding: 0 20px; }
-    }
-  </style>
 </head>
 <body>
 
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">
-      <img src="/icon.png" alt="WhisperAct icon" />
-      WhisperAct
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/">
+      <img src="/icon-128.png" width="32" height="32" alt="" />
+      <span>WhisperAct</span>
     </a>
-    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-      <span></span><span></span><span></span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
     </button>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/support">Support</a></li>
-      <li><a href="/terms">Terms</a></li>
-      <li><a href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener" class="nav-cta">Download App</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main>
-
-  <div class="page-hero">
-    <p class="page-badge">Privacy Policy</p>
-    <h1>Your privacy,<br>protected.</h1>
-    <p class="page-meta">Last updated: October 21, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
-    <div class="lead-box">
-      <p>No accounts. No ads. No cross-app tracking. We never sell your personal data. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours. Online transcription and AI extraction send content to the processing providers described below.</p>
+    <div class="site-menu" id="site-menu">
+      <nav class="primary-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <fieldset class="theme-switch">
+          <legend class="sr-only">Appearance</legend>
+          <label class="theme-option" title="Match system appearance">
+            <input type="radio" name="theme" value="system" checked />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-label">System</span></span>
+          </label>
+          <label class="theme-option" title="Light appearance">
+            <input type="radio" name="theme" value="light" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="theme-label">Light</span></span>
+          </label>
+          <label class="theme-option" title="Dark appearance">
+            <input type="radio" name="theme" value="dark" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-label">Dark</span></span>
+          </label>
+        </fieldset>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download<span class="sr-only"> WhisperAct on the App Store</span></a>
+      </div>
     </div>
   </div>
+</header>
 
-  <div class="container">
-    <article>
+<main id="main" tabindex="-1">
+
+  <header class="page-header">
+    <div class="shell">
+      <div class="prose-column">
+      <p class="page-badge">Privacy Policy</p>
+      <h1>Your privacy,<br>protected.</h1>
+      <p class="page-meta">Last updated: October 21, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+      <div class="lead-box">
+        <p>No accounts. No ads. No cross-app tracking. We never sell your personal data. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours. Online transcription and AI extraction send content to the processing providers described below.</p>
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell article-body">
+    <article class="prose legal">
 
       <h2>1. Overview</h2>
       <p>This Privacy Policy describes how WhisperAct ("we", "us", or "the App") handles information when you use the WhisperAct iOS application. By using the App, you agree to the practices described in this policy.</p>
@@ -478,7 +168,7 @@
       <span class="section-anchor">Third-party services</span>
       <h2>9. Third-Party Services Summary</h2>
 
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Third-party services summary table">
         <table>
           <thead>
             <tr>
@@ -584,18 +274,50 @@
 
 </main>
 
-<footer>
-  <div class="page-footer">
-    <p>© 2026 WhisperAct. All rights reserved.</p>
-    <ul class="page-footer-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/terms">Terms of Use</a></li>
-      <li><a href="/support">Support</a></li>
-    </ul>
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/icon-128.png" width="32" height="32" alt="" loading="lazy" decoding="async" />
+          <span>WhisperAct</span>
+        </a>
+        <p>Whisper it. We’ll handle the rest. Voice notes into reminders, events and to-dos on iPhone and iPad.</p>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="/support">Support &amp; FAQ</a></li>
+            <li><a href="mailto:support@whisperact.com">Email support</a></li>
+            <li><a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy" aria-current="page">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 WhisperAct. All rights reserved.</p>
+      <p>Made for iPhone and iPad.</p>
+    </div>
   </div>
 </footer>
-
-<script src="/menu.js" defer></script>
 
 </body>
 </html>
