@@ -414,9 +414,9 @@
   <div class="page-hero">
     <p class="page-badge">Privacy Policy</p>
     <h1>Your privacy,<br>protected.</h1>
-    <p class="page-meta">Last updated: October 19, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
+    <p class="page-meta">Last updated: October 21, 2026 &nbsp;·&nbsp; Effective: August 18, 2026 &nbsp;·&nbsp; Questions? <a href="mailto:support@whisperact.com">support@whisperact.com</a></p>
     <div class="lead-box">
-      <p>No accounts. No ads. No cross-app tracking. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours. Online transcription and AI extraction send content to the processing providers described below.</p>
+      <p>No accounts. No ads. No cross-app tracking. We never sell your personal data. WhisperAct has no servers of its own for your content. Your memos live on your device and in your private iCloud account — not ours. Online transcription and AI extraction send content to the processing providers described below.</p>
     </div>
   </div>
 
@@ -441,7 +441,7 @@
 
       <h2>3. Voice Recordings</h2>
       <p>Audio is recorded entirely on your device using your device's microphone. The audio file is used solely to produce a text transcript and is deleted immediately after transcription completes. WhisperAct does not upload, retain, or transmit your raw audio to any server operated by WhisperAct.</p>
-      <p>For non-English recordings (any of the supported languages other than English), the audio file and the selected language are transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. Groq's <a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">published data policy</a> states that it does not retain inference data by default, but may log inputs and outputs for up to 30 days to troubleshoot reliability errors or investigate suspected abuse, or longer if legally required. See also Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      <p>For non-English recordings (any of the supported languages other than English), the audio file and the selected language are transmitted to Groq's speech-to-text API (api.groq.com) for transcription. Groq processes the audio and returns a text transcript. Groq's <a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">published data policy</a> states that it does not retain inference data by default. Without further settings, Groq may log inputs and outputs for up to 30 days to troubleshoot reliability errors or investigate suspected abuse. Since October 2026, WhisperAct has enabled Groq's Zero Data Retention setting for the Groq organizations the App uses; under that setting, Groq states that it does not retain customer data for reliability or abuse monitoring either. See also Groq's <a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
 
       <h2>4. Transcription</h2>
       <p>Transcription is handled differently depending on your language selection and device:</p>
@@ -458,6 +458,7 @@
       <p><strong>Cerebras.</strong> Cerebras <a href="https://support.cerebras.net/articles/1811589793-does-cerebras-retain-my-data" target="_blank" rel="noopener">states</a> that it does not retain prompts, API requests, or responses, and keeps only account and usage information needed to operate its service. See also the <a href="https://www.cerebras.ai/privacy-policy" target="_blank" rel="noopener">Cerebras Privacy Policy</a>.</p>
       <p><strong>Earlier versions.</strong> In versions earlier than 4.0.0, online extraction sent the transcript and date and time context to Groq's language model API, and some requests were processed by <a href="https://docs.fireworks.ai/guides/security_compliance/data_handling" target="_blank" rel="noopener">Fireworks AI</a> instead. Groq's data handling is described in Section 3.</p>
       <p>When you are offline, or as a fallback, AI extraction runs entirely on-device using Apple Intelligence or a built-in keyword analysis engine. No data leaves your device in this path.</p>
+      <p><strong>How we use these providers.</strong> Groq, OpenAI, and Cerebras receive this content only so they can perform the transcription or extraction you request and return the result to the App. They act as WhisperAct's service providers, under their own terms and the retention practices described in Sections 3, 5, and 9. We do not sell your personal data, and we do not share it with these or any other third parties for advertising or profiling. We use only providers whose terms provide protection for this data equal to or greater than the protection described in this policy.</p>
 
       <h2>6. Memos, Tasks, and Calendar Data</h2>
       <p>All memos and tasks are stored locally on your device using SwiftData. If you subscribe to WhisperAct Pro, your data is synced to your private iCloud database via Apple's CloudKit framework. This data is stored in your personal Apple account and is not accessible to us. WhisperAct has no access to your iCloud content.</p>
@@ -516,7 +517,7 @@
               <td>Groq</td>
               <td>Non-English audio transcription; AI extraction in versions earlier than 4.0.0</td>
               <td>Audio and selected language; for earlier-version extraction, the transcript and date and time context</td>
-              <td><a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">Groq published policy</a>: not retained by default; reliability and abuse logs up to 30 days, longer if legally required</td>
+              <td>WhisperAct setting: Zero Data Retention enabled (since October 2026). <a href="https://console.groq.com/docs/your-data" target="_blank" rel="noopener">Groq published policy</a>: not retained by default; with Zero Data Retention, no reliability or abuse-monitoring logs</td>
             </tr>
             <tr>
               <td>Fireworks AI</td>
