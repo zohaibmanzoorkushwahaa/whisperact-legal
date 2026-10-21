@@ -6,7 +6,8 @@
 //   .story[data-active]          – section; .story-step[data-step] items; .story-screen[data-step]
 //                                  pictures in the pinned phone; .story-dots li in step order
 //   [data-reveal]                – fades in once ("stagger" staggers its children instead)
-//   [data-scroll="enter"|"exit"] – receives --p from 0 to 1 while entering / leaving the viewport
+//   [data-scroll="enter"|"exit"|"through"] – receives --p from 0 to 1 while entering / leaving the
+//                                  viewport, or while the viewport's upper half passes through it
 // CSS owns every visual; this file only sets classes, attributes and --p.
 (function () {
   "use strict";
@@ -69,9 +70,11 @@
     var queued = false;
 
     function progress(el, rect, vh) {
-      var p = el.getAttribute("data-scroll") === "exit"
-        ? -rect.top / Math.max(1, rect.height)
-        : (vh - rect.top) / (vh * 0.8);
+      var mode = el.getAttribute("data-scroll");
+      var p;
+      if (mode === "exit") p = -rect.top / Math.max(1, rect.height);
+      else if (mode === "through") p = (vh * 0.55 - rect.top) / Math.max(1, rect.height);
+      else p = (vh - rect.top) / (vh * 0.8);
       return Math.min(1, Math.max(0, p));
     }
 

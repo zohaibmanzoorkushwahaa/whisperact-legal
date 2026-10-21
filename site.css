@@ -44,6 +44,11 @@
   --glow-review: #f4c3ad;
   --glow-plan: #c2d7ef;
   --glow-day: #e6cde3;
+  --map-bg: #f6ecdc;
+  --map-bg-2: #efe1cb;
+  --map-grid: rgba(120, 90, 50, 0.1);
+  --map-ink: #8a6a45;
+  --map-fog: rgba(246, 236, 220, 0.92);
   --hero-glow: radial-gradient(58% 62% at 78% 42%, #f8ded2 0%, rgba(248, 222, 210, 0) 72%);
   /* Item types — the app's tokens */
   --reminder: #1d9e75; --reminder-fill: #e1f5ee; --reminder-text: #085041; --reminder-line: #9fe1cb;
@@ -101,6 +106,11 @@
     --glow-review: rgba(240, 153, 123, 0.3);
     --glow-plan: rgba(133, 183, 235, 0.26);
     --glow-day: rgba(196, 140, 190, 0.28);
+    --map-bg: #1d2230;
+    --map-bg-2: #171b26;
+    --map-grid: rgba(190, 200, 230, 0.08);
+    --map-ink: #a9b4cc;
+    --map-fog: rgba(29, 34, 48, 0.92);
     --hero-glow: radial-gradient(58% 62% at 78% 42%, rgba(216, 90, 48, 0.2) 0%, rgba(216, 90, 48, 0) 72%);
     --reminder: #5dcaa5; --reminder-fill: #04342c; --reminder-text: #9fe1cb; --reminder-line: #085041;
     --event: #85b7eb; --event-fill: #042c53; --event-text: #b5d4f4; --event-line: #0c447c;
@@ -144,6 +154,11 @@
   --glow-review: rgba(240, 153, 123, 0.3);
   --glow-plan: rgba(133, 183, 235, 0.26);
   --glow-day: rgba(196, 140, 190, 0.28);
+  --map-bg: #1d2230;
+  --map-bg-2: #171b26;
+  --map-grid: rgba(190, 200, 230, 0.08);
+  --map-ink: #a9b4cc;
+  --map-fog: rgba(29, 34, 48, 0.92);
   --hero-glow: radial-gradient(58% 62% at 78% 42%, rgba(216, 90, 48, 0.2) 0%, rgba(216, 90, 48, 0) 72%);
   --reminder: #5dcaa5; --reminder-fill: #04342c; --reminder-text: #9fe1cb; --reminder-line: #085041;
   --event: #85b7eb; --event-fill: #042c53; --event-text: #b5d4f4; --event-line: #0c447c;
@@ -1561,6 +1576,329 @@ html:not(.js) .theme-switch { display: none; }
 .faq h3 { font-size: 1.125rem; }
 .faq h3 + p { margin-top: 0.4em; }
 .small-note { color: var(--ink-3); font-size: 0.875rem; }
+
+/* ── iPad frame (genuine iPad captures) ───────────────────────────────── */
+/* Geometry follows screens/ipad-frame.svg (viewBox 2224 × 2912): screen opening 2064 × 2752 at 80,80. */
+.ipad {
+  position: relative;
+  flex: none;
+  aspect-ratio: 2224 / 2912;
+}
+.ipad::before {
+  content: "";
+  position: absolute;
+  inset: 0.4%;
+  border-radius: 6.7% / 5.1%;
+  box-shadow: var(--shadow-device);
+}
+.ipad::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/screens/ipad-frame.svg") 0 0 / 100% 100% no-repeat;
+  pointer-events: none;
+}
+.ipad-screen {
+  position: absolute;
+  left: 3.597%;
+  top: 2.747%;
+  width: 92.806%;
+  height: 94.505%;
+  overflow: hidden;
+  border-radius: 2.7% / 2.05%;
+  background: #f0eeea;
+  isolation: isolate;
+}
+.ipad-screen picture,
+.ipad-screen img { display: block; width: 100%; height: 100%; }
+.ipad-screen img { object-fit: cover; }
+
+/* ── Roadmap: the voyage map ──────────────────────────────────────────── */
+.map-header { position: relative; overflow: hidden; overflow: clip; }
+.map-header .page-lead { max-width: 56ch; }
+.compass {
+  position: absolute;
+  right: max(var(--gutter), calc((100% - var(--shell)) / 2));
+  top: 50%;
+  width: clamp(160px, 18vw, 260px);
+  translate: 0 -50%;
+  color: var(--map-ink);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.compass svg { width: 100%; height: auto; }
+@media (max-width: 61.99em) { .compass { display: none; } }
+
+.log {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 32px 0 0;
+  padding: 0;
+  max-width: 760px;
+  list-style: none;
+}
+.log li {
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.log strong {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.log span { display: block; margin-top: 4px; color: var(--ink-3); font-size: 0.875rem; line-height: 1.35; }
+@media (max-width: 39.99em) { .log { grid-template-columns: 1fr 1fr; } }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.legend-key { display: inline-block; width: 18px; height: 18px; border-radius: 50%; }
+.legend-key--done { background: var(--coral); }
+.legend-key--here { background: var(--btn-bg); box-shadow: 0 0 0 3px var(--coral-subtle); }
+.legend-key--next { border: 2px dashed var(--coral-ink); }
+.legend-key--fog { background: var(--map-grid); border: 1px solid var(--line-strong); }
+
+.voyage {
+  position: relative;
+  padding-block: clamp(40px, 6vw, 72px) clamp(64px, 8vw, 112px);
+  background:
+    radial-gradient(60% 40% at 15% 20%, rgba(216, 90, 48, 0.08), transparent 70%),
+    radial-gradient(50% 36% at 85% 60%, rgba(55, 138, 221, 0.08), transparent 70%),
+    radial-gradient(1px 1px at 50% 50%, var(--map-grid) 98%, transparent) 0 0 / 22px 22px,
+    linear-gradient(180deg, var(--map-bg) 0%, var(--map-bg-2) 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.voyage-track { max-width: 1080px; margin-inline: auto; }
+
+/* Each leg head and checkpoint owns the piece of trail behind it: a dotted base and a coral
+   "travelled" line whose length follows --p (motion.js, data-scroll="through"). */
+.trail { position: absolute; left: 50%; top: 0; width: 88px; height: 100%; translate: -50% 0; pointer-events: none; }
+.trail path { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.trail-base { stroke: var(--map-ink); stroke-width: 2; stroke-dasharray: 1.2 2.4; opacity: 0.55; }
+/* The travelled line is revealed from the top with a clip (the route only ever heads down), which
+   behaves the same in every engine; dash offsets do not survive non-scaling strokes. */
+.trail-done { stroke: var(--coral); stroke-width: 3.5; clip-path: inset(0 0 calc((1 - var(--p, 1)) * 100%) 0); }
+.cp--ahead .trail-done, .cp--fog .trail-done { display: none; }
+.cp--fog .trail-base { opacity: 0.25; }
+
+.leg-head {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding-block: clamp(28px, 4vw, 44px);
+  text-align: center;
+}
+.leg-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--map-ink);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--map-ink);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  rotate: -2deg;
+}
+.leg-head h2 {
+  font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.375rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.leg-head p { color: var(--ink-2); max-width: 48ch; }
+
+.checkpoints { display: grid; padding: 0; list-style: none; }
+.cp {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 88px minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(12px, 2.5vw, 32px);
+  padding-block: clamp(18px, 2.5vw, 28px);
+}
+.cp-marker {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 0 0 5px var(--map-bg), 0 8px 20px -8px rgba(42, 31, 26, 0.5);
+}
+.cp-marker svg { width: 22px; height: 22px; }
+.cp--major .cp-marker { width: 58px; height: 58px; }
+.cp--major .cp-marker svg { width: 26px; height: 26px; }
+.cp--here .cp-marker { width: 64px; height: 64px; background: var(--btn-bg); color: var(--btn-ink); }
+.cp--here .cp-marker svg { width: 28px; height: 28px; }
+.cp--here .cp-marker::before,
+.cp--here .cp-marker::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--coral);
+  opacity: 0;
+}
+.cp--ahead .cp-marker { background: var(--surface); color: var(--coral-ink); border: 2px dashed var(--coral-ink); }
+.cp--fog .cp-marker { background: var(--map-fog); color: var(--map-ink); border: 1px solid var(--line-strong); }
+
+.cp-card {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  padding: 20px 22px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.cp:nth-child(even) .cp-card { grid-column: 3; }
+.cp:nth-child(even) .cp-media { grid-column: 1; }
+.cp-media { grid-column: 3; justify-self: center; display: grid; justify-items: center; gap: 10px; margin: 0; }
+.cp-media .iphone { width: 200px; transform-origin: 50% 100%; }
+.cp-media .ipad { width: 300px; transform-origin: 50% 100%; }
+.cp-media--pair { grid-template-columns: auto auto; align-items: end; gap: 0; }
+.cp-media--pair .ipad { width: clamp(220px, 24vw, 300px); }
+.cp-media--pair .iphone { position: relative; z-index: 1; width: clamp(90px, 9vw, 120px); margin-left: -36px; margin-bottom: -6px; }
+.cp-media--pair figcaption { grid-column: 1 / -1; margin-top: 10px; }
+.cp-media figcaption { color: var(--ink-3); font-size: 0.8125rem; text-align: center; }
+.cp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+.cp-date {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--coral-subtle);
+  color: var(--coral-ink);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.cp-ver {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.cp-card h3 { font-size: 1.25rem; letter-spacing: -0.015em; }
+.cp-card p { margin-top: 8px; color: var(--ink-2); }
+.cp-card .checklist { margin-top: 12px; gap: 6px; font-size: 0.9375rem; }
+.cp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+.cp-tags li {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--sunken);
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.cp-tags .is-pro { background: var(--coral-subtle); color: var(--coral-ink); }
+.cp--here .cp-card { border-color: var(--coral); box-shadow: 0 0 0 4px var(--coral-subtle), var(--shadow-md); }
+.cp--ahead .cp-card { border-style: dashed; border-color: var(--coral-ink); background: var(--surface-2); }
+.cp--fog .cp-card { background: linear-gradient(180deg, var(--surface) 0%, var(--map-fog) 100%); }
+.here-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.here-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.cp-note { margin-top: 12px; color: var(--ink-3); font-size: 0.875rem; }
+.cp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+@media (max-width: 61.99em) {
+  .cp { grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; align-items: start; }
+  /* Narrow layout: a straight trail down the marker column instead of the wavy SVG. */
+  .cp .trail { display: none; }
+  .cp::before, .cp::after {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+  }
+  .cp::before { background: repeating-linear-gradient(180deg, var(--map-ink) 0 3px, transparent 3px 9px); opacity: 0.55; }
+  .cp::after { background: var(--coral); transform: scaleY(var(--p, 1)); transform-origin: 50% 0; }
+  .cp--ahead::after, .cp--fog::after { display: none; }
+  .cp--fog::before { opacity: 0.25; }
+  .cp-marker, .cp:nth-child(even) .cp-marker { grid-column: 1; grid-row: 1; width: 40px; height: 40px; margin-top: 12px; }
+  .cp--major .cp-marker { width: 44px; height: 44px; }
+  .cp--here .cp-marker { width: 48px; height: 48px; }
+  .cp-marker svg, .cp--major .cp-marker svg, .cp--here .cp-marker svg { width: 20px; height: 20px; }
+  .cp-card, .cp:nth-child(even) .cp-card { grid-column: 2; grid-row: 1; }
+  .cp-media, .cp:nth-child(even) .cp-media { grid-column: 2; grid-row: 2; justify-self: start; margin-top: 16px; }
+  .cp-media .iphone { width: min(170px, calc(100vw - 110px)); }
+  .cp-media .ipad { width: min(280px, calc(100vw - 110px)); }
+  .cp-media--pair .ipad { width: min(240px, calc(100vw - 170px)); }
+  .cp-media--pair .iphone { width: 96px; margin-left: -28px; }
+  .leg-head { justify-items: start; text-align: left; padding-left: 62px; }
+}
+
+/* Motion: markers plant, cards rise, devices tilt in, the trail draws, "you are here" pulses. */
+@media (prefers-reduced-motion: no-preference) {
+  .cp-media { perspective: 1200px; }
+  .reveal-ready .cp .cp-marker { transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; }
+  .reveal-ready .cp:not(.is-revealed) .cp-marker { transform: scale(0.3); opacity: 0; }
+  .reveal-ready .cp .cp-card { transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s, opacity 0.6s ease 0.1s; }
+  .reveal-ready .cp:not(.is-revealed) .cp-card { transform: translateY(26px); opacity: 0; }
+  .reveal-ready .leg-stamp { transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; }
+  .reveal-ready .leg-head:not(.is-revealed) .leg-stamp { transform: scale(0.6) rotate(8deg); opacity: 0; }
+  .motion-ready .cp-media .iphone,
+  .motion-ready .cp-media .ipad {
+    transform: translate3d(0, calc((1 - var(--p, 1)) * 56px), 0) rotateX(calc((1 - var(--p, 1)) * 18deg)) scale(calc(0.92 + var(--p, 1) * 0.08));
+  }
+  .motion-ready .trail-done { transition: clip-path 0.15s linear; }
+  .motion-ready .compass svg { transform: rotate(calc(var(--p, 0) * 40deg)); transition: transform 0.2s linear; }
+  .cp--here .cp-marker::before { animation: here-pulse 2.6s ease-out infinite; }
+  .cp--here .cp-marker::after { animation: here-pulse 2.6s ease-out 1.3s infinite; }
+}
+@keyframes here-pulse {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
 
 /* ── Print ────────────────────────────────────────────────────────────── */
 @media print {

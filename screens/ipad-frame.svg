@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2224 2912" preserveAspectRatio="none">
+  <!-- WhisperAct site iPad frame. Original vector drawing laid over the 2064×2752 iPad captures.
+       Screen opening: x 80, y 80, 2064×2752, corner radius 56. Camera centred in the top bezel. -->
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3dfd9"/>
+      <stop offset="0.2" stop-color="#a8a29b"/>
+      <stop offset="0.5" stop-color="#d2ccc5"/>
+      <stop offset="0.8" stop-color="#938d87"/>
+      <stop offset="1" stop-color="#cbc5be"/>
+    </linearGradient>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141414"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <!-- Side button and volume keys -->
+  <rect x="1588" y="1" width="150" height="16" rx="7" fill="#8f8983"/>
+  <rect x="2209" y="300" width="15" height="140" rx="7" fill="#8f8983"/>
+  <rect x="2209" y="470" width="15" height="140" rx="7" fill="#8f8983"/>
+  <!-- Metal rim -->
+  <path fill="url(#rim)" fill-rule="evenodd" d="M160 12H2064A148 148 0 0 1 2212 160V2752A148 148 0 0 1 2064 2900H160A148 148 0 0 1 12 2752V160A148 148 0 0 1 160 12ZM160 30A130 130 0 0 0 30 160V2752A130 130 0 0 0 160 2882H2064A130 130 0 0 0 2194 2752V160A130 130 0 0 0 2064 30Z"/>
+  <path fill="none" stroke="#000000" stroke-opacity="0.3" stroke-width="2" d="M160 13H2064A147 147 0 0 1 2211 160V2752A147 147 0 0 1 2064 2899H160A147 147 0 0 1 13 2752V160A147 147 0 0 1 160 13Z"/>
+  <path fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2.5" d="M160 28.5A131.5 131.5 0 0 0 28.5 160V2752A131.5 131.5 0 0 0 160 2883.5H2064A131.5 131.5 0 0 0 2195.5 2752V160A131.5 131.5 0 0 0 2064 28.5Z"/>
+  <!-- Black bezel; overlaps the screen opening by 2 units -->
+  <path fill="url(#bezel)" fill-rule="evenodd" d="M160 30H2064A130 130 0 0 1 2194 160V2752A130 130 0 0 1 2064 2882H160A130 130 0 0 1 30 2752V160A130 130 0 0 1 160 30ZM136 78A58 58 0 0 0 78 136V2776A58 58 0 0 0 136 2834H2088A58 58 0 0 0 2146 2776V136A58 58 0 0 0 2088 78Z"/>
+  <!-- Front camera -->
+  <circle cx="1112" cy="52" r="11" fill="#0b0c11"/>
+  <circle cx="1112" cy="52" r="5" fill="#1a2238" fill-opacity="0.9"/>
+</svg>

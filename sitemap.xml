@@ -21,6 +21,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://whisperact.com/roadmap</loc>
+    <lastmod>2026-10-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://whisperact.com/blog</loc>
     <lastmod>2026-07-13</lastmod>
     <priority>0.7</priority>

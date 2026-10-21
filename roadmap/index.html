@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roadmap · WhisperAct</title>
+  <meta name="description" content="Every WhisperAct checkpoint since the June 2026 launch: what shipped in each update, where the app is today, and the next release being prepared." />
+  <link rel="canonical" href="https://whisperact.com/roadmap" />
+
+  <!-- Icons / PWA -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Appearance: follows the system unless the visitor picked one (stored by /menu.js) -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fbf6ef" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      r.className = r.className.replace(/\bno-js\b/, "js");
+      try {
+        var t = localStorage.getItem("wa-theme");
+        if (t === "light" || t === "dark") {
+          r.setAttribute("data-theme", t);
+          r.style.colorScheme = t;
+          var m = d.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute("content", t === "dark" ? "#1f1c1a" : "#fbf6ef");
+        }
+      } catch (e) {}
+    })(document);
+  </script>
+  <link rel="stylesheet" href="/site.css" />
+  <script src="/menu.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="/motion.js" defer></script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="WhisperAct" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://whisperact.com/roadmap" />
+  <meta property="og:title" content="Roadmap · WhisperAct" />
+  <meta property="og:description" content="Every WhisperAct checkpoint since the June 2026 launch: what shipped in each update, where the app is today, and the next release being prepared." />
+  <meta property="og:image" content="https://whisperact.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roadmap · WhisperAct" />
+  <meta name="twitter:description" content="Every WhisperAct checkpoint since the June 2026 launch: what shipped in each update, where the app is today, and the next release being prepared." />
+  <meta name="twitter:image" content="https://whisperact.com/og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://whisperact.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Roadmap", "item": "https://whisperact.com/roadmap" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell header-bar">
+    <a class="brand" href="/">
+      <img src="/icon-128.png" width="32" height="32" alt="" />
+      <span>WhisperAct</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <div class="site-menu" id="site-menu">
+      <nav class="primary-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#how">How it works</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/roadmap" aria-current="page">Roadmap</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <fieldset class="theme-switch">
+          <legend class="sr-only">Appearance</legend>
+          <label class="theme-option" title="Match system appearance">
+            <input type="radio" name="theme" value="system" checked />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span class="theme-label">System</span></span>
+          </label>
+          <label class="theme-option" title="Light appearance">
+            <input type="radio" name="theme" value="light" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="theme-label">Light</span></span>
+          </label>
+          <label class="theme-option" title="Dark appearance">
+            <input type="radio" name="theme" value="dark" />
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-label">Dark</span></span>
+          </label>
+        </fieldset>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download<span class="sr-only"> WhisperAct on the App Store</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <header class="page-header map-header" data-scroll="exit">
+    <div class="shell">
+      <p class="eyebrow">Roadmap</p>
+      <h1>The voyage so far, and the course ahead.</h1>
+      <p class="page-lead">WhisperAct set sail on the App Store on June 18, 2026. This map follows every checkpoint since: what each update brought, where the app is today, and the leg that’s being prepared right now.</p>
+      <ul class="log" aria-label="Ship’s log">
+        <li><strong>25</strong><span>App Store updates since launch</span></li>
+        <li><strong>4</strong><span>major versions, 1.x to 4.x</span></li>
+        <li><strong>15</strong><span>recording languages</span></li>
+        <li><strong>2</strong><span>interface languages</span></li>
+      </ul>
+      <ul class="legend" aria-label="Map legend">
+        <li><span class="legend-key legend-key--done" aria-hidden="true"></span>Shipped</li>
+        <li><span class="legend-key legend-key--here" aria-hidden="true"></span>You are here</li>
+        <li><span class="legend-key legend-key--next" aria-hidden="true"></span>Being prepared</li>
+        <li><span class="legend-key legend-key--fog" aria-hidden="true"></span>Uncharted</li>
+      </ul>
+    </div>
+    <div class="compass" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+        <circle cx="100" cy="100" r="92" stroke-dasharray="2 5"/>
+        <circle cx="100" cy="100" r="72"/>
+        <circle cx="100" cy="100" r="8" fill="currentColor"/>
+        <path d="M100 14L112 100L100 186L88 100Z" fill="currentColor" fill-opacity="0.22"/>
+        <path d="M14 100L100 88L186 100L100 112Z" fill="currentColor" fill-opacity="0.22"/>
+        <path d="M100 14L112 100L100 100Z" fill="currentColor"/>
+        <path d="M39 39L100 88L100 100Z" fill="currentColor" fill-opacity="0.5"/>
+        <path d="M161 39L112 100L100 100Z" fill="currentColor" fill-opacity="0.5"/>
+        <path d="M39 161L88 100L100 100Z" fill="currentColor" fill-opacity="0.5"/>
+        <path d="M161 161L100 112L100 100Z" fill="currentColor" fill-opacity="0.5"/>
+        <text x="100" y="32" text-anchor="middle" font-family="ui-rounded, system-ui, sans-serif" font-size="14" font-weight="700" fill="currentColor" stroke="none">N</text>
+      </svg>
+    </div>
+  </header>
+
+  <div class="voyage">
+    <div class="shell">
+      <div class="voyage-track">
+
+        <!-- LEG 1 -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">Leg 01 · June 2026</span>
+          <h2>Setting sail</h2>
+          <p>The app launched with the whole loop in place: speak, review, save to Apple’s apps.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp cp--major" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">June 18, 2026</span><span class="cp-ver">1.1.0</span></div>
+              <h3>WhisperAct lands on the App Store</h3>
+              <p>Speak a memo and it becomes reminders in Apple Reminders, events in Apple Calendar and to-dos in the app. Capture from anywhere: Siri, the Action Button, Control Center and widgets.</p>
+              <ul class="cp-tags"><li>iPhone</li><li>iPad</li><li>Free + Pro</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-1.5 4L16 12H5"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/record-idle-400.avif 400w, /screens/record-idle-800.avif 800w" sizes="200px" />
+                <img src="/screens/record-idle-400.webp" srcset="/screens/record-idle-400.webp 400w, /screens/record-idle-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="The recording screen with a Tap to record button, the EN language button, and a Type a memo instead option." />
+              </picture></div></div>
+              <figcaption>Capture, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">June 22</span><span class="cp-ver">1.2.1</span></div>
+              <h3>Type it or speak it</h3>
+              <p>Typed memos in any language, sorted the same way as spoken ones. Review before anything saves: fix a type or date, add what was missed. To-dos appear on the widget.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/typed-input-400.avif 400w, /screens/typed-input-800.avif 800w" sizes="200px" />
+                <img src="/screens/typed-input-400.webp" srcset="/screens/typed-input-400.webp 400w, /screens/typed-input-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="Typing a memo: remind me tomorrow at 9am to pick up the birthday cake, Maya’s party is tomorrow at 3pm at Dolores Park, buy a gift card and wrap the present." />
+              </picture></div></div>
+              <figcaption>Type a memo, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">June 25 – July 2</span><span class="cp-ver">1.3.0 – 1.3.4</span></div>
+              <h3>Sturdier foundations</h3>
+              <p>Separate Apple sync allowances for Reminders and Calendar. Upgraded Cloud AI with notes on items, duplicate-reminder detection and clearer conflict choices. Japanese recording. A destination setting for Apple apps or WhisperAct, plus a status widget with its own themes.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/home-widget-400.avif 400w, /screens/home-widget-800.avif 800w" sizes="200px" />
+                <img src="/screens/home-widget-400.webp" srcset="/screens/home-widget-400.webp 400w, /screens/home-widget-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="The WhisperAct Today widget on an iPhone Home Screen, listing upcoming items with a microphone button." />
+              </picture></div></div>
+              <figcaption>The Today widget, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+        </ol>
+
+        <!-- LEG 2 -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">Leg 02 · July 2026</span>
+          <h2>Finding the way</h2>
+          <p>Six updates in one month: a new Plan, more languages, repeats you can just say.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 4</span><span class="cp-ver">1.4.1</span></div>
+              <h3>Pro themes</h3>
+              <p>Royal Blue and Forest join the original Warm Paper look, with smoother previews and better small-screen support for recording.</p>
+              <ul class="cp-tags"><li class="is-pro">Pro</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20c1.5 0 2-1 2-2v-1a2 2 0 0 1 2-2h2a4 4 0 0 0 4-4 11 11 0 0 0-10-11z"/></svg></span>
+          </li>
+
+          <li class="cp cp--major" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 9 – 10</span><span class="cp-ver">1.5.0 – 1.5.1</span></div>
+              <h3>A plan you can read</h3>
+              <p>Plan is rebuilt around Today, Upcoming and Inbox, with search and a clearer Next Up. Daily Review arrives to clear overdue and undecided items in a quick morning pass.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/plan-upcoming-400.avif 400w, /screens/plan-upcoming-800.avif 800w" sizes="200px" />
+                <img src="/screens/plan-upcoming-400.webp" srcset="/screens/plan-upcoming-400.webp 400w, /screens/plan-upcoming-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="WhisperAct’s Plan tab, Upcoming view: a Next Up countdown, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
+              </picture></div></div>
+              <figcaption>Plan, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 14</span><span class="cp-ver">1.6.0</span></div>
+              <h3>15 languages, two interfaces</h3>
+              <p>Recording grows to 15 languages, from Spanish and French to Korean and Japanese, alongside English, Urdu and Arabic. The app itself speaks Spanish as well as English.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/record-languages-400.avif 400w, /screens/record-languages-800.avif 800w" sizes="200px" />
+                <img src="/screens/record-languages-400.webp" srcset="/screens/record-languages-400.webp 400w, /screens/record-languages-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="The recording-language menu open on the recording screen, listing English, Español, Français, Português, Deutsch, Italiano, Polski and more." />
+              </picture></div></div>
+              <figcaption>Choosing a recording language, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 17</span><span class="cp-ver">1.7.0</span></div>
+              <h3>Quick Add and Apple Reminders import</h3>
+              <p>Add a task, reminder or event by hand from Plan, no memo needed. Pro brings incomplete reminders in from chosen Apple Reminders lists. Settings reorganized into clear sections.</p>
+              <ul class="cp-tags"><li>Free</li><li class="is-pro">Pro: import</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 2026</span><span class="cp-ver">Product Hunt</span></div>
+              <h3>Hello, Product Hunt</h3>
+              <p>WhisperAct launched to the Product Hunt community. Early comments praised voice-to-tasks and asked for two things, a one-tap record widget and location reminders. Both have since shipped.</p>
+              <div class="cp-actions"><a class="btn btn-secondary btn-sm" href="https://www.producthunt.com/products/whisperact?launch=whisperact" target="_blank" rel="noopener">Read the launch</a></div>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.3 17 14 18.3 21 12 17.6 5.7 21 7 14 2 9.3 9 8.5"/></svg></span>
+          </li>
+
+          <li class="cp cp--major" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 22</span><span class="cp-ver">2.0.0</span></div>
+              <h3>Repeats, spoken</h3>
+              <p>“Take my medicine every morning at 8” sets the schedule and the repeat. Mark one done and the next is waiting. Custom repeats from a quick picker; vague timings get a question, not a guess. Free for everyone; Pro also writes native series into Apple’s apps.</p>
+              <ul class="cp-tags"><li>Free</li><li class="is-pro">Pro: native Apple series</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/review-repeat-400.avif 400w, /screens/review-repeat-800.avif 800w" sizes="200px" />
+                <img src="/screens/review-repeat-400.webp" srcset="/screens/review-repeat-400.webp 400w, /screens/review-repeat-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="Review screen asking “Does this repeat?” for Take vitamins, heard as every morning at 8, with Just this once and Yes, repeat choices." />
+              </picture></div></div>
+              <figcaption>Confirming a repeat, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">July 26 – 31</span><span class="cp-ver">2.0.1 – 2.1.0</span></div>
+              <h3>Steadier, and in your language</h3>
+              <p>Skip one occurrence of a repeat without touching the rest. Titles, notes and places stay in the language you recorded in. A quiet iCloud status icon shows up only when sync actually needs attention.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
+          </li>
+        </ol>
+
+        <!-- LEG 3 -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">Leg 03 · August 2026</span>
+          <h2>New territory</h2>
+          <p>Reminders learn where you are, and the app learns when your day happens.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp cp--major" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">August 9 – 14</span><span class="cp-ver">3.0.0 – 3.0.1</span></div>
+              <h3>Reminders that know where you are</h3>
+              <p>“Grab stamps when I get to the post office” becomes a real Apple Reminders location alert. A full-screen place picker with map search, radius, arrive and leave, plus Saved Places for the spots you use most.</p>
+              <ul class="cp-tags"><li class="is-pro">Pro</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">August 21</span><span class="cp-ver">3.0.2</span></div>
+              <h3>Personal or Work</h3>
+              <p>Tag a memo as Personal or Work before you speak, then filter Memos and Plan by it. Running out of storage now shows clear recovery steps instead of losing work.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><path d="M7 7h.01"/></svg></span>
+          </li>
+
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">August 24</span><span class="cp-ver">3.1.0</span></div>
+              <h3>Your morning, your way</h3>
+              <p>Time Preferences: say what morning, afternoon and evening mean to you, when your day starts and ends, and how long an event is when you don’t say. “Morning” and “evening” now work in every recording language. Pro members get a Plan &amp; Billing page.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          </li>
+        </ol>
+
+        <!-- LEG 4 -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">Leg 04 · September 2026</span>
+          <h2>A calmer day</h2>
+          <p>A gentler first recording, repeats you confirm, and a whole tab for your day.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">September 1 – 8</span><span class="cp-ver">3.1.1 – 3.1.2</span></div>
+              <h3>Clearer from the first recording</h3>
+              <p>A smoother first run with examples and clearer permission guidance. Active and Done memos grouped by date. A repeat heard in your words is shown for a quick confirm before it’s saved, and items always land in the list or calendar you expect. Larger, easier text on iPad.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+          </li>
+
+          <li class="cp cp--major" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">September 18</span><span class="cp-ver">3.2.0</span></div>
+              <h3>Meet the Day tab</h3>
+              <p>A calm home for your day replaces the Usage tab. Drag markers on a timeline to shape your day, see the exact time each phrase turns into, set Daily Review and evening check-ins, and watch a live sky that follows your day. Daily Review gains Back, Skip and a clearer summary.</p>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v7M4.22 10.22l1.42 1.42M1 18h2M21 18h2M18.36 11.64l1.42-1.42M23 22H1"/></svg></span>
+            <figure class="cp-media" data-scroll="enter">
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/daily-review-400.avif 400w, /screens/daily-review-800.avif 800w" sizes="200px" />
+                <img src="/screens/daily-review-400.webp" srcset="/screens/daily-review-400.webp 400w, /screens/daily-review-800.webp 800w" sizes="200px" width="400" height="869" loading="lazy" decoding="async" alt="Daily Review: counts of overdue, due today and unscheduled items, and a button to review today." />
+              </picture></div></div>
+              <figcaption>Daily Review, as it looks in 4.0.0</figcaption>
+            </figure>
+          </li>
+        </ol>
+
+        <!-- LEG 5: here -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">Leg 05 · October 2026</span>
+          <h2>Where we are</h2>
+          <p>The current App Store release.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp cp--here" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/><path class="trail-done" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="here-badge">You are here</span><span class="cp-date">October 11, 2026</span><span class="cp-ver">4.0.0</span></div>
+              <h3>Room to work on iPad, and Pro for life</h3>
+              <p>Smarter handling of dates, times, repeats and multi-step instructions, with clearer questions when something is uncertain. iPad gets landscape and Split View layouts, keyboard shortcuts, pointer support and separate windows. A Lifetime option joins the monthly and yearly plans.</p>
+              <ul class="checklist">
+                <li>Scheduling follows your preferred times, including days that end after midnight.</li>
+                <li>Easier completion and rescheduling: bigger checkboxes, steadier rows, clearer Undo, and quick date choices from a long-press in Plan.</li>
+                <li>More reliable Apple Reminders sync for repeating reminders.</li>
+              </ul>
+              <ul class="cp-tags"><li>iPhone</li><li>iPad</li><li class="is-pro">Pro Lifetime</li></ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span>
+            <figure class="cp-media cp-media--pair" data-scroll="enter">
+              <div class="ipad"><div class="ipad-screen"><picture>
+                <source type="image/avif" srcset="/screens/ipad-review-hero-600.avif 600w, /screens/ipad-review-hero-1200.avif 1200w" sizes="300px" />
+                <img src="/screens/ipad-review-hero-600.webp" srcset="/screens/ipad-review-hero-600.webp 600w, /screens/ipad-review-hero-1200.webp 1200w" sizes="300px" width="600" height="800" loading="lazy" decoding="async" alt="The Review memo screen on iPad: 4 of 4 included, destination set to Apple apps, with an Apple Reminder, an Apple Calendar event and two WhisperAct to-dos." />
+              </picture></div></div>
+              <div class="iphone"><div class="iphone-screen"><picture>
+                <source type="image/avif" srcset="/screens/review-hero-400.avif 400w, /screens/review-hero-800.avif 800w" sizes="120px" />
+                <img src="/screens/review-hero-400.webp" srcset="/screens/review-hero-400.webp 400w, /screens/review-hero-800.webp 800w" sizes="120px" width="400" height="869" loading="lazy" decoding="async" alt="The same Review memo screen on iPhone." />
+              </picture></div></div>
+              <figcaption>Review memo on iPad and iPhone in 4.0.0</figcaption>
+            </figure>
+          </li>
+        </ol>
+
+        <!-- AHEAD -->
+        <div class="leg-head" data-reveal>
+          <span class="leg-stamp">The course ahead</span>
+          <h2>Next checkpoint</h2>
+          <p>Being prepared now. Not yet submitted to the App Store, so details can still change.</p>
+        </div>
+        <ol class="checkpoints">
+          <li class="cp cp--ahead" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C20 20 20 30 50 50C80 70 80 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">In preparation</span><span class="cp-ver">4.0.1</span></div>
+              <h3>Quick Record, and fewer surprises</h3>
+              <ul class="checklist">
+                <li>A Quick Record Lock Screen widget that opens straight into recording.</li>
+                <li>Note edits made in Apple Calendar flow back into WhisperAct.</li>
+                <li>Overdue reminders keep their alerts after a reschedule.</li>
+                <li>A clearer explanation of when Cloud AI is used and what it receives.</li>
+                <li>Redesigned Reminders and Calendar access sheets, and a calmer recovery sheet for interrupted saves.</li>
+              </ul>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5"/></svg></span>
+          </li>
+
+          <li class="cp cp--fog" data-reveal data-scroll="through">
+            <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-base" pathLength="100" d="M50 0C80 20 80 30 50 50C20 70 20 80 50 100"/></svg>
+            <div class="cp-card">
+              <div class="cp-meta"><span class="cp-date">Uncharted</span></div>
+              <h3>You set the course</h3>
+              <p>Every leg of this map started as something people asked for: the Product Hunt comments became a record widget and location reminders; support emails shaped the review screen. What should the next checkpoint be?</p>
+              <div class="cp-actions">
+                <a class="btn btn-primary btn-sm" href="mailto:support@whisperact.com?subject=WhisperAct%20roadmap%20idea">Tell us what to build next</a>
+                <a class="btn btn-secondary btn-sm" href="/support">Support &amp; FAQ</a>
+              </div>
+            </div>
+            <span class="cp-marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="cta-title">
+    <div class="shell">
+      <div class="cta-panel" data-reveal>
+        <img src="/icon-128.png" width="72" height="72" alt="" loading="lazy" decoding="async" />
+        <h2 id="cta-title">Join the voyage.</h2>
+        <p>Free on the App Store for iPhone and iPad with iOS 26 or later. Pro removes the limits when you want more.</p>
+        <a class="btn btn-primary btn-lg" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <p class="small-note" style="text-align:center; margin-top:16px;">Dates and contents of shipped checkpoints come from the App Store version history. App screens show WhisperAct as it is today, not as it looked at the time.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <img src="/icon-128.png" width="32" height="32" alt="" loading="lazy" decoding="async" />
+          <span>WhisperAct</span>
+        </a>
+        <p>Whisper it. We’ll handle the rest. Voice notes into reminders, events and to-dos on iPhone and iPad.</p>
+        <a class="btn btn-primary btn-sm" href="https://apps.apple.com/us/app/whisperact-voice-task-planner/id6776684339" target="_blank" rel="noopener">Download on the App Store</a>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/#how">How it works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/roadmap" aria-current="page">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="/support">Support &amp; FAQ</a></li>
+            <li><a href="mailto:support@whisperact.com">Email support</a></li>
+            <li><a href="https://www.instagram.com/whisperact_/" target="_blank" rel="noopener">Instagram @whisperact_</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 WhisperAct. All rights reserved.</p>
+      <p>Made for iPhone and iPad.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
