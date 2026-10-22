@@ -709,6 +709,41 @@ html:not(.js) .theme-switch { display: none; }
 .iphone-screen picture,
 .iphone-screen img { display: block; width: 100%; height: 100%; }
 .iphone-screen img { object-fit: cover; }
+/* Screen recordings. Each video.clip covers a still of its own first frame and only appears once
+   motion.js has it playing, so without JavaScript, under Reduce Motion or before it loads, the
+   still is what shows. */
+.iphone-screen .clip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.iphone-screen .clip.is-ready { opacity: 1; }
+/* One Pause/Play control beside each phone that holds a recording; it pauses every recording on the page. */
+.clip-toggle {
+  position: absolute;
+  z-index: 2;
+  right: -46px;
+  bottom: 2%;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--control-border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+.clip-toggle:hover { background: var(--hover); }
+.clip-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+.clip-toggle[data-state="playing"] .clip-icon-play,
+.clip-toggle[data-state="paused"] .clip-icon-pause { display: none; }
 
 /* ── Homepage: hero ───────────────────────────────────────────────────── */
 .hero {

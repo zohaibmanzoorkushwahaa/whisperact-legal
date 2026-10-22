@@ -237,26 +237,38 @@
             <div class="story-device">
               <div class="iphone">
                 <div class="iphone-screen">
-                  <picture class="story-screen is-active" data-step="1">
-                    <source type="image/avif" srcset="/screens/record-idle-400.avif 400w, /screens/record-idle-800.avif 800w" sizes="330px" />
-                    <img src="/screens/record-idle-400.webp" srcset="/screens/record-idle-400.webp 400w, /screens/record-idle-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="The recording screen with a Tap to record button, the EN language button, and a Type a memo instead option." />
-                  </picture>
+                  <div class="story-screen is-active" data-step="1">
+                    <picture>
+                      <source type="image/avif" srcset="/screens/clip-talk-400.avif 400w, /screens/clip-talk-800.avif 800w" sizes="330px" />
+                      <img src="/screens/clip-talk-400.webp" srcset="/screens/clip-talk-400.webp 400w, /screens/clip-talk-800.webp 800w" sizes="330px" width="400" height="866" loading="lazy" decoding="async" alt="Recording a memo: a tap on the mic starts recording, the live transcript fills in as you talk — “Remind me tomorrow at 9 AM to pick up the birthday cake…” — and WhisperAct then organizes the memo." />
+                    </picture>
+                    <video class="clip" src="/screens/clip-talk.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
+                  </div>
                   <picture class="story-screen" data-step="2">
                     <source type="image/avif" srcset="/screens/typed-input-400.avif 400w, /screens/typed-input-800.avif 800w" sizes="330px" />
                     <img src="/screens/typed-input-400.webp" srcset="/screens/typed-input-400.webp 400w, /screens/typed-input-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Typing a memo: remind me tomorrow at 9am to pick up the birthday cake, Maya’s party is tomorrow at 3pm at Dolores Park, buy a gift card and wrap the present." />
                   </picture>
-                  <picture class="story-screen" data-step="3">
-                    <source type="image/avif" srcset="/screens/review-decision-400.avif 400w, /screens/review-decision-800.avif 800w" sizes="330px" />
-                    <img src="/screens/review-decision-400.webp" srcset="/screens/review-decision-400.webp 400w, /screens/review-decision-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Review screen asking which day “this month” means, with three suggested dates and options for another day, no date or a place." />
-                  </picture>
-                  <picture class="story-screen" data-step="4">
-                    <source type="image/avif" srcset="/screens/plan-upcoming-400.avif 400w, /screens/plan-upcoming-800.avif 800w" sizes="330px" />
-                    <img src="/screens/plan-upcoming-400.webp" srcset="/screens/plan-upcoming-400.webp 400w, /screens/plan-upcoming-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="WhisperAct’s Plan tab, Upcoming view: a Next Up countdown, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
-                  </picture>
-                  <picture class="story-screen" data-step="5">
-                    <source type="image/avif" srcset="/screens/daily-review-400.avif 400w, /screens/daily-review-800.avif 800w" sizes="330px" />
-                    <img src="/screens/daily-review-400.webp" srcset="/screens/daily-review-400.webp 400w, /screens/daily-review-800.webp 800w" sizes="330px" width="400" height="869" loading="lazy" decoding="async" alt="Daily Review: counts of overdue, due today and unscheduled items, and a button to review today." />
-                  </picture>
+                  <div class="story-screen" data-step="3">
+                    <picture>
+                      <source type="image/avif" srcset="/screens/clip-review-400.avif 400w, /screens/clip-review-800.avif 800w" sizes="330px" />
+                      <img src="/screens/clip-review-400.webp" srcset="/screens/clip-review-400.webp 400w, /screens/clip-review-800.webp 800w" sizes="330px" width="400" height="866" loading="lazy" decoding="async" alt="The Review memo screen with four items for Apple Reminders, Apple Calendar and WhisperAct. One item opens to show its type, Todo, Reminder or Event, and the date and time understood from “tomorrow at 9 AM”, before Add 4 items saves them." />
+                    </picture>
+                    <video class="clip" src="/screens/clip-review.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
+                  </div>
+                  <div class="story-screen" data-step="4">
+                    <picture>
+                      <source type="image/avif" srcset="/screens/clip-plan-400.avif 400w, /screens/clip-plan-800.avif 800w" sizes="330px" />
+                      <img src="/screens/clip-plan-400.webp" srcset="/screens/clip-plan-400.webp 400w, /screens/clip-plan-800.webp 800w" sizes="330px" width="400" height="866" loading="lazy" decoding="async" alt="The Plan tab, Upcoming view: the Next Up countdown ticking down, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
+                    </picture>
+                    <video class="clip" src="/screens/clip-plan.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
+                  </div>
+                  <div class="story-screen" data-step="5">
+                    <picture>
+                      <source type="image/avif" srcset="/screens/clip-day-400.avif 400w, /screens/clip-day-800.avif 800w" sizes="330px" />
+                      <img src="/screens/clip-day-400.webp" srcset="/screens/clip-day-400.webp 400w, /screens/clip-day-800.webp 800w" sizes="330px" width="400" height="866" loading="lazy" decoding="async" alt="The Day tab: Daily Review at the top, and Your day, where the Morning and Day starts markers are dragged to new times on a timeline of morning, afternoon and evening." />
+                    </picture>
+                    <video class="clip" src="/screens/clip-day.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
+                  </div>
                 </div>
               </div>
             </div>
@@ -276,9 +288,10 @@
               <div class="iphone">
                 <div class="iphone-screen">
                   <picture>
-                    <source type="image/avif" srcset="/screens/record-idle-400.avif 400w, /screens/record-idle-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
-                    <img src="/screens/record-idle-400.webp" srcset="/screens/record-idle-400.webp 400w, /screens/record-idle-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="The recording screen with a Tap to record button, the EN language button, and a Type a memo instead option." />
+                    <source type="image/avif" srcset="/screens/clip-talk-400.avif 400w, /screens/clip-talk-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/clip-talk-400.webp" srcset="/screens/clip-talk-400.webp 400w, /screens/clip-talk-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="866" loading="lazy" decoding="async" alt="Recording a memo: a tap on the mic starts recording, the live transcript fills in as you talk — “Remind me tomorrow at 9 AM to pick up the birthday cake…” — and WhisperAct then organizes the memo." />
                   </picture>
+                  <video class="clip" src="/screens/clip-talk.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
                 </div>
               </div>
             </div>
@@ -315,16 +328,17 @@
               <div class="iphone">
                 <div class="iphone-screen">
                   <picture>
-                    <source type="image/avif" srcset="/screens/review-decision-400.avif 400w, /screens/review-decision-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
-                    <img src="/screens/review-decision-400.webp" srcset="/screens/review-decision-400.webp 400w, /screens/review-decision-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="Review screen asking which day “this month” means, with three suggested dates and options for another day, no date or a place." />
+                    <source type="image/avif" srcset="/screens/clip-review-400.avif 400w, /screens/clip-review-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/clip-review-400.webp" srcset="/screens/clip-review-400.webp 400w, /screens/clip-review-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="866" loading="lazy" decoding="async" alt="The Review memo screen with four items for Apple Reminders, Apple Calendar and WhisperAct. One item opens to show its type, Todo, Reminder or Event, and the date and time understood from “tomorrow at 9 AM”, before Add 4 items saves them." />
                   </picture>
+                  <video class="clip" src="/screens/clip-review.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
                 </div>
               </div>
             </div>
             <div class="story-copy">
               <p class="step-label"><span class="step-num" aria-hidden="true">3</span> Review</p>
-              <h3>It asks when it’s not sure.</h3>
-              <p>WhisperAct splits your memo into reminders, events and to-dos. When a date is vague, like “this month”, it asks which day instead of guessing — and a phrase like “every morning” is confirmed before a repeat is set.</p>
+              <h3>Check it, then save.</h3>
+              <p>WhisperAct splits your memo into reminders, events and to-dos and shows what it understood from each phrase, like “tomorrow at 9 AM”. When a date is vague, like “this month”, it asks which day instead of guessing — and a phrase like “every morning” is confirmed before a repeat is set.</p>
               <ul class="checklist">
                 <li>Switch any item between to-do, reminder and event in one tap.</li>
                 <li>Fix the wording, date or place, add what it missed, or leave an item out.</li>
@@ -337,9 +351,10 @@
               <div class="iphone">
                 <div class="iphone-screen">
                   <picture>
-                    <source type="image/avif" srcset="/screens/plan-upcoming-400.avif 400w, /screens/plan-upcoming-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
-                    <img src="/screens/plan-upcoming-400.webp" srcset="/screens/plan-upcoming-400.webp 400w, /screens/plan-upcoming-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="WhisperAct’s Plan tab, Upcoming view: a Next Up countdown, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
+                    <source type="image/avif" srcset="/screens/clip-plan-400.avif 400w, /screens/clip-plan-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/clip-plan-400.webp" srcset="/screens/clip-plan-400.webp 400w, /screens/clip-plan-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="866" loading="lazy" decoding="async" alt="The Plan tab, Upcoming view: the Next Up countdown ticking down, counts of to-dos, reminders and events, and tomorrow’s items on a timeline." />
                   </picture>
+                  <video class="clip" src="/screens/clip-plan.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
                 </div>
               </div>
             </div>
@@ -358,9 +373,10 @@
               <div class="iphone">
                 <div class="iphone-screen">
                   <picture>
-                    <source type="image/avif" srcset="/screens/daily-review-400.avif 400w, /screens/daily-review-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
-                    <img src="/screens/daily-review-400.webp" srcset="/screens/daily-review-400.webp 400w, /screens/daily-review-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="869" loading="lazy" decoding="async" alt="Daily Review: counts of overdue, due today and unscheduled items, and a button to review today." />
+                    <source type="image/avif" srcset="/screens/clip-day-400.avif 400w, /screens/clip-day-800.avif 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" />
+                    <img src="/screens/clip-day-400.webp" srcset="/screens/clip-day-400.webp 400w, /screens/clip-day-800.webp 800w" sizes="(min-width: 62em) 300px, min(62vw, 300px)" width="400" height="866" loading="lazy" decoding="async" alt="The Day tab: Daily Review at the top, and Your day, where the Morning and Day starts markers are dragged to new times on a timeline of morning, afternoon and evening." />
                   </picture>
+                  <video class="clip" src="/screens/clip-day.mp4" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
                 </div>
               </div>
             </div>
@@ -369,6 +385,7 @@
               <h3>A calm daily rhythm.</h3>
               <p>The Day tab holds Daily Review — a quick pass over what’s due and what still needs a decision — plus an evening wrap-up and the times your words mean, like when your “morning” starts.</p>
               <ul class="checklist">
+                <li>Press and hold a marker on Your day, then drag it to set when your morning or your day starts.</li>
                 <li>A Today widget for your Home Screen, with a mic to start a memo, or your Lock Screen.</li>
                 <li>Daily Review, the Daily Digest notification and widgets are free for everyone.</li>
               </ul>
